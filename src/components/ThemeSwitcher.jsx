@@ -20,10 +20,12 @@ export function ThemeSwitcher() {
 
     return (
         <Switch
-            className="mt-1"
+            className=""
             defaultSelected={theme === 'dark'}
             size="lg"
-            color="secondary"
+            // color="success"
+            color="default"
+
             onClick={toggleTheme}
             startContent={<svg
                 aria-hidden="true"

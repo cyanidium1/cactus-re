@@ -9,8 +9,29 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        // greenBase: '#17c964'
+        customGreen: "#11693d",
+      },
+    },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [nextui({
+    themes: {
+      light: {
+        // Other theme configurations...
+        colors: {
+          // Other colors...
+          success: '#11693d',
+          // New success color
+        },
+      },
+      dark: {
+        // Other theme configurations...
+        colors: {}, // You can configure dark theme colors similarly if needed
+      },
+      // Additional custom themes...
+    },
+  })],
 };

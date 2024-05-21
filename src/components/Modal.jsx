@@ -28,10 +28,10 @@ export default function ModalWw({ text = 'Связаться', subject = null, d
 
     return (
         <>
-            <Button onClick={onOpen} color="secondary" variant="flat" className="text-xl rounded-full p-6 hover:bg-violet-400 duration-300 hover:text-white">{text}</Button>
+            <Button onClick={onOpen} className="text-xl rounded-full bg-customGreen text-white hover:bg-green-600 px-8 py-6">{text}</Button>
             <Modal isOpen={isOpen} onClose={onClose} placement="center">
                 <ModalContent>
-                    <ModalHeader>Форма связи</ModalHeader>
+                    <ModalHeader className="dark:text-customGreen">Форма связи</ModalHeader>
                     <ModalBody>
                         {subject && (
                             <p className="text-xl">
@@ -41,21 +41,21 @@ export default function ModalWw({ text = 'Связаться', subject = null, d
                         )}
                         <Input
                             autoFocus
-                            endContent={<CiUser size={34} />}
+                            endContent={<CiUser className="dark:text-customGreen" size={34} />}
                             label="Имя"
                             variant="bordered"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
                         <Input
-                            endContent={<CiMobile1 size={34} />}
+                            endContent={<CiMobile1 className="dark:text-customGreen" size={34} />}
                             label="Телефон"
                             variant="bordered"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                         />
                         <Input
-                            endContent={<CiMail size={34} />}
+                            endContent={<CiMail className="dark:text-customGreen" size={34} />}
                             label="Почта"
                             variant="bordered"
                             value={email}
@@ -66,7 +66,7 @@ export default function ModalWw({ text = 'Связаться', subject = null, d
                         <Button color="danger" variant="flat" onClick={onClose}>
                             Закрыть
                         </Button>
-                        <Button color="primary" onClick={handleSendMessage}>
+                        <Button color="success" className="text-white" onClick={handleSendMessage}>
                             Отправить
                         </Button>
                     </ModalFooter>
