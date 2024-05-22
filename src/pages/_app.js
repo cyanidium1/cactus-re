@@ -1,5 +1,6 @@
 // "use client";
 import '../app/globals.css'
+import '../components/TopImage.css'
 
 // import '../components/loader.css'
 

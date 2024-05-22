@@ -32,7 +32,7 @@ export default function App() {
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
-                    <Logo />
+                    {/* <Logo /> */}
                 </NavbarBrand>
             </NavbarContent>
 
