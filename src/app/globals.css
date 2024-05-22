@@ -24,6 +24,22 @@ body {
 }
 
 .carousel .slider.animated {
-  transition: all .35s ease-in-out;
+  transition: all 0.35s ease-in-out;
   height: 100vh !important;
+}
+
+.mobile-btn {
+  transform: rotateY(180deg);
+}
+
+.header header {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 1024px) {
+  .header header {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
