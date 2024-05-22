@@ -1,23 +1,16 @@
 import { Link } from '@nextui-org/react'
 import React from 'react'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 function Navigation(props) {
   const menuItems = [
     {
-      label: 'Преимущества',
+      label: 'Каталог',
       linkTo: 'https://cactus-realestate.ru/#preimushchestva',
     },
     {
-      label: 'Наши услуги',
+      label: 'Подать объявление',
       linkTo: 'https://cactus-realestate.ru/#uslugi',
-    },
-    {
-      label: 'Примеры недвижимости',
-      linkTo: 'https://cactus-realestate.ru/#primery',
-    },
-    {
-      label: 'Отзывы',
-      linkTo: 'https://cactus-realestate.ru/#otzyvy',
     },
     {
       label: 'Мы в Instagram',
@@ -38,6 +31,12 @@ function Navigation(props) {
           </Link>
         </li>
       ))}
+      <li key='switch'>
+        <ThemeSwitcher />
+      </li>
+      <li>
+
+      </li>
     </ul>
   )
 }

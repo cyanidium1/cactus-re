@@ -33,7 +33,7 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
                 leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto relative bg-white w-[300px]">
-                  <div className="px-[20px] pb-[16px] mx-auto flex flex-col justify-between h-full md:px-[40px] md:pb-[40px] md:max-w-full">
+                  <div className="px-[20px] py-[20px] mx-auto flex flex-col justify-between h-full md:px-[40px] md:pb-[40px] md:max-w-full">
                     <div>
                       <div className="py-[8px] flex justify-between items-center  md:py-[22px]">
                         <button

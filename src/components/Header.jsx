@@ -10,6 +10,7 @@ import Logo from './Logo.jsx'
 import MenuButton from './MenuButton.jsx'
 import BurgerMenu from './BurgerMenu.jsx'
 import Socials from './Socials.jsx'
+import { ThemeSwitcher } from './ThemeSwitcher.jsx'
 
 export default function App() {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
