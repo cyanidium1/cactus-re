@@ -26,7 +26,7 @@ function Search(props) {
     return (
         <div className="p-2 sm:p-4 md:p-0 relative -mt-24 max-w-5xl mx-auto">
             <div className="grid grid-cols-1">
-                <form className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-gray-700">
+                <form className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-green-700">
                     <div className="text-dark text-start">
                         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
                             <div>
@@ -38,6 +38,7 @@ function Search(props) {
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu
+                                        className='dark:text-white'
                                         aria-label="Single selection example"
                                         variant="flat"
                                         disallowEmptySelection
@@ -63,6 +64,7 @@ function Search(props) {
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu
+                                        className='dark:text-white'
                                         aria-label="Single selection example"
                                         variant="flat"
                                         disallowEmptySelection
@@ -85,6 +87,7 @@ function Search(props) {
                                         </Button>
                                     </DropdownTrigger>
                                     <DropdownMenu
+                                        className='dark:text-white'
                                         aria-label="Single selection example"
                                         variant="flat"
                                         disallowEmptySelection
@@ -100,6 +103,7 @@ function Search(props) {
                             </div>
                             <div>
                                 <Slider
+                                    className='dark:text-white'
                                     size="lg"
                                     label="Цена:"
                                     maxValue={250000}

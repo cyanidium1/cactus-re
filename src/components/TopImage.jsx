@@ -21,7 +21,7 @@ function TopImage(props) {
             </div>
 
             <svg
-                className='fill-white'
+                className='fill-white dark:fill-black'
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.0"
                 viewBox="0 0 2372 144"

@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link, Button, Modal } from "@nextui-org/react";
 import Logo from "./Logo.jsx";
 import ModalWw from "./Modal.jsx";
+import { ThemeSwitcher } from "./ThemeSwitcher.jsx";
 
 export default function App() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -50,7 +51,9 @@ export default function App() {
                         Опубликовать
                     </Link>
                 </NavbarItem>
-
+                <NavbarItem isActive>
+                    <ThemeSwitcher />
+                </NavbarItem>
             </NavbarContent>
 
             <NavbarContent justify="end">
