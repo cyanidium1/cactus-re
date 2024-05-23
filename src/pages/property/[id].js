@@ -28,8 +28,8 @@ export default function Page() {
               <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
                 <RoomPrices price="1500" />
                 <ActionButtons />
-                <ContactUsButton />
               </div>
+              <ContactUsButton />
             </div>
           </div>
         </div>
