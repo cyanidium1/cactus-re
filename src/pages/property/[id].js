@@ -1,19 +1,20 @@
 import { useRouter } from "next/router";
 
-//import data from "./data.json";
-import RoomGallery from "./roomGallery";
-import RoomQualities from "./RoomQualities";
-import RoomDescription from "./RoomDescription";
-import RoomPrices from "./RoomPrices";
-import ActionButtons from "./ActionButtons";
-import ContactUsButton from "./ContactUsButton";
+
+import Layout from "@/components/Layout";
+import RoomQualities from "@/components/property/RoomQualities";
+import RoomDescription from "@/components/property/RoomDescription";
+import RoomGallery from "@/components/property/RoomGallery";
+import RoomPrices from "@/components/property/RoomPrices";
+import ActionButtons from "@/components/property/ActionButtons";
+import ContactUsButton from "@/components/property/ContactUsButton";
 
 export default function Page() {
   const router = useRouter();
   const { id } = router.query;
 
   return (
-    <section className="relative md:pb-24 pb-16 mt-20 px-[40px]">
+    <Layout>
       <RoomGallery />
       <div className="container md:mt-24 mt-16">
         <div className="md:flex">
@@ -34,6 +35,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-    </section>
+    </Layout>
   );
 }
