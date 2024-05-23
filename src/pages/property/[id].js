@@ -1,6 +1,39 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+
+//import data from "./data.json";
+import RoomGallery from "./roomGallery";
+import RoomQualities from "./RoomQualities";
+import RoomDescription from "./RoomDescription";
+import RoomPrices from "./RoomPrices";
+import ActionButtons from "./ActionButtons";
+import ContactUsButton from "./ContactUsButton";
 
 export default function Page() {
-    const router = useRouter()
-    return <p>Post: {router.query.id}</p>
+  const router = useRouter();
+  const { id } = router.query;
+
+  return (
+    <section className="relative md:pb-24 pb-16 mt-20 px-[40px]">
+      <RoomGallery />
+      <div className="container md:mt-24 mt-16">
+        <div className="md:flex">
+          <div className="lg:w-2/3 md:w-full md:p-4 px-3">
+            <h4 className="text-2xl forn-medium">Oriental Residence 1+1</h4>
+            <RoomQualities bath="2" />
+            <RoomDescription />
+            <div>There will be adress picture</div>
+          </div>
+          <div className="lg:w-1/3 md:w-1/2 md:p-4 px-3 mt-8 md:mt-0">
+            <div className="sticky top-20">
+              <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+                <RoomPrices price="1500" />
+                <ActionButtons />
+                <ContactUsButton />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
