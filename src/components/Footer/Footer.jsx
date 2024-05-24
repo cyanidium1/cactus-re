@@ -5,11 +5,8 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 
 const Footer = () => {
   return (
-    <footer className=" bg-slate-900 mx-auto w-full px-[45px] pt-[64px]">
-      {/* <div className="grid grid-cols-1"> */}
-      {/* <div className="height-auto"> */}
-      {/* <div className="relative w-full py-16"> */}
-      <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] pb-16">
+    <footer className=" bg-slate-600 mx-auto w-full px-[45px] sm:m-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
+      <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] py-16">
         <div className="lg:col-span-4 md:col-span-4">
           <a className="text-[22px] focus:outline-none" href="">
             <img src="" alt="" />
@@ -23,9 +20,6 @@ const Footer = () => {
         <FooterUseFullLinks />
         <FooterContactDetails />
       </div>
-      {/* </div> */}
-      {/* </div> */}
-      {/* </div> */}
       <FooterDown />
     </footer>
   );

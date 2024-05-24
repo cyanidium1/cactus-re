@@ -1,9 +1,9 @@
 const FooterDownLinks = () => {
   return (
     <ul className="list-none md:text-end text-center flex">
-      <li className="ml-1 width-[28px] height-[28px]">
+      <li className="ml-1 w-[28px] h-[28px]">
         <a
-          className=" text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="w-[28px] h-[28px] text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href=""
           target="_blank"
         >
