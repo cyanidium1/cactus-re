@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 
-
 import Layout from "@/components/Layout";
 import RoomQualities from "@/components/property/RoomQualities";
 import RoomDescription from "@/components/property/RoomDescription";
@@ -16,8 +15,8 @@ export default function Page() {
   return (
     <Layout>
       <RoomGallery />
-      <div className="container md:mt-24 mt-16">
-        <div className="md:flex">
+      <div className="md:mt-24 mt-16 px-[12px] md:px-[16px] lg:px-[45px] xl:px-[80px] xxl:px-[45px] ">
+        <div className="md:flex justify-center mb-[100px]">
           <div className="lg:w-2/3 md:w-full md:p-4 px-3">
             <h4 className="text-2xl forn-medium">Oriental Residence 1+1</h4>
             <RoomQualities bath="2" />
@@ -29,8 +28,8 @@ export default function Page() {
               <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
                 <RoomPrices price="1500" />
                 <ActionButtons />
-                <ContactUsButton />
               </div>
+              <ContactUsButton />
             </div>
           </div>
         </div>
