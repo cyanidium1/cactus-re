@@ -7,24 +7,24 @@ const Footer = () => {
   return (
     <footer className=" bg-slate-900 mx-auto w-full px-[45px] pt-[64px]">
       {/* <div className="grid grid-cols-1"> */}
-      <div className="py-16 height-auto">
-        <div className="relative w-full py-16">
-          <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] -mt-24">
-            <div className="lg:col-span-4 md:col-span-4">
-              <a className="text-[22px] focus:outline-none" href="">
-                <img src="" alt="" />
-              </a>
-              <p className="mt-6 text-gray-300">
-                A great platform to buy, sell and rent your properties without
-                any agent or commisions.
-              </p>
-            </div>
-            <FooterCompanyList />
-            <FooterUseFullLinks />
-            <FooterContactDetails />
-          </div>
+      {/* <div className="height-auto"> */}
+      {/* <div className="relative w-full py-16"> */}
+      <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] pb-16">
+        <div className="lg:col-span-4 md:col-span-4">
+          <a className="text-[22px] focus:outline-none" href="">
+            <img src="" alt="" />
+          </a>
+          <p className="md:mt-6 text-gray-300">
+            A great platform to buy, sell and rent your properties without any
+            agent or commisions.
+          </p>
         </div>
+        <FooterCompanyList />
+        <FooterUseFullLinks />
+        <FooterContactDetails />
       </div>
+      {/* </div> */}
+      {/* </div> */}
       {/* </div> */}
       <FooterDown />
     </footer>
