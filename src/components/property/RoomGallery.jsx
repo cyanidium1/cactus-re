@@ -26,7 +26,7 @@ const RoomGallery = () => {
   return (
     <div className="flex justify-center">
       <div className="md:flex w-full">
-        <div className="lg:w-1/2 md:w-1/2 px-[2px] m-0 flex justify-center">
+        <div className="lg:w-1/2 md:w-1/2 pb-[8px] md:px-[8px] m-0 flex justify-center">
           <Image
             src={firstImage.src}
             alt={firstImage.caption}

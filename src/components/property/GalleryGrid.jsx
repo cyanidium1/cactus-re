@@ -18,7 +18,7 @@ const GalleryGrid = ({ handleClick }) => {
   ));
 
   return (
-    <ul className="grid grid-cols-2 gap-[4px] list-none p-0 m-0">{elements}</ul>
+    <ul className="grid grid-cols-2 gap-[8px] list-none p-0 m-0">{elements}</ul>
   );
 };
 
