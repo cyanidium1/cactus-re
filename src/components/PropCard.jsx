@@ -39,7 +39,7 @@ function PropCard({ el }) {
         <div className="pb-6">
           <a
             className="text-lg hover:text-green-600 font-medium ease-in-out duration-500"
-            href="/property-detail/1"
+            href="/property/1"
           >
             {titleEnglish}
           </a>
