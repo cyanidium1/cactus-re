@@ -1,10 +1,11 @@
 //import Image from "next/image";
 import { useState } from "react";
-import { Gallery } from "react-grid-gallery";
+//import { Gallery } from "react-grid-gallery";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import images from "./images";
 import GalleryGrid from "./GalleryGrid";
+import Image from "next/image";
 
 const RoomGallery = () => {
   const [index, setIndex] = useState(-1);
@@ -15,7 +16,7 @@ const RoomGallery = () => {
   const prevIndex = (index + images.length - 1) % images.length;
   const prevImage = images[prevIndex] || currentImage;
 
-  const handleClick = (index, item) => setIndex(index);
+  const handleClick = (index) => setIndex(index);
   const handleClose = () => setIndex(-1);
   const handleMovePrev = () => setIndex(prevIndex);
   const handleMoveNext = () => setIndex(nextIndex);
@@ -23,23 +24,33 @@ const RoomGallery = () => {
   const firstImage = images[0];
 
   return (
-    <div className="container mx-auto">
-      <div className="md:flex mt-4">
-        <div className="lg:w-1/2 md:w-1/2 px-[2px]">
-          <div className="relative overflow-hidden">
-            <img src={firstImage.src} />
-          </div>
+    <div className="flex justify-center">
+      <div className="md:flex w-full">
+        <div className="lg:w-1/2 md:w-1/2 px-[2px] m-0 flex justify-center">
+          <Image
+            src={firstImage.src}
+            alt={firstImage.caption}
+            width={600}
+            height={400}
+            onClick={() => handleClick(0)}
+            priority
+            style={{
+              width: "auto",
+              height: "auto",
+              cursor: "pointer",
+            }}
+          />
         </div>
         <div className="lg:w-1/2 md:w-1/2">
           <div className="flex">
-            <GalleryGrid />
+            <GalleryGrid handleClick={handleClick} />
           </div>
         </div>
-        <Gallery
+        {/* <Gallery
           images={images}
-          onClick={handleClick}
+          onClickThumbnail={(index) => handleClick(index)}
           enableImageSelection={false}
-        />
+        /> */}
       </div>
       {!!currentImage && (
         /* @ts-ignore */

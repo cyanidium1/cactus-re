@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <Layout>
       <RoomGallery />
-      <div className="container md:mt-24 mt-16 px-[12px] md:px-[16px] lg:px-[45px] xl:px-[80px] xxl:px-[45px] ">
+      <div className="md:mt-24 mt-16 px-[12px] md:px-[16px] lg:px-[45px] xl:px-[80px] xxl:px-[45px] ">
         <div className="md:flex justify-center">
           <div className="lg:w-2/3 md:w-full md:p-4 px-3">
             <h4 className="text-2xl forn-medium">Oriental Residence 1+1</h4>
