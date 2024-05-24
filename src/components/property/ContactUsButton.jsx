@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
 
 const ContactUsButton = () => {
   return (
@@ -7,7 +7,7 @@ const ContactUsButton = () => {
         Do you have questions? Get in touch
       </h3>
       <div className="mt-6">
-        <Button className="btn bg-transparent hover:bg-green-600 border border-green600 text-green-600 hover:text-white rounded-md href=${}">
+        <Button className="bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-xl href=${}">
           <svg
             stroke="currentColor"
             fill="currentColor"
