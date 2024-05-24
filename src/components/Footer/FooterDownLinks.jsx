@@ -1,20 +1,20 @@
 const FooterDownLinks = () => {
   return (
     <ul className="list-none md:text-end text-center flex">
-      <li className="ml-1 width-[28px] height-[28px]">
+      <li className="ml-1 w-[28px] h-[28px]">
         <a
-          class=" text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="w-[28px] h-[28px] text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href=""
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -27,18 +27,18 @@ const FooterDownLinks = () => {
       </li>
       <li className="ml-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="https://dribbble.com/shreethemes"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -50,16 +50,16 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="https://www.behance.net/shreethemes"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
-            class="align-baseline"
+            className="align-baseline"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -70,18 +70,18 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="http://linkedin.com/company/shreethemes"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -94,18 +94,18 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="https://www.facebook.com/shreethemes"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -116,18 +116,18 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="https://www.instagram.com/shreethemes/"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -140,18 +140,18 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="https://twitter.com/shreethemes"
           target="_blank"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
@@ -162,17 +162,17 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <a
-          class="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
+          className="btn btn-icon btn-sm text-gray-400 hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600"
           href="mailto:support@shreethemes.in"
         >
           <svg
             stroke="currentColor"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="size-4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-4"
             height="1em"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
