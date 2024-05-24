@@ -10,7 +10,7 @@ const RoomPrices = ({ price }) => {
       </div>
       <ul className="list-none mt-4">
         <li className="flex justify-between items-center">
-          <span className="text-slate-400 text-sm">Days on hously</span>
+          <span className="text-slate-400 text-sm">Days on Cactus</span>
           <span className="font-medium text-sm">124 days</span>
         </li>
         <li className="flex justify-between items-center mt-2">

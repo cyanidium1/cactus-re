@@ -16,8 +16,8 @@ const images = [
   {
     src: "/images/ParkLine-apartment-in-Miami-FL.jpg.webp",
     original: "/images/ParkLine-apartment-in-Miami-FL.jpg.webp",
-    width: 320,
-    height: 174,
+    width: 300,
+    height: 300,
     caption: "Modern apartment",
   },
   {
@@ -26,6 +26,13 @@ const images = [
     width: 300,
     height: 300,
     caption: "Beautiful apartment",
+  },
+  {
+    src: "/images/zen-hollywood-los-angeles-ca-pool.jpg",
+    original: "/images/zen-hollywood-los-angeles-ca-pool.jpg",
+    width: 300,
+    height: 300,
+    caption: "Nice apartment",
   },
 ];
 

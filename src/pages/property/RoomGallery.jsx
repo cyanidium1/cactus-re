@@ -4,6 +4,7 @@ import { Gallery } from "react-grid-gallery";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 import images from "./images";
+import GalleryGrid from "./GalleryGrid";
 
 const RoomGallery = () => {
   const [index, setIndex] = useState(-1);
@@ -19,86 +20,44 @@ const RoomGallery = () => {
   const handleMovePrev = () => setIndex(prevIndex);
   const handleMoveNext = () => setIndex(nextIndex);
 
+  const firstImage = images[0];
+
   return (
     <div className="container mx-auto">
       <div className="md:flex mt-4">
-        <div className="lg:w-full md:w-full  px-3 p-1">
-          <Gallery
-            images={images}
-            onClick={handleClick}
-            enableImageSelection={false}
-          />
-          {!!currentImage && (
-            /* @ts-ignore */
-            <Lightbox
-              mainSrc={currentImage.original}
-              imageTitle={currentImage.caption}
-              mainSrcThumbnail={currentImage.src}
-              nextSrc={nextImage.original}
-              nextSrcThumbnail={nextImage.src}
-              prevSrc={prevImage.original}
-              prevSrcThumbnail={prevImage.src}
-              onCloseRequest={handleClose}
-              onMovePrevRequest={handleMovePrev}
-              onMoveNextRequest={handleMoveNext}
-            />
-          )}
-        </div>
-        {/* <div className="lg:w-1/2 md:w-1/2">
-          <div className="flex">
-            <div className="w-1/2 p-1"></div>
+        <div className="lg:w-1/2 md:w-1/2 px-[2px]">
+          <div className="relative overflow-hidden">
+            <img src={firstImage.src} />
           </div>
-        </div> */}
+        </div>
+        <div className="lg:w-1/2 md:w-1/2">
+          <div className="flex">
+            <GalleryGrid />
+          </div>
+        </div>
+        <Gallery
+          images={images}
+          onClick={handleClick}
+          enableImageSelection={false}
+        />
       </div>
+      {!!currentImage && (
+        /* @ts-ignore */
+        <Lightbox
+          mainSrc={currentImage.original}
+          imageTitle={currentImage.caption}
+          mainSrcThumbnail={currentImage.src}
+          nextSrc={nextImage.original}
+          nextSrcThumbnail={nextImage.src}
+          prevSrc={prevImage.original}
+          prevSrcThumbnail={prevImage.src}
+          onCloseRequest={handleClose}
+          onMovePrevRequest={handleMovePrev}
+          onMoveNextRequest={handleMoveNext}
+        />
+      )}
     </div>
   );
 };
 
 export default RoomGallery;
-
-{
-  /* <div className="group relative overflow-hidden">
-  <ul className="flex gap-[2px]">
-    <li>
-      <Image
-        src="/images/avalon-555-president-baltimore-md-primary-photo.jpg"
-        height={300}
-        width={400}
-        alt="Avalon 555 President"
-      />
-    </li>
-    <li>
-      <Image
-        src="/images/jasper-san-francisco-ca-lounge-with-fireplace.jpg"
-        height={300}
-        width={400}
-        alt="Jasper San Francisco"
-      />
-    </li>
-    <li>
-      <Image
-        src="/images/ParkLine-apartment-in-Miami-FL.jpg.webp"
-        height={300}
-        width={400}
-        alt="ParkLine Apartment"
-      />
-    </li>
-    <li>
-      <Image
-        src="/images/the-huntley-atlanta-ga-luxury-apartment-view.jpg"
-        height={300}
-        width={400}
-        alt="The Huntley Atlanta"
-      />
-    </li>
-    <li>
-      <Image
-        src="/images/zen-hollywood-los-angeles-ca-pool.jpg"
-        height={300}
-        width={400}
-        alt="Zen Hollywood"
-      />
-    </li>
-  </ul>
-</div>; */
-}
