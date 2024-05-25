@@ -5,22 +5,25 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 
 const Footer = () => {
   return (
-    <footer className=" bg-slate-600 mx-auto w-full px-[45px] sm:m-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
-      <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] py-16">
-        <div className="lg:col-span-4 md:col-span-4">
-          <a className="text-[22px] focus:outline-none" href="">
-            <img src="" alt="" />
-          </a>
-          <p className="md:mt-6 text-gray-300">
-            A great platform to buy, sell and rent your properties without any
-            agent or commisions.
-          </p>
+    <footer className=" bg-slate-600 ">
+      <div className="mx-auto w-full px-[45px] sm:m-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
+        <div className="grid md:grid-cols-12 grid-cols-1 gap-[30px] py-16">
+          <div className="lg:col-span-4 md:col-span-4">
+            <a className="text-[22px] focus:outline-none" href="">
+              <img src="" alt="" />
+            </a>
+            <p className="md:mt-6 text-gray-300">
+              A great platform to buy, sell and rent your properties without any
+              agent or commisions.
+            </p>
+          </div>
+          <FooterCompanyList />
+          <FooterUseFullLinks />
+          <FooterContactDetails />
         </div>
-        <FooterCompanyList />
-        <FooterUseFullLinks />
-        <FooterContactDetails />
+        <FooterDown />
       </div>
-      <FooterDown />
+
     </footer>
   );
 };
