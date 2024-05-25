@@ -12,7 +12,7 @@ const FooterContactDetails = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-5 text-green-600 me-3"
+          className="size-5 text-customGreen me-3"
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@ const FooterContactDetails = () => {
           <h6 className="text-gray-300 mb-2">There will be adress</h6>
           <a
             datatype="iframe"
-            className="text-green-600 hover:text-green-700 duration-500 ease-in-out lightbox"
+            className="text-customGreen hover:text-green-700 duration-500 ease-in-out lightbox"
             href=""
           >
             View on Google map
@@ -39,7 +39,7 @@ const FooterContactDetails = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-5 text-green-600 me-3"
+          className="size-5 text-customGreen me-3"
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const FooterContactDetails = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="size-5 text-green-600 me-3"
+          className="size-5 text-customGreen me-3"
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"

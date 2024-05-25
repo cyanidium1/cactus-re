@@ -1,11 +1,11 @@
 const FooterCompanyList = () => {
   return (
     <div className="mt-[30px] md:mt-0">
-      <h5 className="tracking-[1px] text-gray-100 font-semibold">Company</h5>
+      <h5 className="tracking-[1px]  text-slate-400 font-semibold">Company</h5>
       <ul className="list-none footer-list mt-6">
         <li>
           <a
-            className="text-slate-300 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
           >
             <svg
@@ -26,7 +26,7 @@ const FooterCompanyList = () => {
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-300 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
           >
             <svg
@@ -47,7 +47,7 @@ const FooterCompanyList = () => {
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-300 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
           >
             <svg
@@ -68,7 +68,7 @@ const FooterCompanyList = () => {
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-300 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
           >
             <svg
@@ -89,7 +89,7 @@ const FooterCompanyList = () => {
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-300 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
           >
             <svg

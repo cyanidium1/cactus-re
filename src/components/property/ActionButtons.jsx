@@ -4,12 +4,12 @@ const ActionButtons = () => {
   return (
     <ButtonGroup className="flex">
       <div className="p-1 w-1/2">
-        <Button className=" bg-green-600 hover:bg-green-700 text-white rounded-md w-full href=${}">
+        <Button className=" bg-customGreen hover:bg-green-700 text-white rounded-md w-full href=${}">
           Book now
         </Button>
       </div>
       <div className="p-1 w-1/2">
-        <Button className=" bg-green-600 hover:bg-green-700 text-white rounded-md w-full href=${}">
+        <Button className=" bg-customGreen hover:bg-green-700 text-white rounded-md w-full href=${}">
           Offer now
         </Button>
       </div>
