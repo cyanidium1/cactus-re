@@ -1,6 +1,6 @@
 const FooterDownLinks = () => {
   return (
-    <ul className="list-none md:text-end text-center flex">
+    <ul className="list-none md:text-end text-center flex justify-center items-center">
       <li className="ml-1">
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
@@ -31,7 +31,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white "
-            href="https://dribbble.com/shreethemes"
+            href=""
             target="_blank"
           >
             <svg
@@ -56,7 +56,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white "
-            href="https://www.behance.net/shreethemes"
+            href=""
             target="_blank"
           >
             <svg
@@ -78,7 +78,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white "
-            href="http://linkedin.com/company/shreethemes"
+            href=""
             target="_blank"
           >
             <svg
@@ -104,7 +104,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white "
-            href="https://www.facebook.com/shreethemes"
+            href=""
             target="_blank"
           >
             <svg
@@ -128,7 +128,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white"
-            href="https://www.instagram.com/shreethemes/"
+            href=""
             target="_blank"
           >
             <svg
@@ -154,7 +154,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className="btn btn-icon btn-sm text-gray-400 hover:text-white"
-            href="https://twitter.com/shreethemes"
+            href=""
             target="_blank"
           >
             <svg
@@ -176,10 +176,7 @@ const FooterDownLinks = () => {
       </li>
       <li className="ms-1">
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
-          <a
-            className=" text-gray-400 hover:text-white"
-            href="mailto:support@shreethemes.in"
-          >
+          <a className=" text-gray-400 hover:text-white" href="mailto:support">
             <svg
               stroke="currentColor"
               fill="none"
