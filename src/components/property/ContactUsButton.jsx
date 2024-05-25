@@ -7,7 +7,7 @@ const ContactUsButton = () => {
         Do you have questions? Get in touch
       </h3>
       <div className="mt-6">
-        <Button className="bg-transparent hover:bg-green-600 border border-green-600 text-green-600 hover:text-white rounded-xl href=${}">
+        <Button className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white rounded-xl href=${}">
           <svg
             stroke="currentColor"
             fill="currentColor"
