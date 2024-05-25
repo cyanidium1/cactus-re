@@ -1,6 +1,6 @@
 const FooterContactDetails = () => {
   return (
-    <div className="lg:col-span-3 md:col-span-4">
+    <div className="mt-[30px] md:mt-0">
       <h5 className="tracking-[1px] text-gray-100 font-semibold">
         Contact details
       </h5>
