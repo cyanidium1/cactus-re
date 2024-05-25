@@ -2,7 +2,7 @@ import FooterDownLinks from "./FooterDownLinks";
 
 const FooterDown = () => {
   return (
-    <div className="px-0 border-t border-gray-800 dark:border-gray-700">
+    <div className="px-0 py-[30px] border-t border-gray-800 dark:border-gray-700">
       <div className="container text-center">
         <div className="flex-column md:flex md:flex-row py-[30px] md:py-0 justify-between items-center gap-6">
           <div className="md:text-start text-center">
