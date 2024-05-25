@@ -6,12 +6,12 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 
 const Footer = () => {
   return (
-    <footer className=" bg-slate-600 px-[45px] mx-auto w-full ">
+    <footer className=" bg-slate-100 px-[45px] mx-auto w-full">
       <div className="mx-auto sm:m-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
         <div className="py-16 lg:flex lg:justify-between lg:gap-[30px] xl:gap-[50px]">
           <div className="md:mb-[30px]">
             <Logo />
-            <p className="mt-6 text-gray-300 lg:w-[290px] xl:w-[350px]">
+            <p className="mt-6 text-slate-400 marker:lg:w-[290px] xl:w-[350px]">
               A great platform to buy, sell and rent your properties without any
               agent or commissions.
             </p>
@@ -29,6 +29,8 @@ const Footer = () => {
 };
 
 export default Footer;
+
+// text-gray-300
 
 //Subscribe for information
 {
