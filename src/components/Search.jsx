@@ -28,12 +28,12 @@ function Search(props) {
             <div className="grid grid-cols-1">
                 <form className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-green-700">
                     <div className="text-dark text-start">
-                        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6">
-                            <div>
+                        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6 text-xl">
+                            <div className='lg:pr-2'>
                                 <p className="text-slate-900 dark:text-white ">Город:</p>
-                                <Dropdown>
+                                <Dropdown backdrop="blur">
                                     <DropdownTrigger>
-                                        <Button className='w-28 mt-2' endContent={<IoMdArrowDropdown />}>
+                                        <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
                                             {selectedCityValue}
                                         </Button>
                                     </DropdownTrigger>
@@ -55,11 +55,11 @@ function Search(props) {
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
-                            <div>
+                            <div className='lg:pr-2'>
                                 <p className="text-slate-900 dark:text-white ">Недвижимость:</p>
-                                <Dropdown>
+                                <Dropdown backdrop="blur">
                                     <DropdownTrigger>
-                                        <Button className='w-28 mt-2' endContent={<IoMdArrowDropdown />}>
+                                        <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
                                             {selectedPropertyValue}
                                         </Button>
                                     </DropdownTrigger>
@@ -78,11 +78,11 @@ function Search(props) {
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
-                            <div>
+                            <div className='lg:pr-2'>
                                 <p className="text-slate-900 dark:text-white ">Тип:</p>
-                                <Dropdown>
+                                <Dropdown backdrop="blur">
                                     <DropdownTrigger>
-                                        <Button className='w-28 mt-2' endContent={<IoMdArrowDropdown />}>
+                                        <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
                                             {selectedTypeValue}
                                         </Button>
                                     </DropdownTrigger>
@@ -115,7 +115,8 @@ function Search(props) {
                                         maximumFractionDigits: 0
                                     }}
                                     classNames={{
-                                        base: "max-w-md gap-3",
+                                        base: "max-w-md gap-3 ",
+                                        label: "text-xl",
                                         filler: "bg-gradient-to-r from-gray-300 to-green-300 dark:from-gray-600 dark:to-green-800",
                                     }}
                                     renderThumb={({ index, ...props }) => (
@@ -136,8 +137,8 @@ function Search(props) {
                                 />
                             </div>
                         </div>
-                        <div className="lg:mt-6">
-                            <Button className='bg-green-500 w-56 ' variant="shadow">
+                        <div className="mt-6 lg:pr-6">
+                            <Button className=' bg-green-500 w-full  lg:w-1/4 text-lg' variant="shadow">
                                 Подобрать
                             </Button>
                         </div>

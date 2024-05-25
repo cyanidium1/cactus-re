@@ -14,8 +14,8 @@ function TopImage(props) {
                 <img src="/images/slider3.jpg" alt="slider image 3" />
             </div>
             <div className="text-center absolute inset-0 flex flex-col items-center justify-center">
-                <div className='mb-20'>
-                    <h1 className='text-5xl text-white font-bold'>Ключи от квартиры вашей мечты <br />на побережье Средиземного моря</h1>
+                <div className='mb-20 p-2'>
+                    <h1 className='text-xl sm:text-2xl lg:text-5xl text-white font-bold'>Ключи от квартиры вашей мечты <br />на побережье Средиземного моря</h1>
                     <p className='text-xl text-white mt-2 text-right'>...близко как никогда :)</p>
                 </div>
             </div>
