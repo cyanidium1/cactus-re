@@ -17,10 +17,10 @@ function PropCard({ el }) {
   } = el
 
   return (
-    <div className="dark:text-white w-80 group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500">
+    <div className="dark:text-white w-full sm:w-[49%] md:w-[32%] lg:w-80 mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500">
       <div className="relative">
         <Image
-          className="h-56 object-cover"
+          className="h-56 object-cover w-full"
           src={mainPhoto.url}
           width={350}
           height={230}

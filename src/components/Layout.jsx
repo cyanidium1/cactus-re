@@ -5,7 +5,7 @@ import Head from "next/head";
 
 export const metadata = {};
 
-export default function Layout({ children }) {
+export default function Layout({ children, isStyled = true }) {
   return (
     <div>
       <Head>
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
       </Head>
       {/* <Loader /> */}
       <Header />
-      <main className="max-w-[1120px] mx-auto p-2">{children}</main>
+      <main className={isStyled ? 'max-w-[1120px] mx-auto p-2' : ''}>{children}</main>
       <Footer />
     </div>
   );
