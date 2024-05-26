@@ -28,16 +28,16 @@ const ButtonUp = () => {
     isVisible && (
       <a
         id="back-to-top"
-        class="fixed  text-lg rounded-full z-10 bottom-5 md:bottom-14 end-5 size-9 text-center bg-customGreen text-white justify-center items-center flex"
+        className="fixed  text-lg rounded-full z-10 bottom-5 md:bottom-14 end-5 size-9 text-center bg-customGreen text-white justify-center items-center flex"
         onClick={handleClick}
       >
         <svg
           stroke="currentColor"
           fill="none"
-          stroke-width="2"
+          strokeWidth="2"
           viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
