@@ -17,12 +17,19 @@ const ButtonUp = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     isVisible && (
       <a
         id="back-to-top"
-        class="fixed  text-lg rounded-full z-10 bottom-5 end-5 size-9 text-center bg-customGreen text-white justify-center items-center flex"
-        href="header"
+        class="fixed  text-lg rounded-full z-10 bottom-5 md:bottom-14 end-5 size-9 text-center bg-customGreen text-white justify-center items-center flex"
+        onClick={handleClick}
       >
         <svg
           stroke="currentColor"
