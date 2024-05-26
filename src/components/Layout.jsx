@@ -2,6 +2,7 @@ import Header from "./Header";
 import Footer from "./Footer/Footer";
 import Loader from "./Loader";
 import Head from "next/head";
+import ButtonUp from "./ButtonUp";
 
 export const metadata = {};
 
@@ -17,7 +18,10 @@ export default function Layout({ children, isStyled = true }) {
       </Head>
       {/* <Loader /> */}
       <Header />
-      <main className={isStyled ? 'max-w-[1120px] mx-auto p-2' : ''}>{children}</main>
+      <main className={isStyled ? "max-w-[1120px] mx-auto p-2" : ""}>
+        {children}
+      </main>
+      <ButtonUp />
       <Footer />
     </div>
   );
