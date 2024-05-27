@@ -1,4 +1,4 @@
-const RoomQualities = ({ bath }) => {
+const RoomQualities = ({ bath, rooms, area }) => {
   return (
     <ul className="py-6 flex items-center list-none">
       <li className="flex items-center lg:me-6 me-4">
@@ -14,7 +14,7 @@ const RoomQualities = ({ bath }) => {
         >
           <path d="M 4.71875 3.28125 L 3.28125 4.71875 L 10.5625 12 L 5 12 L 5 14 L 14 14 L 14 5 L 12 5 L 12 10.5625 Z M 27.28125 3.28125 L 20 10.5625 L 20 5 L 18 5 L 18 14 L 27 14 L 27 12 L 21.4375 12 L 28.71875 4.71875 Z M 5 18 L 5 20 L 10.5625 20 L 3.28125 27.28125 L 4.71875 28.71875 L 12 21.4375 L 12 27 L 14 27 L 14 18 Z M 18 18 L 18 27 L 20 27 L 20 21.4375 L 27.28125 28.71875 L 28.71875 27.28125 L 21.4375 20 L 27 20 L 27 18 Z"></path>
         </svg>
-        <span className="lg:text-xl">Meters</span>
+        <span className="lg:text-xl">{area} м²</span>
       </li>
       <li className="flex items-center lg:me-6 me-4">
         <svg
@@ -29,7 +29,7 @@ const RoomQualities = ({ bath }) => {
         >
           <path d="M20 9.557V3h-2v2H6V3H4v6.557C2.81 10.25 2 11.525 2 13v4a1 1 0 0 0 1 1h1v4h2v-4h12v4h2v-4h1a1 1 0 0 0 1-1v-4c0-1.475-.811-2.75-2-3.443zM18 7v2h-5V7h5zM6 7h5v2H6V7zm14 9H4v-3c0-1.103.897-2 2-2h12c1.103 0 2 .897 2 2v3z"></path>
         </svg>
-        <span className="lg:text-xl">1 + 1</span>
+        <span className="lg:text-xl">{rooms}</span>
       </li>
       <li className="flex items-center lg:me-6 me-4">
         <svg
