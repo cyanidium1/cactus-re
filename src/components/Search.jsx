@@ -54,7 +54,7 @@ function Search({
     };
 
     return (
-        <div className="relative -mt-24 max-w-5xl mx-auto p-2 sm:p-0">
+        <div className="relative -mt-24 max-w-5xl mx-auto p-2 xl:p-0">
             <div className="grid grid-cols-1">
                 <form className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-green-700">
                     <div className="text-dark text-start">

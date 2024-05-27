@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-function PropCard({ el, isGrid }) {
+function PropCard({ el, isGrid, isRU }) {
   const {
     id,
     titleEnglish,
@@ -14,7 +14,9 @@ function PropCard({ el, isGrid }) {
     city,
     area,
     roomsEnglish,
+    roomsRussian,
     stateEnglish,
+    stateRussian,
     bathroomNumber,
   } = el
 
@@ -44,7 +46,7 @@ function PropCard({ el, isGrid }) {
               className="text-lg h-14 hover:text-green-600 font-medium ease-in-out duration-500"
               href="/property/1"
             >
-              {titleEnglish}
+              {isRU ? titleRussian : titleEnglish}
             </a>
           </div>
           <ul className="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center justify-between list-none">
@@ -76,7 +78,7 @@ function PropCard({ el, isGrid }) {
               >
                 <path d="M20 9.557V3h-2v2H6V3H4v6.557C2.81 10.25 2 11.525 2 13v4a1 1 0 0 0 1 1h1v4h2v-4h12v4h2v-4h1a1 1 0 0 0 1-1v-4c0-1.475-.811-2.75-2-3.443zM18 7v2h-5V7h5zM6 7h5v2H6V7zm14 9H4v-3c0-1.103.897-2 2-2h12c1.103 0 2 .897 2 2v3z"></path>
               </svg>
-              <span>{roomsEnglish}</span>
+              <span>{isRU ? roomsEnglish : roomsRussian}</span>
             </li>
             <li className="flex items-center">
               <svg
@@ -96,21 +98,23 @@ function PropCard({ el, isGrid }) {
           </ul>
           <ul className={` ${isGrid ? 'pt-6 flex justify-between items-center list-none' : 'sm:pt-6 flex justify-between items-center list-none'}`} >
             <li>
-              <span className="text-slate-400">Price</span>
+              <span className="text-slate-400">{isRU ? 'Цена' : 'Price'}</span>
               <p className="text-lg font-medium">
                 € {Number(price).toLocaleString('en-US').replace(/,/g, ',')}
               </p>
             </li>
             <li>
-              <span className="text-slate-400">Condition</span>
-              <p className="text-lg font-medium">{stateEnglish}</p>
+              <span className="text-slate-400">{isRU ? 'Состояние' : 'Condition'}</span>
+              <p className="text-lg font-medium">{isRU ? stateRussian : stateEnglish}</p>
             </li>
           </ul>
         </div>
         {!isGrid && <div className='w-1/2 py-6 pr-6 hidden sm:block'>
-          {descriptionEnglish.length > 200
+          {isRU ? descriptionEnglish.length > 200
             ? descriptionEnglish.slice(0, 287) + '...'
-            : descriptionEnglish}
+            : descriptionEnglish : descriptionRussian.length > 200
+            ? descriptionRussian.slice(0, 287) + '...'
+            : descriptionRussian}
         </div>}
       </div>
     </Link>

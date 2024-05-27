@@ -4,7 +4,7 @@ import Close from '@/icons/Close'
 import Navigation from './Navigation'
 import Socials from './Socials'
 
-function BurgerMenu({ isBurgerOpen, onClose }) {
+function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
   return (
     <Transition.Root show={isBurgerOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40 " onClose={onClose}>
@@ -42,11 +42,11 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
                           aria-label="Закрытие модального окна"
                           className="ml-auto"
                         >
-                          <Close className="w-[24px] h-[24px] stroke-customGreen stroke-2 hover:stroke-neutral-400 transition-[stroke] duration-300" />
+                          <Close className="w-[24px] h-[24px] stroke-customGreen stroke-2 hover:stroke-green-400 transition-[stroke] duration-300" />
                         </button>
                       </div>
 
-                      <Navigation />
+                      <Navigation isRU={isRU} setIsRu={setIsRu} />
                     </div>
                     <div className="flex flex-col gap-5">
                       <Socials className="lg:hidden" />

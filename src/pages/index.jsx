@@ -7,12 +7,14 @@ import { Card, Pagination, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+
     const [portfolioPosts, setPortfolioPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(12);
     const [isGrid, setIsGrid] = useState(true)
+    const [isRU, setIsRu] = useState(true)
 
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(250000);
@@ -78,7 +80,7 @@ export default function Home() {
 
 
     return (
-        <Layout isStyled={false}>
+        <Layout isRU={isRU} setIsRu={setIsRu} isStyled={false}>
             <TopImage />
             <Search
                 isGrid={isGrid}
@@ -97,7 +99,7 @@ export default function Home() {
                 setSellOrRent={setSellOrRent}
                 onSearch={handleSearch}
             />
-            <div className={`max-w-5xl  mx-auto mt-4 p-2 sm:p-0 ${isGrid ? 'flex flex-wrap justify-between mx-auto' : ''}`}>
+            <div className={`max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${isGrid ? 'flex flex-wrap justify-between mx-auto' : ''}`}>
 
                 {loading ? (
                     Array(12).fill().map((_, index) => (
@@ -126,7 +128,7 @@ export default function Home() {
                     ))
                 ) : (
                     portfolioPosts.map(el => (
-                        <PropCard key={el.id} el={el} isGrid={isGrid} />
+                        <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRU} />
                     ))
                 )}
             </div>
