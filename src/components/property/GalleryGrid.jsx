@@ -2,18 +2,20 @@ import Image from "next/image";
 
 import images from "./images";
 
-const GalleryGrid = ({ handleClick }) => {
+const GalleryGrid = ({ handleClick, photos }) => {
   const imgToShoiw = images.slice(1);
-  const elements = imgToShoiw.map((image, index) => (
+  const elements = photos.map((image, index) => (
     <li key={index} className="">
-      <Image
-        src={image.src}
-        width={300}
-        height={300}
-        alt={image.caption}
-        style={{ width: "100%", height: "auto", cursor: "pointer" }}
-        onClick={() => handleClick(index + 1)}
-      />
+      {image && image.src && (
+        <Image
+          src={image.src}
+          width={300}
+          height={300}
+          alt={image.caption || "Gallery image"}
+          style={{ width: "100%", height: "auto", cursor: "pointer" }}
+          onClick={() => handleClick(index + 1)}
+        />
+      )}
     </li>
   ));
 
