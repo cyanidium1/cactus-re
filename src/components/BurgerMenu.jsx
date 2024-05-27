@@ -52,7 +52,8 @@ function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
                       <Socials className="lg:hidden" />
 
                       <p className="text-black uppercase text-[15px]">
-                        КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ
+                        {isRU ? 'КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ' : 'KEYS TO YOUR DREAM APARTMENT'}
+
                       </p>
                     </div>
                   </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TopImage(props) {
+function TopImage({ isRU }) {
     return (
         <div className="slides" style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
             <div className="slide slide-1">
@@ -15,9 +15,24 @@ function TopImage(props) {
             </div>
             <div className="text-center absolute inset-0 flex flex-col items-center justify-center">
                 <div className='mb-20 p-2'>
-                    <h1 className='text-xl sm:text-2xl lg:text-5xl text-white font-bold'>Ключи от квартиры вашей мечты <br />на побережье Средиземного моря</h1>
-                    <p className='text-xl text-white mt-2 text-right'>...близко как никогда :)</p>
+                    <h1 className='text-xl sm:text-2xl lg:text-5xl text-white font-bold'>
+                        {isRU ?
+                            <>
+                                Ключи от квартиры вашей мечты <br />
+                                на побережье Средиземного моря
+                            </>
+                            :
+                            <>
+                                Keys to your dream apartment <br />
+                                on the Mediterranean coast
+                            </>
+                        }
+                    </h1>
+                    <p className='text-xl text-white mt-2 text-right'>
+                        {isRU ? '...близко как никогда :)' : '...closer than ever :)'}
+                    </p>
                 </div>
+
             </div>
 
             <svg

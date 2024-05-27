@@ -81,7 +81,7 @@ export default function Home() {
 
     return (
         <Layout isRU={isRU} setIsRu={setIsRu} isStyled={false}>
-            <TopImage />
+            <TopImage isRU={isRU} />
             <Search
                 isGrid={isGrid}
                 setIsGrid={setIsGrid}
@@ -98,6 +98,7 @@ export default function Home() {
                 sellOrRent={sellOrRent}
                 setSellOrRent={setSellOrRent}
                 onSearch={handleSearch}
+                isRU={isRU}
             />
             <div className={`max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${isGrid ? 'flex flex-wrap justify-between mx-auto' : ''}`}>
 

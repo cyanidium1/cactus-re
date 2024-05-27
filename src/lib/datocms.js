@@ -9,10 +9,14 @@ const dictionary = {
         Tirana: "EU3vU3dlRhCP8pZRaw3qGg"
     },
     actions: {
+        Покупка: "QLd5E-hrSb-p06vElH16Tg",
+        Аренда: "Q82k656ZR6CXLXSubmqdUg",
         Rent: "Q82k656ZR6CXLXSubmqdUg",
         Buy: "QLd5E-hrSb-p06vElH16Tg"
     },
     propertyTypes: {
+        Дом: "K9zDFqBfRKGhqhVReDZ3Fg",
+        Квартира: "DseSBW7wS667bW9J2QdTjA",
         Apartment: "DseSBW7wS667bW9J2QdTjA",
         House: "K9zDFqBfRKGhqhVReDZ3Fg"
     }

@@ -34,12 +34,11 @@ function Navigation({ isRU, setIsRu }) {
           </Link>
         </li>
       ))}
-      <li key='switch'>
-        <ThemeSwitcher />
+      <li>
         <Button onClick={() => setIsRu(!isRU)}>{isRU ? 'RU' : 'EN'}</Button>
       </li>
-      <li>
-
+      <li key='switch'>
+        <ThemeSwitcher />
       </li>
     </ul>
   )

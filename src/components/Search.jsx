@@ -11,7 +11,7 @@ function Search({
     city, setCity,
     propertyType, setPropertyType,
     sellOrRent, setSellOrRent,
-    onSearch, isGrid, setIsGrid, itemsPerPage, setItemsPerPage
+    onSearch, isGrid, setIsGrid, itemsPerPage, setItemsPerPage, isRU
 }) {
 
     const [resetKey, setResetKey] = useState(0);
@@ -19,19 +19,19 @@ function Search({
 
     const handleCityChange = (keys) => {
         const selectedCity = Array.from(keys).join(", ");
-        setCity(selectedCity === 'All' ? '' : selectedCity);
+        setCity(selectedCity === 'All' || selectedCity === 'Все' ? '' : selectedCity);
     };
 
     const handlePropertyTypeChange = (keys) => {
         const selectedPropertyType = Array.from(keys).join(", ");
-        setPropertyType(selectedPropertyType === 'All' ? '' : selectedPropertyType);
+        setPropertyType(selectedPropertyType === 'All' || selectedPropertyType === 'Все' ? '' : selectedPropertyType);
     };
 
     const handleSellOrRentChange = (keys) => {
         const selectedSellOrRent = Array.from(keys).join(", ");
-        setSellOrRent(selectedSellOrRent === 'All' ? '' : selectedSellOrRent);
+        setSellOrRent(selectedSellOrRent === 'All' || selectedSellOrRent === 'Все' ? '' : selectedSellOrRent);
 
-        if (selectedSellOrRent === 'Rent') {
+        if (selectedSellOrRent === 'Rent' || selectedSellOrRent === 'Аренда') {
             setSliderMaxPrice(2000);
             setResetKey(resetKey + 1)
         } else {
@@ -60,7 +60,7 @@ function Search({
                     <div className="text-dark text-start">
                         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6 text-xl">
                             <div className='lg:pr-2'>
-                                <p className="text-slate-900 dark:text-white">Город:</p>
+                                <p className="text-slate-900 dark:text-white">{isRU ? 'Город:' : 'City:'}</p>
                                 <Dropdown backdrop="blur">
                                     <DropdownTrigger>
                                         <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
@@ -76,7 +76,7 @@ function Search({
                                         selectedKeys={new Set([city])}
                                         onSelectionChange={handleCityChange}
                                     >
-                                        <DropdownItem key="All">All</DropdownItem>
+                                        <DropdownItem key={isRU ? 'Все' : 'All'}>{isRU ? 'Все' : 'All'}</DropdownItem>
                                         <DropdownItem key="Tirana">Tirana</DropdownItem>
                                         <DropdownItem key="Durres">Durres</DropdownItem>
                                         <DropdownItem key="Vlore">Vlore</DropdownItem>
@@ -86,7 +86,7 @@ function Search({
                                 </Dropdown>
                             </div>
                             <div className='lg:pr-2'>
-                                <p className="text-slate-900 dark:text-white">Недвижимость:</p>
+                                <p className="text-slate-900 dark:text-white">{isRU ? 'Недвижимость:' : 'Property:'}</p>
                                 <Dropdown backdrop="blur">
                                     <DropdownTrigger>
                                         <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
@@ -102,14 +102,14 @@ function Search({
                                         selectedKeys={new Set([sellOrRent])}
                                         onSelectionChange={handleSellOrRentChange}
                                     >
-                                        <DropdownItem key="All">All</DropdownItem>
-                                        <DropdownItem key="Buy">Buy</DropdownItem>
-                                        <DropdownItem key="Rent">Rent</DropdownItem>
+                                        <DropdownItem key={isRU ? 'Все' : 'All'}>{isRU ? 'Все' : 'All'}</DropdownItem>
+                                        <DropdownItem key={isRU ? 'Покупка' : 'Buy'}>{isRU ? 'Покупка' : 'Buy'}</DropdownItem>
+                                        <DropdownItem key={isRU ? 'Аренда' : 'Rent'}>{isRU ? 'Аренда' : 'Rent'}</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
                             <div className='lg:pr-4'>
-                                <p className="text-slate-900 dark:text-white">Тип:</p>
+                                <p className="text-slate-900 dark:text-white">{isRU ? 'Тип:' : 'Type:'}</p>
                                 <Dropdown backdrop="blur">
                                     <DropdownTrigger>
                                         <Button fullWidth className='text-lg mt-2' variant='shadow' endContent={<IoMdArrowDropdown />}>
@@ -125,9 +125,9 @@ function Search({
                                         selectedKeys={new Set([propertyType])}
                                         onSelectionChange={handlePropertyTypeChange}
                                     >
-                                        <DropdownItem key="All">All</DropdownItem>
-                                        <DropdownItem key="House">House</DropdownItem>
-                                        <DropdownItem key="Apartment">Apartment</DropdownItem>
+                                        <DropdownItem key={isRU ? "Все" : "All"}>{isRU ? "Все" : "All"}</DropdownItem>
+                                        <DropdownItem key={isRU ? "Дом" : "House"}>{isRU ? "Дом" : "House"}</DropdownItem>
+                                        <DropdownItem key={isRU ? "Квартира" : "Apartment"}>{isRU ? "Квартира" : "Apartment"}</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                             </div>
@@ -136,7 +136,7 @@ function Search({
                                     key={resetKey}
                                     className='dark:text-white'
                                     size="lg"
-                                    label="Цена:"
+                                    label={isRU ? "Цена:" : 'Price:'}
                                     maxValue={sliderMaxPrice}
                                     step={100}
                                     defaultValue={[minPrice, maxPrice]}
@@ -174,10 +174,10 @@ function Search({
                         </div>
                         <div className="mt-6 space-y-6 sm:space-y-0 sm:flex items-center">
                             <Button className='bg-green-500 w-full lg:w-[24.5%] text-lg mr-2' variant="shadow" onPress={onSearch}>
-                                Подобрать
+                                {isRU ? "Подобрать" : 'Search'}
                             </Button>
                             <Button className='border-green-500 w-full lg:w-[24.5%] text-lg mr-2' variant="bordered" onPress={handleResetFilters}>
-                                Сбросить фильтры
+                                {isRU ? "Сбросить фильтры" : 'Reset filters'}
                             </Button>
                             <ButtonGroup className='w-full lg:w-[24%] text-lg mr-2'>
                                 <Button onClick={() => setIsGrid(true)} className='text-lg w-full'><FiGrid /></Button>
@@ -186,7 +186,7 @@ function Search({
                             <Dropdown className='' backdrop="blur">
                                 <DropdownTrigger>
                                     <Button fullWidth className='text-lg w-full lg:w-[26%]' variant='shadow' endContent={<IoMdArrowDropdown />}>
-                                        {itemsPerPage}
+                                        {isRU ? "Объектов на странице: " : 'Items per page: '}{itemsPerPage}
                                     </Button>
                                 </DropdownTrigger>
                                 <DropdownMenu
