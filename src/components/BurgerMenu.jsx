@@ -7,7 +7,7 @@ import Socials from './Socials'
 function BurgerMenu({ isBurgerOpen, onClose }) {
   return (
     <Transition.Root show={isBurgerOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-40" onClose={onClose}>
+      <Dialog as="div" className="relative z-40 " onClose={onClose}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -20,9 +20,9 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
           <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
+        <div className="fixed inset-0 overflow-hidden ">
+          <div className="absolute inset-0 overflow-hidden ">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full ">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -32,7 +32,7 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-auto relative bg-white w-[300px]">
+                <Dialog.Panel className="pointer-events-auto relative bg-white w-[300px] dark:bg-black">
                   <div className="px-[20px] py-[20px] mx-auto flex flex-col justify-between h-full md:px-[40px] md:pb-[40px] md:max-w-full">
                     <div>
                       <div className="py-[8px] flex justify-between items-center  md:py-[22px]">

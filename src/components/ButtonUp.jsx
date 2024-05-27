@@ -28,7 +28,7 @@ const ButtonUp = () => {
     isVisible && (
       <a
         id="back-to-top"
-        className="fixed  text-lg rounded-full z-10 bottom-5 md:bottom-14 end-5 size-9 text-center bg-customGreen text-white justify-center items-center flex"
+        className="fixed  text-lg rounded-full z-10 bottom-5 md:bottom-4 left-1/2 transform -translate-x-1/2 size-10 hover:scale-110 transition-all duration-300 cursor-pointer text-center bg-customGreen text-white justify-center items-center flex"
         onClick={handleClick}
       >
         <svg

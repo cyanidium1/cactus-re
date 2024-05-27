@@ -20,8 +20,10 @@ export default function App() {
     <Navbar height={"70px"} isBordered className=" header">
       <Socials className="!hidden lg:!flex" />
 
-      <NavbarBrand className="lg:flex-grow-0">
-        <Logo />
+      <NavbarBrand className="mr-40">
+        <Link href="/">
+          <Logo />
+        </Link>
       </NavbarBrand>
 
       <MenuButton onClick={() => setIsBurgerOpen(true)} />
