@@ -6,7 +6,8 @@ import ButtonUp from "./ButtonUp";
 
 export const metadata = {};
 
-export default function Layout({ children, isStyled = true }) {
+export default function Layout({ children, isStyled = true, isRU, setIsRu }) {
+
   return (
     <div>
       <Head>
@@ -17,12 +18,12 @@ export default function Layout({ children, isStyled = true }) {
                 <title></title> */}
       </Head>
       {/* <Loader /> */}
-      <Header />
+      <Header isRU={isRU} setIsRu={setIsRu} />
       <main className={isStyled ? "max-w-[1120px] mx-auto p-2" : ""}>
         {children}
       </main>
       <ButtonUp />
-      <Footer />
+      <Footer isRU={isRU} />
     </div>
   );
 }

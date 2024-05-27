@@ -7,10 +7,43 @@ import RoomGallery from "@/components/property/RoomGallery";
 import RoomPrices from "@/components/property/RoomPrices";
 import ActionButtons from "@/components/property/ActionButtons";
 import ContactUsButton from "@/components/property/ContactUsButton";
+import { useEffect, useState } from "react";
+import { performRequest } from "@/lib/getPage";
 
 export default function Page() {
+
   const router = useRouter();
   const { id } = router.query;
+
+  const [page, setPage] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  async function fetchData() {
+    setLoading(true);
+
+    try {
+      const data = await performRequest({ id });
+      setPage(data.property);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    if (id) {
+      fetchData()
+    }
+  }, [id]);
+
+  // вся инфа залетает в page.
+  useEffect(() => {
+    if (page.id) {
+      console.log(page)
+    }
+
+  }, [page]);
 
   return (
     <Layout>
