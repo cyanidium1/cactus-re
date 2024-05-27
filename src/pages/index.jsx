@@ -63,8 +63,6 @@ export default function Home() {
             skip
         };
 
-        console.log(req);
-
         try {
             const data = await performRequest({ req });
             setPortfolioPosts(data.allProperties);
