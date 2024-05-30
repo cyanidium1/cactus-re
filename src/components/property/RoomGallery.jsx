@@ -48,7 +48,7 @@ const RoomGallery = ({ allPhotos, titleEn }) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="mb-4 w-full max-w-[480px] sm:max-w-[600px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
+      <div className="mb-4 w-1/2 max-w-[480px] sm:max-w-[600px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
         <div
           className={`relative transition-opacity duration-300 ${
             isTransitioning ? "opacity-0" : "opacity-100"

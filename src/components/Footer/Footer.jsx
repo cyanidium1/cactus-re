@@ -6,9 +6,9 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 
 const Footer = () => {
   return (
-    <footer className=" dark:bg-black bg-slate-100 px-[45px] mx-auto w-full">
-      <div className="mx-auto sm:m-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
-        <div className="py-16 lg:flex lg:justify-between lg:gap-[30px] xl:gap-[50px]">
+    <footer className=" dark:bg-black bg-slate-100 mx-auto w-full ">
+      <div className="mx-auto max-w-[1024px] px-[12px] ">
+        <div className=" py-16 lg:flex lg:justify-between lg:gap-[30px] xl:gap-[50px]">
           <div className="md:mb-[30px]">
             <Logo />
             <p className="mt-6 text-slate-400 marker:lg:w-[290px] xl:w-[350px]">
@@ -29,6 +29,8 @@ const Footer = () => {
 };
 
 export default Footer;
+
+//max-w-[304px] sm:m-w-[480px] md:max-w-[752px] lg:max-w-[1008px] xl:max-w-[1024px] xxl:max-w-[1024px] px-[8px] sm:w-full
 
 // text-gray-300
 

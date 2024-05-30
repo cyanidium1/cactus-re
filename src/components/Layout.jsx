@@ -7,10 +7,14 @@ import ButtonUp from "./ButtonUp";
 export const metadata = {};
 
 export default function Layout({ children, isStyled = true, isRU, setIsRu }) {
-
   return (
     <div>
       <Head>
+        <link
+          rel="shortcut icon"
+          href="https://static.tildacdn.one/tild3962-3637-4234-a336-646331623332/Favi_copy.ico"
+          type="image/x-icon"
+        />
         {/* <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

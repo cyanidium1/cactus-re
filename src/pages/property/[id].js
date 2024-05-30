@@ -10,7 +10,7 @@ import ContactUsButton from "@/components/property/ContactUsButton";
 import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 
-export default function Page() {
+export default function Page({ isRu }) {
   const router = useRouter();
   const { id } = router.query;
 
@@ -72,7 +72,9 @@ export default function Page() {
       <div className="md:mt-24 mt-16">
         <div className="md:flex justify-center mb-[100px]">
           <div className="lg:w-2/3 md:w-full md:p-4 px-3">
-            <h4 className="text-2xl forn-medium">{titleEnglish}</h4>
+            <h4 className="text-2xl forn-medium">
+              {isRu ? titleRussian : titleEnglish}
+            </h4>
             <RoomQualities
               bath={bathroomNumber}
               rooms={roomsEnglish}
@@ -81,16 +83,17 @@ export default function Page() {
             <RoomDescription
               descriptionEn={descriptionEnglish}
               descriptionRu={descriptionRussian}
+              isRu={isRu}
             />
             <div>{locationGmapsLink}</div>
           </div>
           <div className="lg:w-1/3 md:w-1/2 md:p-4 px-3 mt-8 md:mt-0">
             <div className="sticky top-20">
               <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-                <RoomPrices price={price} sellrent={sellrent} />
-                <ActionButtons />
+                <RoomPrices price={price} sellrent={sellrent} isRu={isRu} />
+                <ActionButtons isRu={isRu} />
               </div>
-              <ContactUsButton />
+              <ContactUsButton isRu={isRu} />
             </div>
           </div>
         </div>
