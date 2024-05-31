@@ -6,7 +6,6 @@ import RoomDescription from "@/components/property/RoomDescription";
 import RoomGallery from "@/components/property/RoomGallery";
 import RoomPrices from "@/components/property/RoomPrices";
 import ActionButtons from "@/components/property/ActionButtons";
-import ContactUsButton from "@/components/property/ContactUsButton";
 import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 
