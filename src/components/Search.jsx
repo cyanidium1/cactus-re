@@ -98,7 +98,7 @@ function Search({
                       variant="shadow"
                       endContent={<IoMdArrowDropdown />}
                     >
-                      {city || "Все"}
+                      {city || isRU ? "Все" : "All"}
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu
@@ -133,7 +133,7 @@ function Search({
                       variant="shadow"
                       endContent={<IoMdArrowDropdown />}
                     >
-                      {sellOrRent || "Вся"}
+                      {sellOrRent || isRU ? "Вся" : "All"}
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu
@@ -169,7 +169,7 @@ function Search({
                       variant="shadow"
                       endContent={<IoMdArrowDropdown />}
                     >
-                      {propertyType || "Все"}
+                      {propertyType || isRU ? "Все" : "All"}
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu

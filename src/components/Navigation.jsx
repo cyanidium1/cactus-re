@@ -1,25 +1,25 @@
-import { Button, Link } from '@nextui-org/react'
-import React from 'react'
-import { ThemeSwitcher } from './ThemeSwitcher'
+import { Button, Link } from "@nextui-org/react";
+import React from "react";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 function Navigation({ isRU, setIsRu }) {
   const menuItems = [
     {
-      label: 'Каталог',
-      labelEn: 'Catalogue',
-      linkTo: 'https://cactus-realestate.ru/#preimushchestva',
+      label: "Каталог",
+      labelEn: "Catalogue",
+      linkTo: "https://cactus-realestate.ru/#preimushchestva",
     },
     {
-      label: 'Подать объявление',
-      labelEn: 'Post an ad',
-      linkTo: 'https://cactus-realestate.ru/#uslugi',
+      label: "Подать объявление",
+      labelEn: "Post an ad",
+      linkTo: "https://cactus-realestate.ru/#uslugi",
     },
     {
-      label: 'Мы в Instagram',
-      labelEn: 'Our instagram',
-      linkTo: 'https://cactus-realestate.ru/#instagram',
+      label: "Мы в Instagram",
+      labelEn: "Our instagram",
+      linkTo: "https://cactus-realestate.ru/#instagram",
     },
-  ]
+  ];
 
   return (
     <ul className="flex flex-col gap-[15px]">
@@ -35,13 +35,13 @@ function Navigation({ isRU, setIsRu }) {
         </li>
       ))}
       <li>
-        <Button onClick={() => setIsRu(!isRU)}>{isRU ? 'RU' : 'EN'}</Button>
+        <Button onClick={() => setIsRu(!isRU)}>{isRU ? "RU" : "EN"}</Button>
       </li>
-      <li key='switch'>
+      <li key="switch">
         <ThemeSwitcher />
       </li>
     </ul>
-  )
+  );
 }
 
-export default Navigation
+export default Navigation;
