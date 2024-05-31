@@ -69,7 +69,7 @@ export default function Page({ isRu }) {
       ) : (
         <div>No images available</div>
       )}
-      <div className="md:mt-24 mt-16">
+      <div className="md:mt-24">
         <div className="md:flex justify-center mb-[100px]">
           <div className="lg:w-2/3 md:w-full md:p-4 px-3">
             <h4 className="text-2xl forn-medium">

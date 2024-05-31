@@ -47,10 +47,10 @@ const RoomGallery = ({ allPhotos, titleEn }) => {
   }, [currentImageIndex]);
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="mb-4 w-1/2 max-w-[480px] sm:max-w-[600px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
+    <div className="flex space-x-1 justify-between items-center  w-full h-full md:w-2/3">
+      <div className="relative flex items-center md:justify-start mb-4 md:mb-0 w-full max-h-[200px] sm:max-h-[310px] max-w-[480px] sm:max-w-[600px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px] md:flex-row">
         <div
-          className={`relative transition-opacity duration-300 ${
+          className={`max-h-[200px] sm:max-h-[310px] md:max-h-full overflow-hidden transition-opacity duration-300 ${
             isTransitioning ? "opacity-0" : "opacity-100"
           }`}
         >
@@ -69,56 +69,57 @@ const RoomGallery = ({ allPhotos, titleEn }) => {
             onClick={() => handleClick(currentImageIndex)}
           />
         </div>
-      </div>
-      <div className="flex items-center">
-        <button onClick={handleLeftClick} className="p-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              fillRule="evenodd"
-              d="M15.293 18.707a1 1 0 010-1.414L9.414 12l5.879-5.879a1 1 0 00-1.414-1.414l-6.586 6.586a1 1 0 000 1.414l6.586 6.586a1 1 0 001.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
-        <div className="flex overflow-hidden w-full max-w-[320px] sm:max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px] space-x-4">
-          {allPhotos.slice(startIndex, startIndex + 4).map((photo, index) => (
-            <div
-              key={index}
-              className={`w-24 h-24 relative flex-shrink-0 cursor-pointer transition-transform transform hover:scale-105 ${
-                currentImageIndex === startIndex + index
-                  ? "border-2"
-                  : "opacity-50 hover:opacity-75"
-              }`}
-              onClick={() => handleImageChange(startIndex + index)}
+        <div className="flex flex-col p-[5px] h-full items-center max-h-[720px]">
+          {/* <button onClick={handleLeftClick} className="p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 fill-customGreen"
             >
-              <Image
-                src={photo.url}
-                alt={titleEn}
-                layout="fill"
-                style={{ objectFit: "cover" }}
+              <path
+                fillRule="evenodd"
+                d="M16.707 15.707a1 1 0 01-1.414 0L12 12.414l-3.293 3.293a1 1 0 11-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clipRule="evenodd"
               />
-            </div>
-          ))}
+            </svg>
+          </button> */}
+          <div className="flex flex-col items-center h-full space-y-1 overflow-hidden  max-w-[320px] sm:max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
+            {allPhotos.slice(startIndex, startIndex + 4).map((photo, index) => (
+              <div
+                key={index}
+                className={`size-10 sm:size-14 md:size-16 relative flex-shrink-0 cursor-pointer transition-transform transform hover:scale-105 ${
+                  currentImageIndex === startIndex + index
+                    ? "border-2"
+                    : "opacity-50 hover:opacity-75"
+                }`}
+                onClick={() => handleImageChange(startIndex + index)}
+              >
+                <Image
+                  src={photo.url}
+                  alt={titleEn}
+                  layout="fill"
+                  style={{ objectFit: "cover" }}
+                  className="size-full"
+                />
+              </div>
+            ))}
+          </div>
+          {/* <button onClick={handleRightClick} className="p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 fill-customGreen"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.293 8.293a1 1 0 011.414 0L12 11.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button> */}
         </div>
-        <button onClick={handleRightClick} className="p-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              fillRule="evenodd"
-              d="M8.707 5.293a1 1 0 010 1.414L14.586 12l-5.879 5.879a1 1 0 101.414 1.414l6.586-6.586a1 1 0 000-1.414l-6.586-6.586a1 1 0 00-1.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </button>
       </div>
       {isLightboxOpen && (
         <Lightbox
