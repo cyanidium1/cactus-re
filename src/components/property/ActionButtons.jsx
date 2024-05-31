@@ -1,15 +1,25 @@
+import { useRouter } from "next/router";
+
 import { Button } from "@nextui-org/button";
 
 const ActionButtons = () => {
+  const router = useRouter();
+
+  const handleContactUsClick = () => {
+    router.push("/contact");
+  };
   return (
     <div className="flex">
       <div className="p-1 w-1/2">
-        <Button className=" bg-customGreen hover:bg-green-700 text-white rounded-md w-full href=${}">
-          Book now
+        <Button className="bg-customGreen hover:bg-green-700 text-white rounded-md w-full href=${}">
+          Submit a request
         </Button>
       </div>
       <div className="p-1 w-1/2">
-        <Button className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white rounded-md href=${}">
+        <Button
+          className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white rounded-md href=${}"
+          onClick={handleContactUsClick}
+        >
           <svg
             stroke="currentColor"
             fill="currentColor"
