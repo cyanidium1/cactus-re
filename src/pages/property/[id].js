@@ -93,7 +93,6 @@ export default function Page({ isRu }) {
                 <RoomPrices price={price} sellrent={sellrent} isRu={isRu} />
                 <ActionButtons isRu={isRu} />
               </div>
-              <ContactUsButton isRu={isRu} />
             </div>
           </div>
         </div>
