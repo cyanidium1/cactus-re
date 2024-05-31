@@ -26,7 +26,7 @@ const FooterUseFullLinks = () => {
             Terms of services
           </a>
         </li>
-        <li>
+        <li className="mt-[10px]">
           <a
             className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
@@ -47,7 +47,7 @@ const FooterUseFullLinks = () => {
             Privacy policy
           </a>
         </li>
-        <li>
+        <li className="mt-[10px]">
           <a
             className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
@@ -68,7 +68,7 @@ const FooterUseFullLinks = () => {
             Listing
           </a>
         </li>
-        <li>
+        <li className="mt-[10px]">
           <a
             className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
             href=""
