@@ -22,7 +22,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white "
-            href=""
+            href="https://www.facebook.com/CactusRealEstateAlbania/"
             target="_blank"
           >
             <svg
@@ -46,7 +46,7 @@ const FooterDownLinks = () => {
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-gray-500  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a
             className=" text-gray-400 hover:text-white"
-            href=""
+            href="https://www.instagram.com/cactus_realestate/"
             target="_blank"
           >
             <svg
