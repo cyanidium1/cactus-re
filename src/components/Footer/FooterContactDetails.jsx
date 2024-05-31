@@ -73,7 +73,7 @@ const FooterContactDetails = () => {
         </svg>
         <div className="">
           <a className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out">
-            + 44 444 444 4444
+            +355 68 557 7016
           </a>
         </div>
       </div>

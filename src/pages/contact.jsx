@@ -70,7 +70,7 @@ function contact(props) {
                     className="btn btn-link text-green-600 hover:text-green-600 after:bg-green-600 transition duration-500"
                     href="tel:+152534-468-854"
                   >
-                    +152 534-468-854
+                    +355 68 557 7016
                   </a>
                 </div>
               </div>
