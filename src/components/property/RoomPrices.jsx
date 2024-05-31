@@ -9,10 +9,12 @@ const RoomPrices = ({ price, sellrent }) => {
 
   return (
     <div className="p-6">
-      <h5 className="text-2xl font-medium">Price:</h5>
+      <h5 className="text-2xl font-medium  dark:text-slate-400">Price:</h5>
       <div className="flex justify-between items-center mt-4">
-        <span className="text-xl font-medium">$ {price}</span>
-        <span className="bg-green-600/10 text-customGreen text-sm px-2.5 py-0.75 rounded h-6">
+        <span className="text-xl font-medium  dark:text-slate-400">
+          $ {price}
+        </span>
+        <span className="bg-green-600/10 text-customGreen text-sm px-2.5 py-0.75 rounded h-6  dark:text-slate-400">
           {sellOrRent}
         </span>
       </div>
