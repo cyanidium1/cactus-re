@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const RoomDescription = ({ descriptionEn, descriptionRu }) => {
+const RoomDescription = ({ descriptionEn, descriptionRu, isRU }) => {
   const variants = {
     offscreen: {
       y: 300,
@@ -18,8 +18,9 @@ const RoomDescription = ({ descriptionEn, descriptionRu }) => {
 
   return (
     <>
-      <p className="text-slate-400 mb-[10px]">{descriptionEn}</p>
-      <p className="text-slate-400 mb-[10px]">{descriptionRu}</p>
+      <p className="text-slate-400 mb-[10px]">
+        {isRU ? descriptionRu : descriptionEn}
+      </p>
     </>
   );
 };
