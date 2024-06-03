@@ -1,22 +1,22 @@
 import { Button, Link } from "@nextui-org/react";
 import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import LanguageSwitcher from "./LanguageSwitcher";
+import useStore from "@/zustand/store/useStore";
 
 function Navigation({ isRU, setIsRu }) {
+  const { translations } = useStore();
   const menuItems = [
     {
-      label: "Каталог",
-      labelEn: "Catalogue",
+      label: translations.catalogue,
       linkTo: "https://cactus-realestate.ru/#preimushchestva",
     },
     {
-      label: "Подать объявление",
-      labelEn: "Post an ad",
+      label: translations.postAnAd,
       linkTo: "https://cactus-realestate.ru/#uslugi",
     },
     {
-      label: "Мы в Instagram",
-      labelEn: "Our instagram",
+      label: translations.instagram,
       linkTo: "https://cactus-realestate.ru/#instagram",
     },
   ];
@@ -30,12 +30,13 @@ function Navigation({ isRU, setIsRu }) {
             href={linkTo}
             size="lg"
           >
-            {isRU ? label : labelEn}
+            {label}
           </Link>
         </li>
       ))}
       <li>
-        <Button onClick={() => setIsRu(!isRU)}>{isRU ? "RU" : "EN"}</Button>
+        <LanguageSwitcher />
+        {/* <Button onClick={() => setIsRu(!isRU)}>{isRU ? "RU" : "EN"}</Button> */}
       </li>
       <li key="switch">
         <ThemeSwitcher />

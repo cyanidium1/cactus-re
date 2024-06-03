@@ -1,4 +1,5 @@
 // "use client";
+import ZustandProvider from "@/zustand/store/ZustandProvider";
 import "../app/globals.css";
 import "../components/TopImage.css";
 
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
-        <Component {...pageProps} />
+        <ZustandProvider>
+          <Component {...pageProps} />
+        </ZustandProvider>
       </NextThemesProvider>
     </NextUIProvider>
   );
