@@ -9,6 +9,7 @@ import ActionButtons from "@/components/property/ActionButtons";
 import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 import useStore from "@/zustand/store/useStore";
+import ShortInfo from "@/components/property/ShortInfo";
 
 export default function Page() {
   const router = useRouter();
@@ -48,11 +49,13 @@ export default function Page() {
 
   const {
     allPhotos,
+    cityname,
     titleEnglish,
     titleRussian,
     bathroomNumber,
     roomsEnglish,
     area,
+    areaCertificate,
     descriptionEnglish,
     descriptionRussian,
     price,
@@ -73,7 +76,7 @@ export default function Page() {
       ) : (
         <div>No images available</div>
       )}
-      <div className="md:mt-24">
+      <div className="relative md:mt-24">
         <div className="md:flex justify-center mb-[100px]">
           <div className="lg:w-2/3 md:w-full md:p-4 px-3">
             <h4 className="text-2xl forn-medium">
@@ -84,6 +87,15 @@ export default function Page() {
               rooms={roomsEnglish}
               area={area}
             />
+
+            <ShortInfo
+              isRu={isRu}
+              city={cityname}
+              rooms={roomsEnglish}
+              areaCertificate={areaCertificate}
+              area={area}
+            />
+
             <RoomDescription
               descriptionEn={descriptionEnglish}
               descriptionRu={descriptionRussian}
