@@ -43,7 +43,7 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
     setTimeout(() => {
       setCurrentImageIndex(index);
       setIsTransitioning(false);
-    }, 300); // Duration of the transition
+    }, 300); 
   };
 
   useEffect(() => {
@@ -76,18 +76,6 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
         <div className="flex md:flex-col p-[5px] h-full items-center justify-center max-h-[720px]">
           <button onClick={handleLeftClick} className="p-2">
             <FaAngleLeft className="w-6 h-6 fill-customGreen md:rotate-90" />
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6 fill-customGreen md:rotate-45"
-            >
-              <path
-                fillRule="evenodd"
-                d="M16.707 15.707a1 1 0 01-1.414 0L12 12.414l-3.293 3.293a1 1 0 11-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg> */}
           </button>
           <div className="flex space-x-1 md:flex md:flex-col items-center h-full md:space-y-1 overflow-hidden max-w-[320px] sm:max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
             {allPhotos.slice(startIndex, startIndex + 4).map((photo, index) => (
@@ -112,18 +100,6 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
           </div>
           <button onClick={handleRightClick} className="p-2">
             <FaAngleRight className="w-6 h-6 fill-customGreen md:rotate-90" />
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="w-6 h-6 fill-customGreen"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 8.293a1 1 0 011.414 0L12 11.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg> */}
           </button>
         </div>
       </div>
