@@ -1,6 +1,6 @@
 import React from "react";
 
-function TopImage({ isRU }) {
+function TopImage({ isRu }) {
   return (
     <div
       className="slides"
@@ -18,7 +18,7 @@ function TopImage({ isRU }) {
       <div className="text-center absolute inset-0 flex flex-col items-center justify-center">
         <div className="mb-20 p-2">
           <h1 className="text-xl sm:text-2xl lg:text-5xl text-white font-bold">
-            {isRU ? (
+            {isRu ? (
               <>
                 Ключи от квартиры вашей мечты <br />
                 на побережье Средиземного моря

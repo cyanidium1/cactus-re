@@ -3,12 +3,15 @@ import Image from "next/image";
 import Lightbox from "react-image-lightbox";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import "react-image-lightbox/style.css";
+import useStore from "@/zustand/store/useStore";
 
-const RoomGallery = ({ allPhotos, titleEn }) => {
+const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { language } = useStore();
+  const isRu = language === "ru";
 
   const handleClick = (index) => {
     setCurrentImageIndex(index);
@@ -57,7 +60,7 @@ const RoomGallery = ({ allPhotos, titleEn }) => {
         >
           <Image
             src={allPhotos[currentImageIndex].url}
-            alt={titleEn}
+            alt={isRu ? titleRu : titleEn}
             width={0}
             height={0}
             priority
@@ -99,7 +102,7 @@ const RoomGallery = ({ allPhotos, titleEn }) => {
               >
                 <Image
                   src={photo.url}
-                  alt={titleEn}
+                  alt={isRu ? titleRu : titleEn}
                   layout="fill"
                   objectFit="cover"
                   className="width-full h-auto"

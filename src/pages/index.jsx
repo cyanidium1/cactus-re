@@ -5,6 +5,7 @@ import TopImage from "@/components/TopImage";
 import { performRequest } from "@/lib/datocms";
 import { Card, Pagination, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
+import useStore from "@/zustand/store/useStore";
 
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
@@ -13,13 +14,13 @@ export default function Home() {
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [isGrid, setIsGrid] = useState(true);
-  const [isRU, setIsRu] = useState(true);
-
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(250000);
   const [city, setCity] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [sellOrRent, setSellOrRent] = useState("");
+  const { language } = useStore();
+  const isRu = language === "ru";
 
   const handleSearch = () => {
     setCurrentPage(1);
@@ -75,8 +76,8 @@ export default function Home() {
   }
 
   return (
-    <Layout isRU={isRU} setIsRu={setIsRu} isStyled={false}>
-      <TopImage isRU={isRU} />
+    <Layout isStyled={false}>
+      <TopImage isRu={isRu} />
       <Search
         isGrid={isGrid}
         setIsGrid={setIsGrid}
@@ -93,7 +94,7 @@ export default function Home() {
         sellOrRent={sellOrRent}
         setSellOrRent={setSellOrRent}
         onSearch={handleSearch}
-        isRU={isRU}
+        isRu={isRu}
       />
       <div
         className={`max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
@@ -132,7 +133,7 @@ export default function Home() {
                 </Card>
               ))
           : portfolioPosts.map((el) => (
-              <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRU} />
+              <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
             ))}
       </div>
       <div className="max-w-5xl w-full flex justify-center my-2 mx-auto">

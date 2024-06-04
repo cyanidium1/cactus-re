@@ -1,29 +1,30 @@
-import { Button, Link } from "@nextui-org/react";
+import { Link } from "@nextui-org/react";
 import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
 import useStore from "@/zustand/store/useStore";
 
-function Navigation({ isRU, setIsRu }) {
-  const { translations } = useStore();
+function Navigation() {
+  const { translations, language, setLanguage } = useStore();
+  //const isRu = language === "ru";
   const menuItems = [
     {
-      label: translations.catalogue,
+      label: translations.BurgerMenu.catalogue,
       linkTo: "https://cactus-realestate.ru/#preimushchestva",
     },
     {
-      label: translations.postAnAd,
+      label: translations.BurgerMenu.postAnAd,
       linkTo: "https://cactus-realestate.ru/#uslugi",
     },
     {
-      label: translations.instagram,
+      label: translations.BurgerMenu.instagram,
       linkTo: "https://cactus-realestate.ru/#instagram",
     },
   ];
 
   return (
     <ul className="flex flex-col gap-[15px]">
-      {menuItems.map(({ label, linkTo, labelEn }, index) => (
+      {menuItems.map(({ label, linkTo }, index) => (
         <li key={`${label}-${index}`}>
           <Link
             className="w-full text-customGreen text-lg font-normal hover:text-green-400 duration-300 transition-all"
@@ -35,7 +36,7 @@ function Navigation({ isRU, setIsRu }) {
         </li>
       ))}
       <li>
-        <LanguageSwitcher />
+        <LanguageSwitcher setLanguage={setLanguage} />
         {/* <Button onClick={() => setIsRu(!isRU)}>{isRU ? "RU" : "EN"}</Button> */}
       </li>
       <li key="switch">

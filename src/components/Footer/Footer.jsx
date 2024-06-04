@@ -4,7 +4,7 @@ import FooterContactDetails from "./FooterContactDetails";
 import FooterDown from "./FooterDown";
 import FooterUseFullLinks from "./FooterUsefullLinks";
 
-const Footer = () => {
+const Footer = ({ isRu }) => {
   return (
     <footer className=" dark:bg-black bg-slate-100 mx-auto w-full ">
       <div className="mx-auto max-w-[1024px] px-[12px] ">
