@@ -3,10 +3,13 @@ import Footer from "./Footer/Footer";
 import Loader from "./Loader";
 import Head from "next/head";
 import ButtonUp from "./ButtonUp";
+import useStore from "@/zustand/store/useStore";
 
 export const metadata = {};
 
-export default function Layout({ children, isStyled = true, isRU, setIsRu }) {
+export default function Layout({ children, isStyled = true }) {
+  const { language } = useStore();
+  const isRu = language === "ru";
   return (
     <div>
       <Head>
@@ -22,12 +25,12 @@ export default function Layout({ children, isStyled = true, isRU, setIsRu }) {
                 <title></title> */}
       </Head>
       {/* <Loader /> */}
-      <Header isRU={isRU} setIsRu={setIsRu} />
+      <Header isRu={isRu} />
       <main className={isStyled ? "max-w-[1120px] mx-auto p-2" : ""}>
         {children}
       </main>
       <ButtonUp />
-      <Footer isRU={isRU} />
+      <Footer isRu={isRu} />
     </div>
   );
 }

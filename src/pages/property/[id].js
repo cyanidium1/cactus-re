@@ -8,13 +8,17 @@ import RoomPrices from "@/components/property/RoomPrices";
 import ActionButtons from "@/components/property/ActionButtons";
 import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
+import useStore from "@/zustand/store/useStore";
 
-export default function Page({ isRu }) {
+export default function Page() {
   const router = useRouter();
   const { id } = router.query;
 
   const [page, setPage] = useState({});
   const [loading, setLoading] = useState(true);
+
+  const { language } = useStore();
+  const isRu = language === "ru";
 
   async function fetchData() {
     setLoading(true);
@@ -64,6 +68,7 @@ export default function Page({ isRu }) {
           mainPhoto={mainPhoto}
           allPhotos={allPhotos}
           titleEn={titleEnglish}
+          titleRu={titleRussian}
         />
       ) : (
         <div>No images available</div>

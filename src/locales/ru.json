@@ -1,0 +1,50 @@
+{
+  "Search": {
+    "city": "Город",
+    "property": "Недвижимость",
+    "type": "Тип",
+    "price": "Цена",
+    "cityAll": "Все",
+    "cityTirana": "Tirana",
+    "cityDurres": "Durres",
+    "cityVlore": "Vlore",
+    "citySaranda": "Saranda",
+    "cityShengjin": "Shengjin",
+    "propertyAll": "Вся",
+    "propertyBuy": "Покупка",
+    "propertyRent": "Аренда",
+    "typeAll": "Все",
+    "typeHouse": "Дом",
+    "typeApart": "Квартира",
+    "search": "Подобрать",
+    "resetFilters": "Сбросить фильтры",
+    "itemsPerPage": "Объектов на странице: "
+  },
+  "PropertyCard": {
+    "price": "Цена",
+    "condition": "Состояние"
+  },
+  "BurgerMenu": {
+    "catalogue": "Каталог",
+    "postAnAd": "Подать объявление",
+    "instagram": "Мы в Instagram"
+  },
+  "PropertyPage": {
+    "propertyInfo": "Короткая информация",
+    "city": "Город",
+    "roomsNumber": "Количество комнат",
+    "areaSertified": "Площадь сертиф.",
+    "areaAct": "Площадь акт",
+    "price": "Цена",
+    "sell": "Продажа",
+    "rent": "Аренда",
+    "btnSubmitReq": "Оставить заявку",
+    "btnContactUS": "Связаться",
+    "company": "Компания",
+    "contactDetails": "Контактная информация"
+  },
+  "Footer": {
+    "company": "Компания",
+    "contactDetails": "Контактная информация"
+  }
+}

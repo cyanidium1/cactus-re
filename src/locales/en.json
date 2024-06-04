@@ -1,0 +1,51 @@
+{
+  "Search": {
+    "city": "City",
+    "property": "Property",
+    "type": "Type",
+    "price": "Price",
+    "cityAll": "All",
+    "cityTirana": "Tirana",
+    "cityDurres": "Durres",
+    "cityVlore": "Vlore",
+    "citySaranda": "Saranda",
+    "cityShengjin": "Shengjin",
+    "propertyAll": "All",
+    "propertyBuy": "Buy",
+    "propertyRent": "Rent",
+    "typeAll": "All",
+    "typeHouse": "House",
+    "typeApart": "Apartment",
+    "search": "Search",
+    "resetFilters": "Reset Filters",
+    "itemsPerPage": "Items per page: "
+  },
+  "PropertyCard": {
+    "price": "Price",
+    "condition": "Condition"
+  },
+
+  "BurgerMenu": {
+    "catalogue": "Catalogue",
+    "postAnAd": "Post an ad",
+    "instagram": "Our instagram"
+  },
+  "PropertyPage": {
+    "propertyInfo": "Short info",
+    "city": "City:",
+    "roomsNumber": "Room's number:",
+    "areaSertified": "Area sertified.:",
+    "areaAct": "Area",
+    "price": "Price",
+    "sell": "Sell",
+    "rent": "Rent",
+    "btnSubmitReq": "Submit a request",
+    "btnContactUS": "Contact us",
+    "company": "Company",
+    "contactDetails": "Contact details"
+  },
+  "Footer": {
+    "company": "Company",
+    "contactDetails": "Contact details"
+  }
+}
