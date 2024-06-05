@@ -14,8 +14,9 @@
     "propertyBuy": "Buy",
     "propertyRent": "Rent",
     "typeAll": "All",
-    "typeHouse": "House",
-    "typeApart": "Apartment",
+    "typeVilla": "Villa",
+    "typeRooms": "Rooms",
+    "typeStudio": "Studio",
     "search": "Search",
     "resetFilters": "Reset Filters",
     "itemsPerPage": "Items per page: "
