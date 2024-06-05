@@ -250,7 +250,7 @@ function SearchUI({
                   {({ open }) => (
                     <>
                       <Menu.Button className="group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased text-lg mt-2">
-                        {city || (isRu ? "Все" : "All")}
+                        {propertyType || (isRu ? "Все" : "All")}
                         <IoMdArrowDropdown
                           className="-mr-1 ml-2 h-5 w-5"
                           aria-hidden="true"
