@@ -14,8 +14,9 @@
     "propertyBuy": "Покупка",
     "propertyRent": "Аренда",
     "typeAll": "Все",
-    "typeHouse": "Дом",
-    "typeApart": "Квартира",
+    "typeVilla": "Вилла",
+    "typeRooms": "Комнаты",
+    "typeStudio": "Студия",
     "search": "Подобрать",
     "resetFilters": "Сбросить фильтры",
     "itemsPerPage": "Объектов на странице: "
