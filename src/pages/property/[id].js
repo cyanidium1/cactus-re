@@ -76,26 +76,27 @@ export default function Page() {
       ) : (
         <div>No images available</div>
       )}
-      <div className="relative md:mt-24">
+      <div className="md:mt-[10px]">
         <div className="md:flex justify-center mb-[100px]">
-          <div className="lg:w-2/3 md:w-full md:p-4 px-3">
-            <h4 className="text-2xl forn-medium">
+          <div className="relative lg:w-2/3 md:w-full md:p-4 px-3">
+            <h4 className=" text-2xl font-medium dark:text-slate-400">
               {isRu ? titleRussian : titleEnglish}
             </h4>
-            <RoomQualities
-              bath={bathroomNumber}
-              rooms={roomsEnglish}
-              area={area}
-            />
+            <div className="relative w-full py-[8px] sm:w-2/3 max-w-[320px] sm:max-w-full sm:mx-auto md:top-[-350px] md:left-[405px] md:w-[245px] lg:top-[-430px] lg:left-[500px] lg:w-[290px] lg:h-[320px] lg:py-[40px] top-[20px] left-0 list-none px-2 mb-4 md:p-4  bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700 border-[1px] border-customGreen border-opacity-100">
+              <RoomQualities
+                bath={bathroomNumber}
+                rooms={roomsEnglish}
+                area={area}
+              />
 
-            <ShortInfo
-              isRu={isRu}
-              city={cityname}
-              rooms={roomsEnglish}
-              areaCertificate={areaCertificate}
-              area={area}
-            />
-
+              <ShortInfo
+                isRu={isRu}
+                city={cityname}
+                rooms={roomsEnglish}
+                areaCertificate={areaCertificate}
+                area={area}
+              />
+            </div>
             <RoomDescription
               descriptionEn={descriptionEnglish}
               descriptionRu={descriptionRussian}
