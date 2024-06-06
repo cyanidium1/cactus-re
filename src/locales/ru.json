@@ -33,9 +33,9 @@
   "PropertyPage": {
     "propertyInfo": "Короткая информация",
     "city": "Город",
-    "roomsNumber": "Количество комнат",
-    "areaSertified": "Площадь сертиф.",
-    "areaAct": "Площадь акт",
+    "roomsNumber": "Количество комнат:",
+    "areaSertified": "Площадь сертиф.:",
+    "areaAct": "Площадь акт:",
     "price": "Цена",
     "sell": "Продажа",
     "rent": "Аренда",
