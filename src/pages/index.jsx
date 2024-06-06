@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
-      <Search
+      {/* <Search
         isGrid={isGrid}
         setIsGrid={setIsGrid}
         itemsPerPage={itemsPerPage}
@@ -96,7 +96,7 @@ export default function Home() {
         setSellOrRent={setSellOrRent}
         onSearch={handleSearch}
         isRu={isRu}
-      />
+      /> */}
       <SearchUI
         isGrid={isGrid}
         setIsGrid={setIsGrid}
