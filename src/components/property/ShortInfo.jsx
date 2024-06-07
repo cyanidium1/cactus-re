@@ -29,13 +29,20 @@ const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
 
   const elements = itemsInfo.map(({ title, value }, idx) => {
     return (
-      <li key={idx} class="flex justify-between items-center md:mb-[8px]">
-        <span class=" text-base md:text-xl text-customGreen">{title}</span>
-        <span class="text-base md:text-xl text-customGreen">{value}</span>
+      <li
+        key={idx}
+        class="flex justify-between items-center md:mb-[5px] xl:mb-[15px]"
+      >
+        <span class=" text-base md:text-lg xl:text-2xl text-customGreen">
+          {title}
+        </span>
+        <span class="text-base md:text-lg xl:text-2xl text-customGreen">
+          {value}
+        </span>
       </li>
     );
   });
-  return <ul class="">{elements}</ul>;
+  return <ul class="mt-[50px] md:mt-[70px]">{elements}</ul>;
 };
 
 export default ShortInfo;
