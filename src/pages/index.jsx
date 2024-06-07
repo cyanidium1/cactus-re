@@ -1,6 +1,5 @@
 import Layout from "@/components/Layout";
 import PropCard from "@/components/PropCard";
-import Search from "@/components/Search";
 import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
 import { performRequest } from "@/lib/datocms";
@@ -79,24 +78,6 @@ export default function Home() {
   return (
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
-      {/* <Search
-        isGrid={isGrid}
-        setIsGrid={setIsGrid}
-        itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
-        minPrice={minPrice}
-        setMinPrice={setMinPrice}
-        maxPrice={maxPrice}
-        setMaxPrice={setMaxPrice}
-        city={city}
-        setCity={setCity}
-        propertyType={propertyType}
-        setPropertyType={setPropertyType}
-        sellOrRent={sellOrRent}
-        setSellOrRent={setSellOrRent}
-        onSearch={handleSearch}
-        isRu={isRu}
-      /> */}
       <SearchUI
         isGrid={isGrid}
         setIsGrid={setIsGrid}
