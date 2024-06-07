@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import Close from '@/icons/Close'
-import Navigation from './Navigation'
-import Socials from './Socials'
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import Close from "@/icons/Close";
+import Navigation from "./Navigation";
+import Socials from "./Socials";
 
 function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
   return (
@@ -51,9 +51,10 @@ function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
                     <div className="flex flex-col gap-5">
                       <Socials className="lg:hidden" />
 
-                      <p className="text-black uppercase text-[15px]">
-                        {isRU ? 'КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ' : 'KEYS TO YOUR DREAM APARTMENT'}
-
+                      <p className="text-black uppercase text-[15px] dark:text-slate-400">
+                        {isRU
+                          ? "КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ"
+                          : "KEYS TO YOUR DREAM APARTMENT"}
                       </p>
                     </div>
                   </div>
@@ -64,7 +65,7 @@ function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }
 
-export default BurgerMenu
+export default BurgerMenu;

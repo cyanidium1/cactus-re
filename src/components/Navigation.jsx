@@ -37,7 +37,6 @@ function Navigation() {
       ))}
       <li>
         <LanguageSwitcher setLanguage={setLanguage} />
-        {/* <Button onClick={() => setIsRu(!isRU)}>{isRU ? "RU" : "EN"}</Button> */}
       </li>
       <li key="switch">
         <ThemeSwitcher />

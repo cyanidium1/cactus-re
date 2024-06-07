@@ -82,7 +82,7 @@ export default function Page() {
             <h4 className=" text-2xl font-medium dark:text-slate-400">
               {isRu ? titleRussian : titleEnglish}
             </h4>
-            <div className="relative w-full py-[8px] sm:w-2/3 max-w-[320px] sm:max-w-full sm:mx-auto md:top-[-350px] md:left-[405px] md:w-[245px] lg:top-[-430px] lg:left-[500px] lg:w-[290px] lg:h-[320px] lg:py-[40px] top-[20px] left-0 list-none px-2 mb-4 md:p-4  bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700 border-[1px] border-customGreen border-opacity-100">
+            <div className="relative w-full py-[8px] sm:w-2/3 max-w-[320px] sm:max-w-full sm:mx-auto md:top-[-380px] md:left-[405px] md:w-[245px] md:h-[320px] lg:top-[-497px] lg:left-[500px] lg:w-[290px] lg:h-[440px] lg:py-[60px] xl:top-[-545px] xl:left-[555px] xl:w-[360px] xl:h-[490px] xxl:top-[-547px] top-[20px] left-0 list-none px-2 mb-4 md:px-4 md:py-8  bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700 border-[3px] border-customGreen border-opacity-100">
               <RoomQualities
                 bath={bathroomNumber}
                 rooms={roomsEnglish}

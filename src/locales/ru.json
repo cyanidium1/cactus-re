@@ -32,7 +32,7 @@
   },
   "PropertyPage": {
     "propertyInfo": "Короткая информация",
-    "city": "Город",
+    "city": "Город:",
     "roomsNumber": "Количество комнат:",
     "areaSertified": "Площадь сертиф.:",
     "areaAct": "Площадь акт:",
