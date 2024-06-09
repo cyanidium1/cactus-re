@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import PropCard from "@/components/PropCard";
 import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
+import Skeleton from "@/components/Skeleton";
 import { performRequest } from "@/lib/datocms";
 import { Card, Pagination, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -105,32 +106,33 @@ export default function Home() {
           ? Array(12)
               .fill()
               .map((_, index) => (
-                <Card
-                  key={index}
-                  className="w-80 space-y-5 p-4 my-3"
-                  radius="lg"
-                >
-                  <Skeleton className="rounded-lg">
-                    <div className="h-36 rounded-lg bg-default-300"></div>
-                  </Skeleton>
-                  <div className="space-y-3">
-                    <Skeleton className="w-3/5 rounded-lg">
-                      <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
-                    </Skeleton>
-                    <Skeleton className="w-4/5 rounded-lg">
-                      <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
-                    </Skeleton>
-                    <Skeleton className="w-2/5 rounded-lg">
-                      <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                    </Skeleton>
-                    <Skeleton className="w-2/5 rounded-lg">
-                      <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                    </Skeleton>
-                    <Skeleton className="w-2/5 rounded-lg">
-                      <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                    </Skeleton>
-                  </div>
-                </Card>
+                <Skeleton />
+                // <Card
+                //   key={index}
+                //   className="w-80 space-y-5 p-4 my-3"
+                //   radius="lg"
+                // >
+                //   <Skeleton className="rounded-lg">
+                //     <div className="h-36 rounded-lg bg-default-300"></div>
+                //   </Skeleton>
+                //   <div className="space-y-3">
+                //     <Skeleton className="w-3/5 rounded-lg">
+                //       <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
+                //     </Skeleton>
+                //     <Skeleton className="w-4/5 rounded-lg">
+                //       <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
+                //     </Skeleton>
+                //     <Skeleton className="w-2/5 rounded-lg">
+                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
+                //     </Skeleton>
+                //     <Skeleton className="w-2/5 rounded-lg">
+                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
+                //     </Skeleton>
+                //     <Skeleton className="w-2/5 rounded-lg">
+                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
+                //     </Skeleton>
+                //   </div>
+                // </Card>
               ))
           : portfolioPosts.map((el) => (
               <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
