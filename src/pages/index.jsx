@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import PropCard from "@/components/PropCard";
 import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
-import Skeleton from "@/components/Skeleton";
+//import Skeleton from "@/components/Skeleton";
 import { performRequest } from "@/lib/datocms";
 import { Card, Pagination, Skeleton } from "@nextui-org/react";
 import { useEffect, useState } from "react";
@@ -106,7 +106,7 @@ export default function Home() {
           ? Array(12)
               .fill()
               .map((_, index) => (
-                <Skeleton />
+                //<Skeleton />
                 // <Card
                 //   key={index}
                 //   className="w-80 space-y-5 p-4 my-3"
