@@ -31,18 +31,18 @@ const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
     return (
       <li
         key={idx}
-        class="flex justify-between items-center md:mb-[5px] xl:mb-[15px]"
+        className="flex justify-between items-center md:mb-[5px] xl:mb-[15px]"
       >
-        <span class=" text-base md:text-lg xl:text-2xl text-customGreen">
+        <span className=" text-base md:text-lg xl:text-2xl text-customGreen">
           {title}
         </span>
-        <span class="text-base md:text-lg xl:text-2xl text-customGreen">
+        <span className="text-base md:text-lg xl:text-2xl text-customGreen">
           {value}
         </span>
       </li>
     );
   });
-  return <ul class="mt-[50px] md:mt-[70px]">{elements}</ul>;
+  return <ul className="mt-[50px] md:mt-[70px]">{elements}</ul>;
 };
 
 export default ShortInfo;

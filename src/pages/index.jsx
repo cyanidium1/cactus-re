@@ -54,9 +54,9 @@ export default function Home() {
     const skip = (currentPage - 1) * itemsPerPage;
 
     const req = {
-      cityName: city,
-      sellRent: sellOrRent,
-      houseApart: propertyType,
+      cityName: city || null,
+      sellRent: sellOrRent || null,
+      houseApart: propertyType || null,
       minPrice,
       maxPrice,
       first,

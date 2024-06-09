@@ -3,8 +3,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import Close from "@/icons/Close";
 import Navigation from "./Navigation";
 import Socials from "./Socials";
+import useStore from "@/zustand/store/useStore";
 
-function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
+function BurgerMenu({ isBurgerOpen, onClose }) {
+  const { language } = useStore();
+  const isRu = language;
   return (
     <Transition.Root show={isBurgerOpen} as={Fragment}>
       <Dialog as="div" className="relative z-40 " onClose={onClose}>
@@ -46,13 +49,13 @@ function BurgerMenu({ isBurgerOpen, onClose, isRU, setIsRu }) {
                         </button>
                       </div>
 
-                      <Navigation isRU={isRU} setIsRu={setIsRu} />
+                      <Navigation />
                     </div>
                     <div className="flex flex-col gap-5">
                       <Socials className="lg:hidden" />
 
                       <p className="text-black uppercase text-[15px] dark:text-slate-400">
-                        {isRU
+                        {isRu
                           ? "КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ"
                           : "KEYS TO YOUR DREAM APARTMENT"}
                       </p>
