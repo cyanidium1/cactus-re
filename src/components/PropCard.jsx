@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 function PropCard({ el, isGrid, isRU }) {
   const {
@@ -18,13 +18,18 @@ function PropCard({ el, isGrid, isRU }) {
     stateEnglish,
     stateRussian,
     bathroomNumber,
-  } = el
+  } = el;
 
   return (
-    <Link href={`/property/${id}`} className={`w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${isGrid ? 'sm:w-[49%] md:w-[32%] lg:w-80' : 'flex'}`}>
+    <Link
+      href={`/property/${id}`}
+      className={`w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${
+        isGrid ? "sm:w-[49%] md:w-[32%] lg:w-80" : "flex"
+      }`}
+    >
       <div className="relative">
         <Image
-          className={` ${isGrid ? 'h-56 object-cover w-full' : 'h-full'}`}
+          className={` ${isGrid ? "h-56 object-cover w-full" : "h-full"}`}
           src={mainPhoto.url}
           width={350}
           height={230}
@@ -39,9 +44,9 @@ function PropCard({ el, isGrid, isRU }) {
           </a>
         </div>
       </div>
-      <div className={` ${isGrid ? '' : 'flex w-2/3'}`}>
-        <div className={` ${isGrid ? 'p-6 ' : 'p-6 sm:w-1/2'}`}>
-          <div className={` ${isGrid ? 'pb-6' : 'sm:pb-6'}`} >
+      <div className={` ${isGrid ? "" : "flex w-2/3"}`}>
+        <div className={` ${isGrid ? "p-6 " : "p-6 sm:w-1/2"}`}>
+          <div className={` ${isGrid ? "pb-6" : "sm:pb-6"}`}>
             <a
               className="text-lg h-14 hover:text-green-600 font-medium ease-in-out duration-500"
               href="/property/1"
@@ -96,29 +101,43 @@ function PropCard({ el, isGrid, isRU }) {
               <span>{bathroomNumber}</span>
             </li>
           </ul>
-          <ul className={` ${isGrid ? 'pt-6 flex justify-between items-center list-none' : 'sm:pt-6 flex justify-between items-center list-none'}`} >
+          <ul
+            className={` ${
+              isGrid
+                ? "pt-6 flex justify-between items-center list-none"
+                : "sm:pt-6 flex justify-between items-center list-none"
+            }`}
+          >
             <li>
-              <span className="text-slate-400">{isRU ? 'Цена' : 'Price'}</span>
+              <span className="text-slate-400">{isRU ? "Цена" : "Price"}</span>
               <p className="text-lg font-medium">
-                € {Number(price).toLocaleString('en-US').replace(/,/g, ',')}
+                € {Number(price).toLocaleString("en-US").replace(/,/g, ",")}
               </p>
             </li>
             <li>
-              <span className="text-slate-400">{isRU ? 'Состояние' : 'Condition'}</span>
-              <p className="text-lg font-medium">{isRU ? stateRussian : stateEnglish}</p>
+              <span className="text-slate-400">
+                {isRU ? "Состояние" : "Condition"}
+              </span>
+              <p className="text-lg font-medium">
+                {isRU ? stateRussian : stateEnglish}
+              </p>
             </li>
           </ul>
         </div>
-        {!isGrid && <div className='w-1/2 py-6 pr-6 hidden sm:block'>
-          {isRU ? descriptionEnglish.length > 200
-            ? descriptionEnglish.slice(0, 287) + '...'
-            : descriptionEnglish : descriptionRussian.length > 200
-            ? descriptionRussian.slice(0, 287) + '...'
-            : descriptionRussian}
-        </div>}
+        {!isGrid && (
+          <div className="w-1/2 py-6 pr-6 hidden sm:block">
+            {isRU
+              ? descriptionEnglish.length > 200
+                ? descriptionEnglish.slice(0, 287) + "..."
+                : descriptionEnglish
+              : descriptionRussian.length > 200
+              ? descriptionRussian.slice(0, 287) + "..."
+              : descriptionRussian}
+          </div>
+        )}
       </div>
     </Link>
-  )
+  );
 }
 
-export default PropCard
+export default PropCard;
