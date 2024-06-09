@@ -314,22 +314,22 @@ function SearchUI({
             </div>
           </div>
         </form>
-        <div className="mt-6 space-y-6 sm:space-y-0 sm:flex items-center">
+        <div className="mt-6 space-y-6 md:space-y-0 md:flex items-center">
           <Button
-            className="bg-green-500 w-full lg:w-[24.5%] text-lg mr-2"
+            className="bg-green-500 w-full lg:w-[24.5%] md:text-base text-lg mr-2"
             variant="shadow"
             onPress={onSearch}
           >
             {isRu ? "Подобрать" : "Search"}
           </Button>
           <Button
-            className="border-green-500 w-full lg:w-[24.5%] text-lg mr-2"
+            className="border-green-500 w-full lg:w-[24.5%] md:text-base text-lg mr-2"
             variant="bordered"
             onPress={handleResetFilters}
           >
             {isRu ? "Сбросить фильтры" : "Reset filters"}
           </Button>
-          <ButtonGroup className="w-full lg:w-[24%] text-lg mr-2">
+          <ButtonGroup className="hidden md:flex md:w-full lg:w-[24%] md:text-lg md:mr-2">
             <Button onClick={() => setIsGrid(true)} className="text-lg w-full">
               <FiGrid />
             </Button>
@@ -340,7 +340,7 @@ function SearchUI({
           <Menu as="div" className="relative" onOpenChange={setIsMenuOpen}>
             {({ open }) => (
               <>
-                <Menu.Button className="relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased text-lg mt-2 md:mt-0">
+                <Menu.Button className="relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased md:text-base text-lg mt-2 md:mt-0">
                   {isRu ? "Объектов на странице: " : "Items per page: "}
                   <IoMdArrowDropdown
                     className="-mr-1 ml-2 h-5 w-5"
