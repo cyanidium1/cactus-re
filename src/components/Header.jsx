@@ -12,7 +12,7 @@ import BurgerMenu from "./BurgerMenu.jsx";
 import Socials from "./Socials.jsx";
 import { ThemeSwitcher } from "./ThemeSwitcher.jsx";
 
-export default function Header({ isRU, setIsRu }) {
+export default function Header() {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
   const onBurgerMenuClose = () => setIsBurgerOpen(false);
 
@@ -28,7 +28,7 @@ export default function Header({ isRU, setIsRu }) {
 
       <MenuButton onClick={() => setIsBurgerOpen(true)} />
 
-      <BurgerMenu isRU={isRU} setIsRu={setIsRu} isBurgerOpen={isBurgerOpen} onClose={onBurgerMenuClose} />
+      <BurgerMenu isBurgerOpen={isBurgerOpen} onClose={onBurgerMenuClose} />
     </Navbar>
   );
 }

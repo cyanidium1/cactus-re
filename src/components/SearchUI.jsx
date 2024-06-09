@@ -73,7 +73,6 @@ function SearchUI({
       {/* Блюр фон */}
       <div className="grid grid-cols-1 relative z-10">
         {" "}
-        {/* Добавил z-индекс */}
         <form className="p-6 bg-white dark:bg-slate-900 rounded-xl shadow-md dark:shadow-green-700">
           <div className="text-dark text-start">
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-0 gap-6 text-xl">
@@ -153,7 +152,7 @@ function SearchUI({
               </div>
               <div className="lg:pr-2">
                 <p className="text-slate-900 dark:text-white">
-                  {isRu ? "Недвижимость:" : "Property:"}
+                  {translations.Search.property}
                 </p>
                 <Menu
                   as="div"
@@ -163,7 +162,7 @@ function SearchUI({
                   {({ open }) => (
                     <>
                       <Menu.Button className="group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased text-lg mt-2">
-                        {sellOrRent || (isRu ? "Все" : "All")}
+                        {sellOrRent || translations.Search.sellOrRent}
                         <IoMdArrowDropdown
                           className="-mr-1 ml-2 h-5 w-5"
                           aria-hidden="true"
@@ -180,60 +179,28 @@ function SearchUI({
                             className="absolute left-0 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-30"
                           >
                             <div className="py-1">
-                              <Menu.Item key={isRu ? "Все" : "All"}>
-                                {({ active }) => (
-                                  <a
-                                    className={`${
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700"
-                                    } block px-4 py-2 text-sm cursor-pointer`}
-                                    onClick={() =>
-                                      handleSellOrRentChange(
-                                        isRu ? "Все" : "All"
-                                      )
-                                    }
-                                  >
-                                    {isRu ? "Все" : "All"}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item key={isRu ? "Покупка" : "Buy"}>
-                                {({ active }) => (
-                                  <a
-                                    className={`${
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700"
-                                    } block px-4 py-2 text-sm cursor-pointer`}
-                                    onClick={() =>
-                                      handleSellOrRentChange(
-                                        isRu ? "Покупка" : "Buy"
-                                      )
-                                    }
-                                  >
-                                    {isRu ? "Покупка" : "Buy"}
-                                  </a>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item key={isRu ? "Аренда" : "Rent"}>
-                                {({ active }) => (
-                                  <a
-                                    className={`${
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700"
-                                    } block px-4 py-2 text-sm cursor-pointer`}
-                                    onClick={() =>
-                                      handleSellOrRentChange(
-                                        isRu ? "Аренда" : "Rent"
-                                      )
-                                    }
-                                  >
-                                    {isRu ? "Аренда" : "Rent"}
-                                  </a>
-                                )}
-                              </Menu.Item>
+                              {[
+                                translations.Search.sellOrRent,
+                                translations.Search.buy,
+                                translations.Search.rent,
+                              ].map((sellRent) => (
+                                <Menu.Item key={sellRent}>
+                                  {({ active }) => (
+                                    <a
+                                      className={`${
+                                        active
+                                          ? "bg-gray-100 text-gray-900"
+                                          : "text-gray-700"
+                                      } block px-4 py-2 text-sm cursor-pointer`}
+                                      onClick={() =>
+                                        handleSellOrRentChange(sellRent)
+                                      }
+                                    >
+                                      {sellRent}
+                                    </a>
+                                  )}
+                                </Menu.Item>
+                              ))}
                             </div>
                           </Menu.Items>
                         )}
@@ -244,7 +211,7 @@ function SearchUI({
               </div>
               <div className="lg:pr-4">
                 <p className="text-slate-900 dark:text-white">
-                  {isRu ? "Тип" : "Type"}
+                  {translations.Search.type}
                 </p>
                 <Menu
                   as="div"
@@ -254,7 +221,7 @@ function SearchUI({
                   {({ open }) => (
                     <>
                       <Menu.Button className="group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased text-lg mt-2">
-                        {propertyType || (isRu ? "Все" : "All")}
+                        {propertyType || translations.Search.typeAll}
                         <IoMdArrowDropdown
                           className="-mr-1 ml-2 h-5 w-5"
                           aria-hidden="true"
@@ -271,29 +238,12 @@ function SearchUI({
                             className="absolute left-0 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
                           >
                             <div className="py-1">
-                              <Menu.Item key={isRu ? "Все" : "All"}>
-                                {({ active }) => (
-                                  <a
-                                    className={`${
-                                      active
-                                        ? "bg-gray-100 text-gray-900"
-                                        : "text-gray-700"
-                                    } block px-4 py-2 text-sm cursor-pointer`}
-                                    onClick={() =>
-                                      handlePropertyTypeChange(
-                                        isRu ? "Все" : "All"
-                                      )
-                                    }
-                                  >
-                                    {isRu ? "Все" : "All"}
-                                  </a>
-                                )}
-                              </Menu.Item>
                               {[
-                                isRu ? "Апартаменты" : "Apartment",
-                                isRu ? "Вилла" : "Villa",
-                                isRu ? "Дом" : "House",
-                                isRu ? "Земля" : "Land",
+                                translations.Search.typeAll,
+                                translations.Search.typeApartment,
+                                translations.Search.typeVilla,
+                                translations.Search.typeHouse,
+                                translations.Search.typeLand,
                               ].map((type) => (
                                 <Menu.Item key={type}>
                                   {({ active }) => (
