@@ -4,7 +4,7 @@ import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
 import Skeleton from "@/components/Skeleton";
 import { performRequest } from "@/lib/datocms";
-import { Card, Pagination, Skeleton } from "@nextui-org/react";
+import { Card, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
 
@@ -25,7 +25,7 @@ export default function Home() {
 
   const handleSearch = () => {
     setCurrentPage(1);
-    fetchData();
+    fetchData(true);
   };
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Home() {
     }
   }, [currentPage]);
 
-  async function fetchData() {
+  async function fetchData(isFreshSearch = false) {
     setLoading(true);
     const first = itemsPerPage;
     const skip = (currentPage - 1) * itemsPerPage;
@@ -66,9 +66,18 @@ export default function Home() {
 
     try {
       const data = await performRequest({ req });
-      setPortfolioPosts(data.allProperties);
-      const totalItems = data._allPropertiesMeta.count;
-      setTotalPages(Math.ceil(totalItems / itemsPerPage));
+      if (data.allProperties.length === 0 && !isFreshSearch) {
+        console.log("Empty response, making a repeat request...");
+        // Repeat request logic here
+        const repeatData = await performRequest({ req });
+        setPortfolioPosts(repeatData.allProperties);
+        const totalItems = repeatData._allPropertiesMeta.count;
+        setTotalPages(Math.ceil(totalItems / itemsPerPage));
+      } else {
+        setPortfolioPosts(data.allProperties);
+        const totalItems = data._allPropertiesMeta.count;
+        setTotalPages(Math.ceil(totalItems / itemsPerPage));
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -98,15 +107,15 @@ export default function Home() {
         isRu={isRu}
       />
       <div
-        className={`max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "flex flex-wrap justify-between mx-auto" : ""
+        className={`w-full md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
+          isGrid ? "block md:flex md:flex-wrap md:justify-between mx-auto" : ""
         }`}
       >
         {loading
           ? Array(12)
               .fill()
               .map((_, index) => (
-                <Skeleton />
+                <Skeleton isGrid={isGrid} />
                 // <Card
                 //   key={index}
                 //   className="w-80 space-y-5 p-4 my-3"
@@ -138,7 +147,7 @@ export default function Home() {
               <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
             ))}
       </div>
-      <div className="max-w-5xl w-full flex justify-center my-2 mx-auto">
+      <div className="max-w-5xl w-full flex md:justify-center my-2 mx-auto">
         <Pagination
           loop
           showControls
