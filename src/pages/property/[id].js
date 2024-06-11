@@ -78,7 +78,7 @@ export default function Page() {
         ) : (
           <div>No images available</div>
         )}
-        <div className="hidden md:flex md:flex-col md:w-1/3 md:h-full md:my-0 py-[8px] list-none px-2 my-4 md:px-4 md:py-8 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+        <div className="hidden md:flex md:flex-col md:w-1/3 md:h-full md:my-0 py-[8px] list-none my-4 md:px-4 md:py-8 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
           <RoomQualities
             bath={bathroomNumber}
             rooms={roomsEnglish}
