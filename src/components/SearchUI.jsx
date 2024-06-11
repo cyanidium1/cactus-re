@@ -66,7 +66,7 @@ function SearchUI({
   return (
     <div className="relative -mt-24 max-w-5xl mx-auto p-2 xl:p-0">
       <div
-        className={`fixed inset-0 ${
+        className={`fixed ${
           isBackdropBlur ? "backdrop-blur-md" : ""
         } transition duration-300`}
       />{" "}
