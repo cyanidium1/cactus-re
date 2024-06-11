@@ -5,7 +5,7 @@ const LanguageSwitcher = () => {
   const { language, toggleLanguage } = useStore();
 
   return (
-    <button onClick={toggleLanguage} className="dark:text-slate-400">
+    <button onClick={toggleLanguage} className="text-black dark:text-slate-400">
       {language === "en" ? "RU" : "EN"}
     </button>
   );
