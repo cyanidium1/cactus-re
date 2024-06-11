@@ -115,33 +115,13 @@ export default function Home() {
           ? Array(12)
               .fill()
               .map((_, index) => (
-                <Skeleton isGrid={isGrid} />
-                // <Card
-                //   key={index}
-                //   className="w-80 space-y-5 p-4 my-3"
-                //   radius="lg"
-                // >
-                //   <Skeleton className="rounded-lg">
-                //     <div className="h-36 rounded-lg bg-default-300"></div>
-                //   </Skeleton>
-                //   <div className="space-y-3">
-                //     <Skeleton className="w-3/5 rounded-lg">
-                //       <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
-                //     </Skeleton>
-                //     <Skeleton className="w-4/5 rounded-lg">
-                //       <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
-                //     </Skeleton>
-                //     <Skeleton className="w-2/5 rounded-lg">
-                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                //     </Skeleton>
-                //     <Skeleton className="w-2/5 rounded-lg">
-                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                //     </Skeleton>
-                //     <Skeleton className="w-2/5 rounded-lg">
-                //       <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
-                //     </Skeleton>
-                //   </div>
-                // </Card>
+                <Card
+                  key={index}
+                  className="w-80 space-y-5 p-4 my-3"
+                  radius="lg"
+                >
+                  <Skeleton index={index} isGrid={isGrid} />
+                </Card>
               ))
           : portfolioPosts.map((el) => (
               <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
