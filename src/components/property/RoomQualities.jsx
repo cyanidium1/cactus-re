@@ -1,6 +1,6 @@
 const RoomQualities = ({ bath, rooms, area }) => {
   return (
-    <ul className="absolute w-full flex justify-center items-center top-[20px] left-0 lg:top-[30px] xl:top-[50px] list-none mb-[10px] md:mb-[30px] lg:mb-[30px] xl:mb-[50px] ">
+    <ul className="w-full flex justify-center items-center list-none my-[10px] md:mb-[30px] lg:mb-[30px] xl:mb-[50px] ">
       <li className="flex items-center lg:me-6 me-4">
         <svg
           stroke="currentColor"
