@@ -115,13 +115,12 @@ export default function Home() {
           ? Array(12)
               .fill()
               .map((_, index) => (
-                <Card
-                  key={index}
+                <Skeleton
+                  index={index}
+                  isGrid={isGrid}
                   className="w-80 space-y-5 p-4 my-3"
                   radius="lg"
-                >
-                  <Skeleton index={index} isGrid={isGrid} />
-                </Card>
+                />
               ))
           : portfolioPosts.map((el) => (
               <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
