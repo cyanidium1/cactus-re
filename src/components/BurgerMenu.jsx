@@ -6,7 +6,7 @@ import Socials from "./Socials";
 import useStore from "@/zustand/store/useStore";
 
 function BurgerMenu({ isBurgerOpen, onClose }) {
-  const { language } = useStore();
+  const { language, translations } = useStore();
   const isRu = language;
   return (
     <Transition.Root show={isBurgerOpen} as={Fragment}>
@@ -55,9 +55,7 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
                       <Socials className="lg:hidden" />
 
                       <p className="text-black uppercase text-[15px] dark:text-slate-400">
-                        {isRu
-                          ? "КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ"
-                          : "KEYS TO YOUR DREAM APARTMENT"}
+                        {translations.BurgerMenu.phrase}
                       </p>
                     </div>
                   </div>
