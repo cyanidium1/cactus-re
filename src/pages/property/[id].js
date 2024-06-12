@@ -67,7 +67,7 @@ export default function Page() {
 
   return (
     <Layout>
-      <div className="md:flex md:justify-between md:items-center md:h-full">
+      <div className="md:flex md:justify-between mb-8 md:gap-2 lg:gap-6 md:items-center md:h-full">
         {allPhotos ? (
           <RoomGallery
             mainPhoto={mainPhoto}
@@ -78,20 +78,23 @@ export default function Page() {
         ) : (
           <div>No images available</div>
         )}
-        <div className="hidden md:flex md:flex-col md:w-1/3 md:h-full md:my-0 py-[8px] list-none my-4 md:px-4 md:py-8 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-          <RoomQualities
-            bath={bathroomNumber}
-            rooms={roomsEnglish}
-            area={area}
-          />
-
-          <ShortInfo
-            isRu={isRu}
-            city={cityname}
-            rooms={roomsEnglish}
-            areaCertificate={areaCertificate}
-            area={area}
-          />
+        <div className="hidden md:flex md:flex-col md:w-1/3 md:h-full md:items-stretch md:my-0 list-none my-4 md:p-6 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+          <div className="flex flex-col flex-grow h-full">
+            <RoomQualities
+              bath={bathroomNumber}
+              rooms={roomsEnglish}
+              area={area}
+            />
+          </div>
+          <div className="flex flex-col flex-grow h-full">
+            <ShortInfo
+              isRu={isRu}
+              city={cityname}
+              rooms={roomsEnglish}
+              areaCertificate={areaCertificate}
+              area={area}
+            />
+          </div>
         </div>
       </div>
       <div className="md:mt-[10px]">
@@ -100,7 +103,7 @@ export default function Page() {
             <h4 className=" text-2xl font-medium dark:text-slate-400">
               {isRu ? titleRussian : titleEnglish}
             </h4>
-            <div className="md:hidden w-full py-[8px] sm:max-w-full sm:mx-auto list-none px-2 my-4 md:px-4 md:py-8  rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+            <div className="md:hidden w-full px-2 py-4 sm:p-6 sm:max-w-full sm:mx-auto list-none my-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
               <RoomQualities
                 bath={bathroomNumber}
                 rooms={roomsEnglish}

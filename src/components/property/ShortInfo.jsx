@@ -33,10 +33,10 @@ const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
         key={idx}
         className="flex justify-between items-center md:mb-[5px] xl:mb-[15px]"
       >
-        <span className=" text-base md:text-lg xl:text-2xl text-customGreen">
+        <span className="text-xl md:text-lg font-medium xl:text-2xl text-black">
           {title}
         </span>
-        <span className="text-base md:text-lg xl:text-2xl text-customGreen">
+        <span className="text-xl md:text-lg font-medium xl:text-2xl text-black">
           {value}
         </span>
       </li>
