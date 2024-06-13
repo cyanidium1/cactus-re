@@ -34,7 +34,7 @@
 
   "BurgerMenu": {
     "catalogue": "Catalogue",
-    "postAnAd": "Post an ad",
+    "postAnAd": "Contact us",
     "instagram": "Our instagram",
     "phrase": "KEYS TO YOUR DREAM APARTMENT"
   },
@@ -55,5 +55,13 @@
   "Footer": {
     "company": "Company",
     "contactDetails": "Contact details"
+  },
+  "Modal": {
+    "title": "Modal title",
+    "contactUs": "Contact us :)",
+    "submitRequest": "Submit a request",
+    "close": "Close",
+    "phone": "Phone number:",
+    "messengers": "Messengers:"
   }
 }

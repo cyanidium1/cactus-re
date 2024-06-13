@@ -5,7 +5,7 @@ import RoomQualities from "@/components/property/RoomQualities";
 import RoomDescription from "@/components/property/RoomDescription";
 import RoomGallery from "@/components/property/RoomGallery";
 import RoomPrices from "@/components/property/RoomPrices";
-import ActionButtons from "@/components/property/ActionButtons";
+import ActionButtons from "@/components/property/ActionButtons/ActionButtons";
 import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 import useStore from "@/zustand/store/useStore";

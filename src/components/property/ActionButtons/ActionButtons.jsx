@@ -1,34 +1,25 @@
-//import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDisclosure } from "@nextui-org/modal";
 
-import { Button } from "@nextui-org/button";
+import { Button } from "@nextui-org/react";
 import useStore from "@/zustand/store/useStore";
-import Modal from "../Modal.jsx";
+
+import CommonModal from "../../CommonModal.jsx";
+import ModalContentContactUs from "../../ModalContentContactUs.jsx";
+import SubmitRequestButton from "./SubmitRequestBtn.jsx";
 
 const ActionButtons = () => {
-  //const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { onOpen, isOpen, onClose } = useDisclosure();
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
   const { translations } = useStore();
 
   return (
     <div className="flex items-center justify-center">
-      <div className="p-1 flex-1">
-        <Button className="bg-customGreen hover:bg-green-700 text-white rounded-md w-full href=${}">
-          {translations.PropertyPage.btnSubmitReq}
-        </Button>
-      </div>
+      <SubmitRequestButton onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
       <div className="p-1 flex-1">
         <Button
           className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white w-full rounded-md href=${}"
-          onClick={handleOpenModal}
+          onPress={onOpen}
         >
           <svg
             stroke="currentColor"
@@ -44,7 +35,13 @@ const ActionButtons = () => {
           </svg>
           {translations.PropertyPage.btnContactUS}
         </Button>
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+        <CommonModal
+          isOpen={isOpen}
+          onClose={onClose}
+          title={translations.Modal.contactUs}
+        >
+          <ModalContentContactUs />
+        </CommonModal>
       </div>
     </div>
   );

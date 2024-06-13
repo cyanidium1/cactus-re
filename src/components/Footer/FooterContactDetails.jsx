@@ -21,7 +21,9 @@ const FooterContactDetails = () => {
           <circle cx="12" cy="10" r="3"></circle>
         </svg>
         <div className="">
-          <h6 className="text-slate-400 mb-2">There will be adress</h6>
+          <h6 className="text-slate-400 mb-2">
+            Bulevardi Dyrrah, Durrës, Албания
+          </h6>
           <a
             datatype="iframe"
             className="text-customGreen hover:text-green-700 duration-500 ease-in-out lightbox"
@@ -50,9 +52,9 @@ const FooterContactDetails = () => {
         <div className="">
           <a
             className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out"
-            href="mailto:contact@example.com"
+            href="mailto:cactusbusines@gmail.com"
           >
-            contact@example.com
+            cactusbusines@gmail.com
           </a>
         </div>
       </div>
@@ -73,7 +75,7 @@ const FooterContactDetails = () => {
         </svg>
         <div className="">
           <a className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out">
-            +355 68 557 7016
+            +355 685 577 016
           </a>
         </div>
       </div>
