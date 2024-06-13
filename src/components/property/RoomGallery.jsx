@@ -54,12 +54,12 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
     <div className="flex justify-center md:justify-between md:space-x-2 items-center w-full h-full md:w-2/3">
       <div className="md:flex items-center justify-center md:space-x-2 w-full h-full  max-w-[480px] sm:max-w-[600px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px] md:flex-row ">
         <div
-          className={`image-container h-full w-full overflow-hidden  transition-opacity duration-300 ${
+          className={`image-container transition-opacity duration-300 ${
             isTransitioning ? "opacity-0" : "opacity-100"
           }`}
           style={{ height: "100%" }}
         >
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full">
             <Image
               src={allPhotos[currentImageIndex].url}
               alt={isRu ? titleRu : titleEn}
@@ -68,10 +68,8 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
               //priority={true}
               sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 480px"
               style={{
-                width: "100%",
-                height: "100%",
                 cursor: "pointer",
-                objectFit: "cover",
+                objectFit: "contain",
                 objectPosition: "center",
               }}
               onClick={() => handleClick(currentImageIndex)}
@@ -99,7 +97,6 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="width-full h-auto"
                 />
               </div>
             ))}

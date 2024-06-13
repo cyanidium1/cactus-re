@@ -1,15 +1,23 @@
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
+import { useState } from "react";
 
 import { Button } from "@nextui-org/button";
 import useStore from "@/zustand/store/useStore";
+import Modal from "../Modal.jsx";
 
 const ActionButtons = () => {
-  const router = useRouter();
+  //const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const { translations } = useStore();
 
-  const handleContactUsClick = () => {
-    router.push("/contact");
-  };
   return (
     <div className="flex items-center justify-center">
       <div className="p-1 flex-1">
@@ -20,7 +28,7 @@ const ActionButtons = () => {
       <div className="p-1 flex-1">
         <Button
           className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white w-full rounded-md href=${}"
-          onClick={handleContactUsClick}
+          onClick={handleOpenModal}
         >
           <svg
             stroke="currentColor"
@@ -36,6 +44,7 @@ const ActionButtons = () => {
           </svg>
           {translations.PropertyPage.btnContactUS}
         </Button>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </div>
   );
