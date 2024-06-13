@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FiGrid, FiList } from "react-icons/fi";
 import { Menu } from "@headlessui/react";
 import { Slider, cn, Button, ButtonGroup } from "@nextui-org/react";
 import { Fragment } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import {} from "@nextui-org/react";
-
+import { useRouter } from "next/router";
 import useStore from "@/zustand/store/useStore";
 
 function SearchUI({
@@ -32,25 +31,76 @@ function SearchUI({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const { translations } = useStore();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Загрузка значений фильтров из URL при начальной загрузке
+    const { query } = router;
+    if (query.minPrice) setMinPrice(parseInt(query.minPrice, 10));
+    if (query.maxPrice) setMaxPrice(parseInt(query.maxPrice, 10));
+    if (query.city) setCity(query.city);
+    if (query.propertyType) setPropertyType(query.propertyType);
+    if (query.sellOrRent) setSellOrRent(query.sellOrRent);
+    if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
+    if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
+  }, [router.query]);
+
+  const updateUrlParams = (params) => {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          ...params,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
 
   const handleCityChange = (city) => {
-    setCity(city === "All" || city === "Все" ? "" : city);
+    const newCity = city === "All" || city === "Все" ? "" : city;
+    setCity(newCity);
+    updateUrlParams({ city: newCity });
   };
 
   const handlePropertyTypeChange = (propertyType) => {
-    setPropertyType(
-      propertyType === "All" || propertyType === "Все" ? "" : propertyType
-    );
+    const newPropertyType =
+      propertyType === "All" || propertyType === "Все" ? "" : propertyType;
+    setPropertyType(newPropertyType);
+    updateUrlParams({ propertyType: newPropertyType });
   };
 
   const handleSellOrRentChange = (sellOrRent) => {
-    setSellOrRent(
-      sellOrRent === "All" || sellOrRent === "Все" ? "" : sellOrRent
-    );
+    const newSellOrRent =
+      sellOrRent === "All" || sellOrRent === "Все" ? "" : sellOrRent;
+    setSellOrRent(newSellOrRent);
     setSliderMaxPrice(
-      sellOrRent === "Rent" || sellOrRent === "Аренда" ? 2000 : 250000
+      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
     );
     setResetKey(resetKey + 1);
+    updateUrlParams({ sellOrRent: newSellOrRent });
+  };
+
+  const handleMinPriceChange = (newMinPrice) => {
+    setMinPrice(newMinPrice);
+    updateUrlParams({ minPrice: newMinPrice });
+  };
+
+  const handleMaxPriceChange = (newMaxPrice) => {
+    setMaxPrice(newMaxPrice);
+    updateUrlParams({ maxPrice: newMaxPrice });
+  };
+
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    updateUrlParams({ itemsPerPage: newItemsPerPage });
+  };
+
+  const handleIsGridChange = (newIsGrid) => {
+    setIsGrid(newIsGrid);
+    updateUrlParams({ isGrid: newIsGrid });
   };
 
   const handleResetFilters = () => {
@@ -61,6 +111,15 @@ function SearchUI({
     setPropertyType("");
     setSellOrRent("");
     setSliderMaxPrice(250000);
+    updateUrlParams({
+      minPrice: 0,
+      maxPrice: 250000,
+      city: "",
+      propertyType: "",
+      sellOrRent: "",
+      itemsPerPage: 12,
+      isGrid: true,
+    });
   };
 
   return (
@@ -82,7 +141,7 @@ function SearchUI({
                 </p>
                 <Menu
                   as="div"
-                  className="relative backdrop-blur-3xl"
+                  className="relative"
                   onOpenChange={setIsMenuOpen}
                 >
                   {({ open }) => (
@@ -103,7 +162,7 @@ function SearchUI({
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className="absolute left-0 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20 backdrop-blur-md"
+                            className="absolute left-0 mt-2 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-20"
                           >
                             <div className="py-1">
                               <Menu.Item>
@@ -279,9 +338,9 @@ function SearchUI({
                   maxValue={sliderMaxPrice}
                   step={100}
                   defaultValue={[minPrice, maxPrice]}
-                  onChange={([newMinPrice, newMaxPrice]) => {
-                    setMinPrice(newMinPrice);
-                    setMaxPrice(newMaxPrice);
+                  onChange={(value) => {
+                    handleMinPriceChange(value[0]);
+                    handleMaxPriceChange(value[1]);
                   }}
                   formatOptions={{
                     style: "currency",
@@ -329,11 +388,21 @@ function SearchUI({
           >
             {isRu ? "Сбросить фильтры" : "Reset filters"}
           </Button>
-          <ButtonGroup className="hidden md:flex md:w-full lg:w-[24%] md:text-lg md:mr-2">
-            <Button onClick={() => setIsGrid(true)} className="text-lg w-full">
+          <ButtonGroup
+            className="hidden md:flex md:w-full lg:w-[24%] md:text-lg md:mr-2"
+            onChange={handleItemsPerPageChange}
+            defaultValue={itemsPerPage}
+          >
+            <Button
+              onClick={() => handleIsGridChange(true)}
+              className="text-lg w-full"
+            >
               <FiGrid />
             </Button>
-            <Button onClick={() => setIsGrid(false)} className="text-lg w-full">
+            <Button
+              onClick={() => handleIsGridChange(false)}
+              className="text-lg w-full"
+            >
               <FiList />
             </Button>
           </ButtonGroup>

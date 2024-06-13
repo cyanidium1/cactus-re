@@ -31,7 +31,7 @@
   },
   "BurgerMenu": {
     "catalogue": "Каталог",
-    "postAnAd": "Подать объявление",
+    "postAnAd": "Связаться",
     "instagram": "Мы в Instagram",
     "phrase": "КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ"
   },
@@ -39,8 +39,8 @@
     "propertyInfo": "Короткая информация",
     "city": "Город:",
     "roomsNumber": "Количество комнат:",
-    "areaSertified": "Площадь сертиф.:",
-    "areaAct": "Площадь акт:",
+    "areaSertified": "Пл. по сертификату:",
+    "areaAct": "Площадь актуальная:",
     "price": "Цена",
     "sell": "Продажа",
     "rent": "Аренда",
@@ -52,5 +52,13 @@
   "Footer": {
     "company": "Компания",
     "contactDetails": "Контактная информация"
+  },
+  "Modal": {
+    "title": "Название",
+    "contactUs": "Свяжитесь с нами :)",
+    "submitRequest": "Оставить заявку",
+    "close": "Закрыть",
+    "phone": "Телефон:",
+    "messengers": "Мессенджеры:"
   }
 }
