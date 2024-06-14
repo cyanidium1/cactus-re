@@ -7,13 +7,11 @@ import {
   Button,
 } from "@nextui-org/react";
 import useStore from "@/zustand/store/useStore";
-//import SocialLinks from "./SocialLinks";
 
-const CommonModal = ({ isOpen, onClose, title, children }) => {
+const ContactModal = ({ isOpen, onClose, title, children }) => {
   const { translations } = useStore();
   return (
     <>
-      {/* <Button onPress={onOpen}>Open Modal</Button> */}
       <Modal isOpen={isOpen} onClose={onClose} placement="center">
         <ModalContent>
           <>
@@ -33,4 +31,4 @@ const CommonModal = ({ isOpen, onClose, title, children }) => {
   );
 };
 
-export default CommonModal;
+export default ContactModal;

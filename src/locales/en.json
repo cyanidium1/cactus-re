@@ -60,8 +60,11 @@
     "title": "Modal title",
     "contactUs": "Contact us :)",
     "submitRequest": "Submit a request",
+    "submit": "Submit",
     "close": "Close",
     "phone": "Phone number:",
-    "messengers": "Messengers:"
+    "messengers": "Messengers:",
+    "buy": "Buy",
+    "sell": "Sell"
   }
 }

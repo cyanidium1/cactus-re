@@ -1,6 +1,6 @@
 import useStore from "@/zustand/store/useStore";
 
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "../../SocialLinks.jsx";
 
 const ModalContentContactUs = () => {
   const { translations } = useStore();
