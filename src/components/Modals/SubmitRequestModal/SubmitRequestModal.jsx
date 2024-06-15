@@ -67,7 +67,7 @@ const SubmitRequestModal = ({
               </Button>
             </ModalFooter> */}
           </>
-        </ModalContent>
+        </ModalContent >
       </Modal>
     </>
   );

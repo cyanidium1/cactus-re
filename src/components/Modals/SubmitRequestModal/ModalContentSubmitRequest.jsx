@@ -8,7 +8,11 @@ import { useParams } from "next/navigation";
 
 import useStore from "@/zustand/store/useStore";
 
-const ModalContentSubmitRequest = ({ onSubmitSuccess, onSubmitFailure }) => {
+const ModalContentSubmitRequest = ({
+  onSubmitSuccess,
+  onSubmitFailure,
+  onClose,
+}) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
@@ -16,8 +20,8 @@ const ModalContentSubmitRequest = ({ onSubmitSuccess, onSubmitFailure }) => {
 
   const { translations } = useStore();
 
-  const params = useParams();
-  console.log(params);
+  const { id } = useParams();
+  console.log(id);
 
   const validateForm = () => {
     const newErrors = {};
@@ -81,7 +85,10 @@ const ModalContentSubmitRequest = ({ onSubmitSuccess, onSubmitFailure }) => {
         required
       />
       <div className="flex">
-        <RadioGroup className="text-black dark:text-slate-400">
+        <RadioGroup
+          className="text-black dark:text-slate-400"
+          label={translations.Modal.interestedIn}
+        >
           <Radio value="buy">{translations.Modal.buy}</Radio>
           <Radio value="sell">{translations.Modal.sell}</Radio>
         </RadioGroup>
@@ -96,7 +103,7 @@ const ModalContentSubmitRequest = ({ onSubmitSuccess, onSubmitFailure }) => {
         fullWidth
         required
       />
-      <Button type="submit" className="mt-4" fullWidth>
+      <Button type="submit" className="mt-4" onPress={onClose} fullWidth>
         Submit
       </Button>
     </form>

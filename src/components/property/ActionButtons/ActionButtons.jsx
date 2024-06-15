@@ -26,7 +26,7 @@ const ActionButtons = () => {
         onOpenChange={onOpenChange}
         title={translations.Modal.submitRequest}
       >
-        <ModalContentSubmitRequest />
+        <ModalContentSubmitRequest onClose={onClose} />
       </SubmitRequestModal>
       {/* <ContactModal
         isOpen={isOpen}
