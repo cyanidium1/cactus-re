@@ -1,8 +1,13 @@
 import { Button } from "@nextui-org/react";
+import { useDisclosure } from "@nextui-org/modal";
 
 import useStore from "@/zustand/store/useStore";
 
-const ContactUsBtn = ({ onOpen }) => {
+import ContactModal from "@/components/Modals/ContactModal/ContactModal";
+import ModalContentContactUs from "@/components/Modals/ContactModal/ModalContentContactUs";
+
+const ContactUsBtn = () => {
+  const { onOpen, isOpen, onClose } = useDisclosure();
   const { translations } = useStore();
   return (
     <div className="p-1 flex-1">
@@ -24,6 +29,13 @@ const ContactUsBtn = ({ onOpen }) => {
         </svg>
         {translations.PropertyPage.btnContactUS}
       </Button>
+      <ContactModal
+        isOpen={isOpen}
+        onClose={onClose}
+        title={translations.Modal.contactUs}
+      >
+        <ModalContentContactUs />
+      </ContactModal>
     </div>
   );
 };
