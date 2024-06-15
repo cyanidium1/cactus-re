@@ -66,7 +66,7 @@
     "messengers": "Messengers:",
     "interestedIn": "You are interested in (choose an option):",
     "buy": "Buy",
-    "sell": "Sell"
+    "rent": "Rent"
   },
   "Form": {
     "name": "Name",
@@ -80,6 +80,8 @@
     "validEmail": "Valid email is required",
     "message": "Message",
     "textareaPlaceholder": "Enter your message",
-    "validMessage": "Message must be at least 10 characters long"
+    "validMessage": "Message must be at least 10 characters long",
+    "toastSuccess": "Your data was successfully sent to us. Thank you",
+    "toastFailure": "Ooops, something went wrong. Try again, please"
   }
 }

@@ -8,19 +8,8 @@ import SubmitRequestModal from "@/components/Modals/SubmitRequestModal/SubmitReq
 import ModalContentSubmitRequest from "@/components/Modals/SubmitRequestModal/ModalContentSubmitRequest";
 
 const SubmitRequestButton = () => {
-  const [responseMessage, setResponseMessage] = useState("");
   const { onOpen, isOpen, onClose, onOpenChange } = useDisclosure();
   const { translations } = useStore();
-
-  const handleSubmitSuccess = () => {
-    setResponseMessage(
-      "Thank you for your inquiry, your data has been successfully sent."
-    );
-  };
-
-  const handleSubmitFailure = () => {
-    setResponseMessage("Sorry, something went wrong. Please try again.");
-  };
 
   return (
     <div className="p-1 flex-1">
@@ -36,12 +25,7 @@ const SubmitRequestButton = () => {
         onOpenChange={onOpenChange}
         title={translations.Modal.submitRequest}
       >
-        <ModalContentSubmitRequest
-          onSubmitSuccess={handleSubmitSuccess}
-          onSubmitFailure={handleSubmitFailure}
-          onClose={onClose}
-          context="objectPage"
-        />
+        <ModalContentSubmitRequest onClose={onClose} context="objectPage" />
       </SubmitRequestModal>
     </div>
   );
