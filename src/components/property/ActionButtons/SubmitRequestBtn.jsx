@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/modal";
+import { useState } from "react";
 
 import useStore from "@/zustand/store/useStore";
 
@@ -7,8 +8,20 @@ import SubmitRequestModal from "@/components/Modals/SubmitRequestModal/SubmitReq
 import ModalContentSubmitRequest from "@/components/Modals/SubmitRequestModal/ModalContentSubmitRequest";
 
 const SubmitRequestButton = () => {
+  const [responseMessage, setResponseMessage] = useState("");
   const { onOpen, isOpen, onClose, onOpenChange } = useDisclosure();
   const { translations } = useStore();
+
+  const handleSubmitSuccess = () => {
+    setResponseMessage(
+      "Thank you for your inquiry, your data has been successfully sent."
+    );
+  };
+
+  const handleSubmitFailure = () => {
+    setResponseMessage("Sorry, something went wrong. Please try again.");
+  };
+
   return (
     <div className="p-1 flex-1">
       <Button
@@ -24,8 +37,8 @@ const SubmitRequestButton = () => {
         title={translations.Modal.submitRequest}
       >
         <ModalContentSubmitRequest
-          // onSubmitSuccess={handleSubmitSuccess}
-          // onSubmitFailure={handleSubmitFailure}
+          onSubmitSuccess={handleSubmitSuccess}
+          onSubmitFailure={handleSubmitFailure}
           onClose={onClose}
           context="objectPage"
         />

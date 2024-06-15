@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { Input, Textarea, Button } from "@nextui-org/react";
 import { RadioGroup, Radio } from "@nextui-org/radio";
-//import { useParams } from "next/navigation";
-//import axios from "axios";
 
 import useStore from "@/zustand/store/useStore";
 
@@ -16,22 +14,22 @@ const ModalContentSubmitRequest = ({
 }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [errors, setErrors] = useState({});
 
   const { translations } = useStore();
 
-  // const { id } = useParams();
-  // console.log(id);
-
   const validateForm = () => {
     const newErrors = {};
-    if (!name) newErrors.name = "Name is required";
+    if (!name) newErrors.name = translations.Form.validName;
     if (!phone || !/^\+\d+$/.test(phone))
-      newErrors.phone = "Valid phone number is required (e.g., +123456789)";
+      newErrors.phone = translations.Form.validPhone;
+    if (!email || !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email))
+      newErrors.email = translations.Form.validEmail;
     if (message.length < 10)
-      newErrors.message = "Message must be at least 10 characters long";
+      newErrors.message = translations.Form.validMessage;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -60,19 +58,6 @@ const ModalContentSubmitRequest = ({
       };
 
       console.log("Sending data:", formData);
-
-      // try {
-      //   console.log("Sending data:", formData);
-      //   const response = await axios.post(
-      //     "http://localhost:3001/send-message",
-      //     formData
-      //   );
-      //   console.log(response.data);
-      //   onSubmitSuccess();
-      // } catch (error) {
-      //   console.error("Error sending message:", error);
-      //   onSubmitFailure();
-      // }
     }
   };
 
@@ -98,10 +83,20 @@ const ModalContentSubmitRequest = ({
         fullWidth
         required
       />
+      <Input
+        label={translations.Form.email}
+        value={email}
+        onChange={(e) => setPhone(e.target.value)}
+        placeholder={translations.Form.emailPlaceholder}
+        helperText={errors.email}
+        helperColor="error"
+        fullWidth
+      />
       {context === "sideBar" && (
         <div className="flex">
           <RadioGroup
             className="text-black dark:text-slate-400"
+            orientation="horizontal"
             label={translations.Modal.interestedIn}
           >
             <Radio value="buy">{translations.Modal.buy}</Radio>

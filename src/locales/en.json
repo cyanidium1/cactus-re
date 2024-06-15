@@ -71,11 +71,15 @@
   "Form": {
     "name": "Name",
     "namePlaceholder": "Enter your name",
+    "validName": "Name is required",
     "phone": "Phone",
     "phonePlaceholder": "Enter your phone number",
+    "validPhone": "Valid phone number is required (e.g., +123456789)",
     "email": "Email",
     "emailPlaceholder": "Enter your email",
+    "validEmail": "Valid email is required",
     "message": "Message",
-    "textareaPlaceholder": "Enter your message"
+    "textareaPlaceholder": "Enter your message",
+    "validMessage": "Message must be at least 10 characters long"
   }
 }

@@ -1,40 +1,48 @@
-import { Link } from "@nextui-org/react";
+import { Link, useDisclosure } from "@nextui-org/react";
 import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import LanguageSwitcher from "./LanguageSwitcher";
 import useStore from "@/zustand/store/useStore";
+import SubmitRequestModal from "./Modals/SubmitRequestModal/SubmitRequestModal";
+import ModalContentSubmitRequest from "./Modals/SubmitRequestModal/ModalContentSubmitRequest";
 
 function Navigation() {
-  const { translations, language, setLanguage } = useStore();
-  //const isRu = language === "ru";
-  const menuItems = [
-    {
-      label: translations.BurgerMenu.catalogue,
-      linkTo: "https://cactus-realestate.ru/#preimushchestva",
-    },
-    {
-      label: translations.BurgerMenu.postAnAd,
-      linkTo: "https://cactus-realestate.ru/#uslugi",
-    },
-    {
-      label: translations.BurgerMenu.instagram,
-      linkTo: "https://cactus-realestate.ru/#instagram",
-    },
-  ];
+  const { translations, setLanguage } = useStore();
+  const { onOpen, isOpen, onClose, onOpenChange } = useDisclosure();
 
   return (
     <ul className="flex flex-col gap-[15px]">
-      {menuItems.map(({ label, linkTo }, index) => (
-        <li key={`${label}-${index}`}>
-          <Link
-            className="w-full text-customGreen text-lg font-normal hover:text-green-400 duration-300 transition-all"
-            href={linkTo}
-            size="lg"
-          >
-            {label}
-          </Link>
-        </li>
-      ))}
+      <li>
+        <Link
+          className="w-full text-customGreen text-lg font-normal hover:text-green-400 duration-300 transition-all"
+          href="https://cactus-realestate.ru/#preimushchestva"
+          size="lg"
+        >
+          {translations.BurgerMenu.catalogue}
+        </Link>
+      </li>
+      <li>
+        <button
+          type="button"
+          className=" text-customGreen text-lg font-normal hover:text-green-400 duration-300 transition-all"
+          onClick={onOpen}
+        >
+          {translations.BurgerMenu.postAnAd}
+        </button>
+        <SubmitRequestModal
+          isOpen={isOpen}
+          onClose={onClose}
+          onOpenChange={onOpenChange}
+          title={translations.Modal.submitRequest}
+        >
+          <ModalContentSubmitRequest
+            // onSubmitSuccess={handleSubmitSuccess}
+            // onSubmitFailure={handleSubmitFailure}
+            onClose={onClose}
+            context="sideBar"
+          />
+        </SubmitRequestModal>
+      </li>
       <li>
         <LanguageSwitcher setLanguage={setLanguage} />
       </li>
