@@ -64,5 +64,15 @@
     "interestedIn": "Вас интересует (выберите):",
     "buy": "Покупка",
     "sell": "Аренда"
+  },
+  "Form": {
+    "name": "Имя",
+    "namePlaceholder": "Введите Ваше имя",
+    "phone": "Телефон",
+    "phonePlaceholder": "Введите Ваш номер телефона",
+    "email": "Email",
+    "emailPlaceholder": "Введите Ваш имейл",
+    "message": "Сообщение",
+    "textareaPlaceholder": "Введите Ваше сообщение"
   }
 }
