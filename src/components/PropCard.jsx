@@ -47,12 +47,9 @@ function PropCard({ el, isGrid, isRU }) {
       <div className={` ${isGrid ? "" : "flex w-2/3"}`}>
         <div className={` ${isGrid ? "p-6 " : "p-6 sm:w-1/2"}`}>
           <div className={` ${isGrid ? "pb-6" : "sm:pb-6"}`}>
-            <a
-              className="text-lg md:text-base lg:text-lg h-14 hover:text-green-600 font-medium ease-in-out duration-500"
-              href="/property/1"
-            >
+            <p className="text-lg md:text-base lg:text-lg h-14 hover:text-green-600 font-medium ease-in-out duration-500">
               {isRU ? titleRussian : titleEnglish}
-            </a>
+            </p>
           </div>
           <ul className="py-6 border-y border-slate-100 dark:border-gray-800 flex items-center justify-between list-none">
             <li className="flex items-center me-4">
