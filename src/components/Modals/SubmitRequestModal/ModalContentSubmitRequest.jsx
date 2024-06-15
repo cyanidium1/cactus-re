@@ -1,43 +1,101 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useMemo } from "react";
 import { Input, Textarea, Button } from "@nextui-org/react";
-import { RadioGroup, Radio } from "@nextui-org/radio";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import ChooseOption from "./ChooseOption";
+import "react-toastify/dist/ReactToastify.css";
 
 import useStore from "@/zustand/store/useStore";
 
-const ModalContentSubmitRequest = ({
-  onSubmitSuccess,
-  onSubmitFailure,
-  onClose,
-  context,
-}) => {
+const validateEmail = (email) => {
+  const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  return re.test(email);
+};
+
+const validatePhone = (phone) => {
+  const re = /^\+\d+$/;
+  return re.test(phone);
+};
+
+const ModalContentSubmitRequest = ({ onClose, context, onOpenChange }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selected, setSelected] = useState("buy");
   const [errors, setErrors] = useState({});
 
   const { translations } = useStore();
 
+  const isInvalidEmail = useMemo(() => {
+    if (email === "") return false;
+    return !validateEmail(email);
+  }, [email]);
+
+  const isInvalidPhone = useMemo(() => {
+    if (phone === "") return false;
+    return !validatePhone(phone);
+  }, [phone]);
+
+  const isInvalidName = useMemo(() => {
+    if (name === "") return translations.Form.validName;
+    return name.trim() === "";
+  }, [name]);
+
   const validateForm = () => {
-    const newErrors = {};
-    if (!name) newErrors.name = translations.Form.validName;
-    if (!phone || !/^\+\d+$/.test(phone))
-      newErrors.phone = translations.Form.validPhone;
-    if (!email || !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email))
-      newErrors.email = translations.Form.validEmail;
-    if (message.length < 10)
-      newErrors.message = translations.Form.validMessage;
+    const newErrors = [];
+    if (!isInvalidName) newErrors.name = translations.Form.validName;
+    if (isInvalidPhone) newErrors.phone = translations.Form.validPhone;
+    if (isInvalidEmail) newErrors.email = translations.Form.validEmail;
+    if (message.length < 10) newErrors.message = translations.Form.validMessage;
 
     setErrors(newErrors);
+    console.log("New Errors:", newErrors);
+    console.log("State Errors before:", errors);
+    console.log("State Errors after:", newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const onSubmitSuccess = () => {
+    toast.success(translations.Form.toastSuccess, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
+
+  const onSubmitFailure = () => {
+    toast.error(translations.Form.toastFailure, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    console.log("Form submit triggered");
+
+    if (!validateForm()) {
+      console.log("Validation failed");
+      onSubmitFailure();
+      return;
+    }
+
+    console.log("Validation passed");
 
     let formData = {
       name,
@@ -56,68 +114,131 @@ const ModalContentSubmitRequest = ({
         ...formData,
         pageURL: `Клиент интересуется объектом ${window.location.href}`,
       };
-
-      console.log("Sending data:", formData);
     }
+
+    console.log("Sending data:", formData);
+
+    try {
+      // Uncomment and replace with your actual API call
+      // const response = await axios.post("http://localhost:3001/send-message", formData);
+      // console.log(response.data);
+
+      // Simulating a successful API response
+      setTimeout(() => {
+        onSubmitSuccess();
+      }, 1000);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      onSubmitFailure();
+    }
+
+    onClose();
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        label={translations.Form.name}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder={translations.Form.namePlaceholder}
-        helperText={errors.name}
-        helperColor="error"
-        fullWidth
-        required
+    <>
+      <form onSubmit={handleSubmit}>
+        <Input
+          label={translations.Form.name}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={translations.Form.namePlaceholder}
+          variant="bordered"
+          isInvalid={!isInvalidName && name !== ""}
+          color={!isInvalidName && name !== "" ? "danger" : "success"}
+          errorMessage={errors.name}
+          fullWidth
+          isRequired
+          className="mb-5"
+          classNames={{
+            input: [
+              "bg-transparent",
+              "text-black dark:text-slate-400",
+              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            ],
+          }}
+        />
+        <Input
+          label={translations.Form.phone}
+          value={phone}
+          type="tel"
+          name="phone"
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder={translations.Form.phonePlaceholder}
+          variant="bordered"
+          isInvalid={isInvalidPhone}
+          color={isInvalidPhone ? "danger" : "success"}
+          errorMessage={errors.phone}
+          fullWidth
+          isRequired
+          className="mb-5"
+          classNames={{
+            input: [
+              "bg-transparent",
+              "text-black dark:text-slate-400",
+              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            ],
+          }}
+        />
+        <Input
+          label={translations.Form.email}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={translations.Form.emailPlaceholder}
+          variant="bordered"
+          isInvalid={isInvalidEmail}
+          color={isInvalidEmail ? "danger" : "success"}
+          errorMessage={errors.email}
+          fullWidth
+          className="mb-5"
+          classNames={{
+            input: [
+              "bg-transparent",
+              "text-black dark:text-slate-400",
+              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            ],
+          }}
+        />
+        {context === "sideBar" && <ChooseOption onOpenChange={onOpenChange} />}
+        <Textarea
+          label={translations.Form.message}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={translations.Form.textareaPlaceholder}
+          variant="bordered"
+          errorMessage={errors.message}
+          fullWidth
+          isRequired
+          classNames={{
+            input: [
+              "bg-transparent",
+              "text-black dark:text-slate-400",
+              "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+            ],
+          }}
+        />
+        <Button
+          type="submit"
+          className="mt-4 bg-customGreen text-white shadow-lg"
+          fullWidth
+        >
+          {translations.Modal.submit}
+        </Button>
+      </form>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
       />
-      <Input
-        label={translations.Form.phone}
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        placeholder={translations.Form.phonePlaceholder}
-        helperText={errors.phone}
-        helperColor="error"
-        fullWidth
-        required
-      />
-      <Input
-        label={translations.Form.email}
-        value={email}
-        onChange={(e) => setPhone(e.target.value)}
-        placeholder={translations.Form.emailPlaceholder}
-        helperText={errors.email}
-        helperColor="error"
-        fullWidth
-      />
-      {context === "sideBar" && (
-        <div className="flex">
-          <RadioGroup
-            className="text-black dark:text-slate-400"
-            orientation="horizontal"
-            label={translations.Modal.interestedIn}
-          >
-            <Radio value="buy">{translations.Modal.buy}</Radio>
-            <Radio value="sell">{translations.Modal.sell}</Radio>
-          </RadioGroup>
-        </div>
-      )}
-      <Textarea
-        label={translations.Form.message}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder={translations.Form.textareaPlaceholder}
-        helperText={errors.message}
-        helperColor="error"
-        fullWidth
-        required
-      />
-      <Button type="submit" className="mt-4" onPress={onClose} fullWidth>
-        {translations.Modal.submit}
-      </Button>
-    </form>
+    </>
   );
 };
 
