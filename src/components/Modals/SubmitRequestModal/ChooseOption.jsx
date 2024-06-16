@@ -1,45 +1,56 @@
-import { useState } from "react";
-import { Radio, RadioGroup } from "@nextui-org/react";
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/react";
+import { IoMdArrowDropdown } from "react-icons/io";
+
 import useStore from "@/zustand/store/useStore";
 
-const ChooseOption = ({ onOpenChange }) => {
-  // define the passed onChange handler
-  const [selected, setSelected] = useState("");
+const ChooseOption = ({ type, setType }) => {
   const { translations } = useStore();
 
-  const isButtonSelected = (value) => {
-    if (selected === value) {
-      return true;
-    }
-  };
+  // const handleTypeChange = (type) => {
+  //   const newType = type;
+  //   setType(newType);
+  //   //updateUrlParams({ type: newType });
+  //   // const selectedType = Array.from(keys).join(", ");
+  //   // setType(selectedType);
+  // };
 
-  const handleChange = (e) => {
-    setSelected(e.target.value);
-    onChange(e); // this fires the onChange handler (handleRadio) you passed in SearchItem
+  const handleTypeChange = (keys) => {
+    const selectedType = Array.from(keys).join(", ");
+    setType(selectedType.toLowerCase()); // Convert to lowercase for consistency
   };
   return (
-    <RadioGroup
-      className="text-black dark:text-slate-400 mb-5"
-      orientation="horizontal"
-      label={translations.Modal.interestedIn}
-      value={selected}
-      //onChange={(value) => setSelectedOption(value)}
-    >
-      <Radio
-        value="buy"
-        checked={isButtonSelected("buy")}
-        onChange={handleChange}
-      >
-        {translations.Modal.buy}
-      </Radio>
-      <Radio
-        value="rent"
-        checked={isButtonSelected("rent")}
-        onChange={handleChange}
-      >
-        {translations.Modal.rent}
-      </Radio>
-    </RadioGroup>
+    <div className="mb-3">
+      <Dropdown>
+        <DropdownTrigger>
+          <Button
+            fullWidth
+            className="text-lg mt-2"
+            variant="shadow"
+            endContent={<IoMdArrowDropdown />}
+          >
+            {type ? translations.Modal[type] : translations.Modal.interestedIn}
+          </Button>
+        </DropdownTrigger>
+        <DropdownMenu
+          className="text-black dark:text-white"
+          aria-label="Single selection example"
+          variant="flat"
+          disallowEmptySelection
+          selectionMode="single"
+          selectedKeys={new Set([type])}
+          onSelectionChange={handleTypeChange}
+        >
+          <DropdownItem key="Buy">{translations.Modal.buy}</DropdownItem>
+          <DropdownItem key="Rent">{translations.Modal.rent}</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </div>
   );
 };
 
