@@ -18,12 +18,12 @@ const validatePhone = (phone) => {
   return re.test(phone);
 };
 
-const ModalContentSubmitRequest = ({ onClose, context, onOpenChange }) => {
+const ModalContentSubmitRequest = ({ onClose, context }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [selected, setSelected] = useState("buy");
+  const [selectedOption, setSelectedOption] = useState("buy");
   const [errors, setErrors] = useState({});
 
   const { translations } = useStore();
@@ -39,8 +39,8 @@ const ModalContentSubmitRequest = ({ onClose, context, onOpenChange }) => {
   }, [phone]);
 
   const isInvalidName = useMemo(() => {
-    if (name === "") return translations.Form.validName;
-    return name.trim() === "";
+    if (name === "") return true;
+    return true;
   }, [name]);
 
   const validateForm = () => {
@@ -144,11 +144,11 @@ const ModalContentSubmitRequest = ({ onClose, context, onOpenChange }) => {
           onChange={(e) => setName(e.target.value)}
           placeholder={translations.Form.namePlaceholder}
           variant="bordered"
-          isInvalid={!isInvalidName && name !== ""}
-          color={!isInvalidName && name !== "" ? "danger" : "success"}
+          // isInvalid={isInvalidName}
+          // color={isInvalidName ? "danger" : "success"}
           errorMessage={errors.name}
           fullWidth
-          isRequired
+          //isRequired
           className="mb-5"
           classNames={{
             input: [
@@ -199,7 +199,9 @@ const ModalContentSubmitRequest = ({ onClose, context, onOpenChange }) => {
             ],
           }}
         />
-        {context === "sideBar" && <ChooseOption onOpenChange={onOpenChange} />}
+        {context === "sideBar" && (
+          <ChooseOption type={selectedOption} setType={setSelectedOption} />
+        )}
         <Textarea
           label={translations.Form.message}
           value={message}
