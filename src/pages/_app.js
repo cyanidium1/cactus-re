@@ -1,5 +1,7 @@
 // "use client";
 import ZustandProvider from "@/zustand/store/ZustandProvider";
+import "leaflet/dist/leaflet.css";
+
 import "../app/globals.css";
 import "../components/TopImage.css";
 

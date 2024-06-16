@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 import useStore from "@/zustand/store/useStore";
 import ShortInfo from "@/components/property/ShortInfo";
-//import GoogleMapComponent from "@/components/property/GoogleMapComponent";
+import OpenStreetMapComponent from "@/components/property/OpenStreetMapComponent";
 
 export default function Page() {
   const router = useRouter();
@@ -63,6 +63,8 @@ export default function Page() {
     sellrent,
     mainPhoto,
     locationGmapsLink,
+    latitude, // Ensure you have latitude in your page data
+    longitude, // Ensure you have longitude in your page data
   } = page;
 
   return (
@@ -122,7 +124,12 @@ export default function Page() {
               descriptionRu={descriptionRussian}
               isRu={isRu}
             />
-            {/* <GoogleMapComponent locationGmapsLink={locationGmapsLink} /> */}
+            {latitude && longitude && (
+              <OpenStreetMapComponent
+                latitude={latitude}
+                longitude={longitude}
+              />
+            )}
           </div>
           <div className="lg:w-1/3 md:w-1/2 md:py-4 px-3 md:px-0 mt-8 md:mt-0">
             <div className="sticky top-20">
