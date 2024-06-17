@@ -38,17 +38,10 @@ const ModalContentSubmitRequest = ({ onClose, context }) => {
     return !validatePhone(phone);
   }, [phone]);
 
-  const isInvalidName = useMemo(() => {
-    if (name === "") return true;
-    return true;
-  }, [name]);
-
   const validateForm = () => {
     const newErrors = [];
-    if (!isInvalidName) newErrors.name = translations.Form.validName;
     if (isInvalidPhone) newErrors.phone = translations.Form.validPhone;
     if (isInvalidEmail) newErrors.email = translations.Form.validEmail;
-    if (message.length < 10) newErrors.message = translations.Form.validMessage;
 
     setErrors(newErrors);
     console.log("New Errors:", newErrors);
@@ -144,11 +137,8 @@ const ModalContentSubmitRequest = ({ onClose, context }) => {
           onChange={(e) => setName(e.target.value)}
           placeholder={translations.Form.namePlaceholder}
           variant="bordered"
-          // isInvalid={isInvalidName}
-          // color={isInvalidName ? "danger" : "success"}
           errorMessage={errors.name}
           fullWidth
-          //isRequired
           className="mb-5"
           classNames={{
             input: [
@@ -210,7 +200,6 @@ const ModalContentSubmitRequest = ({ onClose, context }) => {
           variant="bordered"
           errorMessage={errors.message}
           fullWidth
-          isRequired
           classNames={{
             input: [
               "bg-transparent",

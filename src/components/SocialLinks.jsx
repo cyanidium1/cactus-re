@@ -5,7 +5,7 @@ import { FiFacebook } from "react-icons/fi";
 
 const SocialLinks = () => {
   return (
-    <ul className="list-none md:text-end text-center flex gap-1 justify-center items-center">
+    <ul className="list-none md:text-end text-center flex gap-1  items-center">
       <li className="ms-1">
         <div className="flex justify-center items-center w-[28px] h-[28px] border border-customGreen  dark:border-gray-700 rounded-md hover:border-green-600 dark:hover:border-green-600 hover:bg-green-600 dark:hover:bg-green-600">
           <a href="https://t.me/CACTUS_Real_Estate" target="_blank">

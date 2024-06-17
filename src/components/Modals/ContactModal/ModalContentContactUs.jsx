@@ -7,17 +7,30 @@ const ModalContentContactUs = () => {
 
   return (
     <div>
-      <div className="flex gap-3 mb-2">
-        <p className=" text-black dark:text-slate-400">
-          {translations.Modal.phone}
-        </p>
-        <p className=" text-black dark:text-slate-400">+355 685 577 016</p>
+      <div className="w-full flex mb-2">
+        <div className="w-1/3">
+          <p className=" text-black dark:text-slate-400">
+            {translations.Modal.phone}
+          </p>
+        </div>
+        <div className="w-2-3">
+          <a
+            href="tel:+355685577016"
+            className="text-lg text-black dark:text-slate-400"
+          >
+            +355 685 577 016
+          </a>
+        </div>
       </div>
-      <div className="flex gap-3">
-        <p className="text-black dark:text-slate-400">
-          {translations.Modal.messengers}
-        </p>
-        <SocialLinks />
+      <div className="w-full flex">
+        <div className="w-1/3">
+          <p className="text-black dark:text-slate-400">
+            {translations.Modal.messengers}
+          </p>
+        </div>
+        <div className="w-2/3">
+          <SocialLinks />
+        </div>
       </div>
     </div>
   );

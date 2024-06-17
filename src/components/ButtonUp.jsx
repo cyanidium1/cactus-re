@@ -5,11 +5,7 @@ const ButtonUp = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 100);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -24,12 +20,14 @@ const ButtonUp = () => {
       behavior: "smooth",
     });
   };
+
   return (
     isVisible && (
       <a
         id="back-to-top"
-        className="fixed  text-lg rounded-full z-20 bottom-5 md:bottom-4 left-1/2 transform -translate-x-1/2 size-10 hover:scale-110 transition-all duration-300 cursor-pointer text-center bg-customGreen text-white justify-center items-center flex"
+        className="fixed text-lg rounded-full z-20 bottom-5 left-1/2 transform -translate-x-1/2 size-10 hover:scale-110 transition-all duration-300 cursor-pointer text-center bg-customGreen text-white justify-center items-center flex"
         onClick={handleClick}
+        style={{ bottom: "2rem" }} // Add bottom spacing to avoid overlap with modals
       >
         <svg
           stroke="currentColor"
