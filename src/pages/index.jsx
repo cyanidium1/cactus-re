@@ -7,6 +7,14 @@ import { performRequest } from "@/lib/datocms";
 import { Card, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
+import {
+  getCities,
+  getData,
+  getIdByValue,
+  getSellOrRent,
+  getTypeOfProperty,
+  queryDictionary,
+} from "@/api/api";
 
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
@@ -49,6 +57,39 @@ export default function Home() {
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const minPrice = 10000;
+      const maxPrice = 500000;
+      // const cityId = "df176459-48a9-4579-83fc-b09f13038471";
+      const cityId = getIdByValue(queryDictionary, "cities", "Saranda");
+      console.log(`city Id`, cityId);
+      const sellOrRentId = "adf6a0d8-7600-4421-8404-72c10743b6ee";
+      const typeOfPropertyId = "567f2872-dbb7-40f1-a09e-f990f69b9974";
+
+      const start = 0;
+      const limit = 2;
+      const data = await getData(
+        start,
+        limit,
+        minPrice,
+        maxPrice,
+        cityId,
+        sellOrRentId,
+        typeOfPropertyId
+      );
+      // const cities = await getCities();
+      // const sellOrRent = await getSellOrRent();
+      // const typeofProperty = await getTypeOfProperty();
+      console.log("Hello", data);
+      // console.log(`Its cityes`, cities);
+      // console.log("sell or rent", sellOrRent);
+      // console.log("typeOfProperty", typeofProperty);
+    };
+
+    fetchData();
+  }, []);
+
   async function fetchData(isFreshSearch = false) {
     setLoading(true);
     const first = itemsPerPage;
@@ -63,7 +104,7 @@ export default function Home() {
       first,
       skip,
     };
-
+    console.log(`req`, req);
     try {
       const data = await performRequest({ req });
       if (data.allProperties.length === 0 && !isFreshSearch) {
