@@ -39,10 +39,12 @@ export default function Home() {
 
   useEffect(() => {
     fetchTotalCount();
-    fetchData();
+    fetchData(false);
   }, [currentPage, itemsPerPage]);
 
   const fetchTotalCount = async (isFreshSearch = false) => {
+    setLoading(true);
+
     let cityId = null;
     let sellOrRentId = null;
     let typeOfPropertyId = null;
@@ -74,6 +76,8 @@ export default function Home() {
       setTotalPages(Math.ceil(totalCount / itemsPerPage));
     } catch (error) {
       console.error("Error fetching total count:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -125,7 +129,6 @@ export default function Home() {
         sellOrRentId,
         typeOfPropertyId
       );
-      console.log(`data`, data);
 
       const newData = data.map((item) => {
         if (item.mainPhoto && item.mainPhoto._type === "image") {
@@ -148,6 +151,8 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  console.log(`portfolioPosts`, portfolioPosts);
 
   return (
     <Layout isStyled={false}>
@@ -187,7 +192,7 @@ export default function Home() {
                 />
               ))
           : portfolioPosts.map((el) => (
-              <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
+              <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
             ))}
       </div>
       <div className="max-w-5xl w-full flex md:justify-center my-2 mx-auto">

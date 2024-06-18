@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 import useStore from "@/zustand/store/useStore";
 import ShortInfo from "@/components/property/ShortInfo";
+import { getDataById } from "@/api/api";
+import { urlFor } from "@/lib/sanity";
 //import GoogleMapComponent from "@/components/property/GoogleMapComponent";
 
 export default function Page() {
@@ -22,12 +24,28 @@ export default function Page() {
   const { language } = useStore();
   const isRu = language === "ru";
 
-  async function fetchData() {
+  async function getDataBtId() {
     setLoading(true);
-
     try {
-      const data = await performRequest({ id });
-      setPage(data.property);
+      const data = await getDataById(id);
+
+      const newData = data.map((item) => {
+        if (item.mainPhoto && item.mainPhoto._type === "image") {
+          item.mainPhoto.url = urlFor(item.mainPhoto).url();
+        }
+        if (item.allPhotos && Array.isArray(item.allPhotos)) {
+          item.allPhotos = item.allPhotos.map((photo) => {
+            if (photo._type === "image") {
+              return { ...photo, url: urlFor(photo).url() };
+            }
+            return photo;
+          });
+        }
+        return item;
+      });
+
+      console.log(`data one page`, newData);
+      setPage(newData[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -37,7 +55,7 @@ export default function Page() {
 
   useEffect(() => {
     if (id) {
-      fetchData();
+      getDataBtId();
     }
   }, [id]);
 

@@ -111,7 +111,10 @@ export const getData = async (
       params.typeOfPropertyId = typeOfPropertyId;
     }
 
-    const query = `*[_type == 'property' ${conditions.length ? "&& " + conditions.join(" && ") : ""}] | order(_createdAt desc) [${currentPage}...${currentPage + itemsPerPage}] {
+    const start = currentPage * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    const query = `*[_type == 'property' ${conditions.length ? "&& " + conditions.join(" && ") : ""}] | order(_createdAt desc) [${start}...${end}] {
       _id,
       titleEnglish,
       titleRussian,
@@ -134,6 +137,39 @@ export const getData = async (
       bathroomNumber
     }`;
 
+    const data = await client.fetch(query, params);
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+export const getDataById = async (_id) => {
+  try {
+    const query = `*[_type == 'property' && _id == $_id] {
+      _id,
+      titleEnglish,
+      titleRussian,
+      "cityName": cityName->name,
+      "typeOfProperty": typeOfProperty->value,
+      "sellOrRent": sellOrRent->value,
+      descriptionEnglish,
+      descriptionRussian,
+      locationGmapsLink,
+      areaActual,
+      areaCertificate,
+      price,
+      stateEnglish,
+      stateRussian,
+      roomsEnglish,
+      roomsRussian,
+      mainPhoto,
+      allPhotos,
+      youtubeLink,
+      bathroomNumber
+    }`;
+
+    const params = { _id };
     const data = await client.fetch(query, params);
     return data;
   } catch (error) {
@@ -178,7 +214,7 @@ export const getTotalCount = async (
     return totalCount;
   } catch (error) {
     console.error("Error:", error);
-    return 0; // Повернення 0 у випадку помилки
+    return 0;
   }
 };
 
