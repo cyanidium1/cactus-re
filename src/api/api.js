@@ -25,29 +25,29 @@ export const queryDictionary = {
   ],
   actions: [
     {
-      _id: "48744851-41a5-4697-aed4-a3565a74f789",
+      _id: "e073a3f1-9727-49fd-859e-9de141ca450c",
       value: "Rent",
     },
     {
-      _id: "adf6a0d8-7600-4421-8404-72c10743b6ee",
+      _id: "450b0d10-9053-4790-b2c1-86abbd1b68cf",
       value: "Sell",
     },
   ],
   propertyTypes: [
     {
-      _id: "38f7c1ea-7160-415a-a5a5-d5cd9b42dd6c",
+      _id: "54ca66c9-df6d-4c2d-976c-b1f045d91553",
       value: "Land",
     },
     {
-      _id: "46b953da-aeca-43a4-b0ac-3e8f3545b70e",
+      _id: "e8d50d0b-7fa7-466b-aa53-0ef4ab301d67",
       value: "House",
     },
     {
-      _id: "567f2872-dbb7-40f1-a09e-f990f69b9974",
+      _id: "df478a35-d3c9-41d7-a2c9-5e3193b6a059",
       value: "Apartment",
     },
     {
-      _id: "d466afd2-9f1e-4d88-858c-3e54882baedb",
+      _id: "9125996f-2170-4435-8db9-2b26e76041a8",
       value: "Villa",
     },
   ],
@@ -64,9 +64,22 @@ export const getIdByValue = (dictionary, category, value) => {
 //Приклад
 // const cityId = getIdByValue(queryDictionary, "cities", "Saranda");
 
+export const translateToEnglish = (value) => {
+  const translations = {
+    Покупка: "Sell",
+    Аренда: "Rent",
+    Вилла: "Villa",
+    Апартаменты: "Apartment",
+    Дом: "House",
+    Земля: "Land",
+  };
+
+  return translations[value] || value;
+};
+
 export const getData = async (
-  start = 0,
-  limit = 12,
+  currentPage,
+  itemsPerPage,
   minPrice,
   maxPrice,
   cityId,
@@ -86,45 +99,86 @@ export const getData = async (
       params.maxPrice = maxPrice;
     }
     if (cityId) {
-      conditions.push("cityname._ref == $cityId");
+      conditions.push("cityName._ref == $cityId");
       params.cityId = cityId;
     }
     if (sellOrRentId) {
-      conditions.push("sell_or_rent._ref == $sellOrRentId");
+      conditions.push("sellOrRent._ref == $sellOrRentId");
       params.sellOrRentId = sellOrRentId;
     }
     if (typeOfPropertyId) {
-      conditions.push("type_of_property._ref == $typeOfPropertyId");
+      conditions.push("typeOfProperty._ref == $typeOfPropertyId");
       params.typeOfPropertyId = typeOfPropertyId;
     }
 
-    const query = `*[_type == 'property' ${conditions.length ? "&& " + conditions.join(" && ") : ""}] | order(_createdAt desc) [${start}...${start + limit}] {
+    const query = `*[_type == 'property' ${conditions.length ? "&& " + conditions.join(" && ") : ""}] | order(_createdAt desc) [${currentPage}...${currentPage + itemsPerPage}] {
       _id,
-      title_english,
-      title_russian,
-      "cityName": cityname->name,
-      "typeOfProperty": type_of_property->value,
-      "sellOrRent": sell_or_rent->value,
-      description_english,
-      description_russian,
-      location_gmaps_link,
-      area_actuall,
-      area_certificate,
+      titleEnglish,
+      titleRussian,
+      "cityName": cityName->name,
+      "typeOfProperty": typeOfProperty->value,
+      "sellOrRent": sellOrRent->value,
+      descriptionEnglish,
+      descriptionRussian,
+      locationGmapsLink,
+      areaActual,
+      areaCertificate,
       price,
-      state_english,
-      state_russian,
-      rooms_english,
-      rooms_russian,
-      main_photo,
-      all_photos,
-      youtube_link,
-      bathroom_number
+      stateEnglish,
+      stateRussian,
+      roomsEnglish,
+      roomsRussian,
+      mainPhoto,
+      allPhotos,
+      youtubeLink,
+      bathroomNumber
     }`;
 
     const data = await client.fetch(query, params);
     return data;
   } catch (error) {
     console.error("Error:", error);
+  }
+};
+
+export const getTotalCount = async (
+  minPrice,
+  maxPrice,
+  cityId,
+  sellOrRentId,
+  typeOfPropertyId
+) => {
+  try {
+    let conditions = [];
+    let params = {};
+
+    if (minPrice !== undefined) {
+      conditions.push("price >= $minPrice");
+      params.minPrice = minPrice;
+    }
+    if (maxPrice !== undefined) {
+      conditions.push("price <= $maxPrice");
+      params.maxPrice = maxPrice;
+    }
+    if (cityId) {
+      conditions.push("cityName._ref == $cityId");
+      params.cityId = cityId;
+    }
+    if (sellOrRentId) {
+      conditions.push("sellOrRent._ref == $sellOrRentId");
+      params.sellOrRentId = sellOrRentId;
+    }
+    if (typeOfPropertyId) {
+      conditions.push("typeOfProperty._ref == $typeOfPropertyId");
+      params.typeOfPropertyId = typeOfPropertyId;
+    }
+
+    const query = `count(*[_type == 'property' ${conditions.length ? "&& " + conditions.join(" && ") : ""}])`;
+    const totalCount = await client.fetch(query, params);
+    return totalCount;
+  } catch (error) {
+    console.error("Error:", error);
+    return 0; // Повернення 0 у випадку помилки
   }
 };
 

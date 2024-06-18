@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["www.datocms-assets.com"],
+    domains: ["www.datocms-assets.com", "cdn.sanity.io"],
   },
   i18n: {
     locales: ["ru", "en"], // Укажите поддерживаемые языки

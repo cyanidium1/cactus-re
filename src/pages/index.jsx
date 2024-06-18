@@ -8,13 +8,13 @@ import { Card, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
 import {
-  getCities,
   getData,
   getIdByValue,
-  getSellOrRent,
-  getTypeOfProperty,
+  getTotalCount,
   queryDictionary,
+  translateToEnglish,
 } from "@/api/api";
+import { urlFor } from "@/lib/sanity";
 
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
@@ -33,17 +33,49 @@ export default function Home() {
 
   const handleSearch = () => {
     setCurrentPage(1);
-    fetchData(true);
+    fetchTotalCount(true);
+    fetchData(true, 0);
   };
 
   useEffect(() => {
+    fetchTotalCount();
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, itemsPerPage]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-    fetchData();
-  }, [itemsPerPage]);
+  const fetchTotalCount = async (isFreshSearch = false) => {
+    let cityId = null;
+    let sellOrRentId = null;
+    let typeOfPropertyId = null;
+
+    if (isFreshSearch) {
+      cityId = getIdByValue(queryDictionary, "cities", city);
+      const englishSellOrRent = translateToEnglish(sellOrRent);
+      sellOrRentId = getIdByValue(
+        queryDictionary,
+        "actions",
+        englishSellOrRent
+      );
+      const englishPropertyType = translateToEnglish(propertyType);
+      typeOfPropertyId = getIdByValue(
+        queryDictionary,
+        "propertyTypes",
+        englishPropertyType
+      );
+    }
+
+    try {
+      const totalCount = await getTotalCount(
+        isFreshSearch ? minPrice : undefined,
+        isFreshSearch ? maxPrice : undefined,
+        cityId,
+        sellOrRentId,
+        typeOfPropertyId
+      );
+      setTotalPages(Math.ceil(totalCount / itemsPerPage));
+    } catch (error) {
+      console.error("Error fetching total count:", error);
+    }
+  };
 
   const [isInitialRender, setIsInitialRender] = useState(true);
 
@@ -57,74 +89,65 @@ export default function Home() {
     }
   }, [currentPage]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const minPrice = 10000;
-      const maxPrice = 500000;
-      // const cityId = "df176459-48a9-4579-83fc-b09f13038471";
-      const cityId = getIdByValue(queryDictionary, "cities", "Saranda");
-      console.log(`city Id`, cityId);
-      const sellOrRentId = "adf6a0d8-7600-4421-8404-72c10743b6ee";
-      const typeOfPropertyId = "567f2872-dbb7-40f1-a09e-f990f69b9974";
+  const fetchData = async (isFreshSearch = false, pageOverride) => {
+    setLoading(true);
 
-      const start = 0;
-      const limit = 2;
+    let cityId = null;
+    let sellOrRentId = null;
+    let typeOfPropertyId = null;
+
+    const pageToFetch =
+      pageOverride !== undefined ? pageOverride : currentPage - 1;
+
+    if (isFreshSearch) {
+      cityId = getIdByValue(queryDictionary, "cities", city);
+      const englishSellOrRent = translateToEnglish(sellOrRent);
+      sellOrRentId = getIdByValue(
+        queryDictionary,
+        "actions",
+        englishSellOrRent
+      );
+      const englishPropertyType = translateToEnglish(propertyType);
+      typeOfPropertyId = getIdByValue(
+        queryDictionary,
+        "propertyTypes",
+        englishPropertyType
+      );
+    }
+
+    try {
       const data = await getData(
-        start,
-        limit,
-        minPrice,
-        maxPrice,
+        pageToFetch,
+        itemsPerPage,
+        isFreshSearch ? minPrice : undefined,
+        isFreshSearch ? maxPrice : undefined,
         cityId,
         sellOrRentId,
         typeOfPropertyId
       );
-      // const cities = await getCities();
-      // const sellOrRent = await getSellOrRent();
-      // const typeofProperty = await getTypeOfProperty();
-      console.log("Hello", data);
-      // console.log(`Its cityes`, cities);
-      // console.log("sell or rent", sellOrRent);
-      // console.log("typeOfProperty", typeofProperty);
-    };
+      console.log(`data`, data);
 
-    fetchData();
-  }, []);
-
-  async function fetchData(isFreshSearch = false) {
-    setLoading(true);
-    const first = itemsPerPage;
-    const skip = (currentPage - 1) * itemsPerPage;
-
-    const req = {
-      cityName: city || null,
-      sellRent: sellOrRent || null,
-      houseApart: propertyType || null,
-      minPrice,
-      maxPrice,
-      first,
-      skip,
-    };
-    console.log(`req`, req);
-    try {
-      const data = await performRequest({ req });
-      if (data.allProperties.length === 0 && !isFreshSearch) {
-        console.log("Empty response, making a repeat request...");
-        // Repeat request logic here
-        const repeatData = await performRequest({ req });
-        setPortfolioPosts(repeatData.allProperties);
-        const totalItems = repeatData._allPropertiesMeta.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-      } else {
-        setPortfolioPosts(data.allProperties);
-        const totalItems = data._allPropertiesMeta.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-      }
+      const newData = data.map((item) => {
+        if (item.mainPhoto && item.mainPhoto._type === "image") {
+          item.mainPhoto.url = urlFor(item.mainPhoto).url();
+        }
+        if (item.allPhotos && Array.isArray(item.allPhotos)) {
+          item.allPhotos = item.allPhotos.map((photo) => {
+            if (photo._type === "image") {
+              return { ...photo, url: urlFor(photo).url() };
+            }
+            return photo;
+          });
+        }
+        return item;
+      });
+      setPortfolioPosts(newData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <Layout isStyled={false}>
@@ -157,7 +180,7 @@ export default function Home() {
               .fill()
               .map((_, index) => (
                 <Skeleton
-                  index={index}
+                  key={index}
                   isGrid={isGrid}
                   className="w-80 space-y-5 p-4 my-3"
                   radius="lg"
