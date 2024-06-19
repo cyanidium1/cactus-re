@@ -7,7 +7,7 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 const Footer = ({ isRu }) => {
   return (
     <footer className=" dark:bg-black bg-slate-100 mx-auto w-full ">
-      <div className="mx-auto max-w-[1024px] px-[12px] ">
+      <div className="mx-auto max-w-[1120px] px-3 ">
         <div className=" py-16 lg:flex lg:justify-between lg:gap-[30px] xl:gap-[50px]">
           <div className="md:mb-[30px]">
             <Logo />

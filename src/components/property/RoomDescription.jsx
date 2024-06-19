@@ -19,7 +19,7 @@ const RoomDescription = ({ descriptionEn, descriptionRu, isRu }) => {
   return (
     <>
       <p className="text-slate-400 my-[10px] xl:text-lg xxl:text-xl">
-        {isRu ? descriptionEn : descriptionRu}
+        {isRu ? descriptionRu : descriptionEn}
       </p>
     </>
   );

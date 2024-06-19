@@ -21,6 +21,9 @@ const ButtonUp = () => {
     });
   };
 
+  // const windowWidth = window.innerWidth;
+  // console.log(windowWidth);
+
   return (
     isVisible && (
       <a
