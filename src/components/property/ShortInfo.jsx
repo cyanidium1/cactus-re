@@ -3,15 +3,14 @@ import useStore from "@/zustand/store/useStore";
 const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
   const { translations } = useStore();
 
-  if (!city || typeof city !== "object") {
+  if (!city || typeof city !== "string") {
     return <div>No city data available</div>;
   }
-  const { name } = city;
-
+  // const { name } = city;
   const itemsInfo = [
     {
       title: translations.PropertyPage.city,
-      value: name,
+      value: city,
     },
     {
       title: translations.PropertyPage.roomsNumber,

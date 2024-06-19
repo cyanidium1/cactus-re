@@ -46,6 +46,7 @@ export default function Page() {
       });
 
       setPage(newData[0]);
+      console.log(`data`, newData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -68,17 +69,17 @@ export default function Page() {
 
   const {
     allPhotos,
-    cityname,
+    cityName,
     titleEnglish,
     titleRussian,
     bathroomNumber,
     roomsEnglish,
-    area,
+    areaActual,
     areaCertificate,
     descriptionEnglish,
     descriptionRussian,
     price,
-    sellrent,
+    sellOrRent,
     mainPhoto,
     locationGmapsLink,
   } = page;
@@ -102,16 +103,16 @@ export default function Page() {
               <RoomQualities
                 bath={bathroomNumber}
                 rooms={roomsEnglish}
-                area={area}
+                area={areaActual}
               />
             </div>
             <div className="flex flex-col flex-grow h-full">
               <ShortInfo
                 isRu={isRu}
-                city={cityname}
+                city={cityName}
                 rooms={roomsEnglish}
                 areaCertificate={areaCertificate}
-                area={area}
+                area={areaActual}
               />
             </div>
           </div>
@@ -130,14 +131,14 @@ export default function Page() {
               <RoomQualities
                 bath={bathroomNumber}
                 rooms={roomsEnglish}
-                area={area}
+                area={areaActual}
               />
               <ShortInfo
                 isRu={isRu}
-                city={cityname}
+                city={cityName}
                 rooms={roomsEnglish}
                 areaCertificate={areaCertificate}
-                area={area}
+                area={areaActual}
               />
             </div>
 
@@ -151,7 +152,7 @@ export default function Page() {
           <div className="lg:w-1/3 md:w-1/2 md:py-4 px-3 md:px-0 mt-8 md:mt-0">
             <div className="sticky top-20">
               <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-                <RoomPrices price={price} sellrent={sellrent} isRu={isRu} />
+                <RoomPrices price={price} sellrent={sellOrRent} isRu={isRu} />
                 <ActionButtons isRu={isRu} />
               </div>
             </div>
