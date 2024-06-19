@@ -7,6 +7,14 @@ import { performRequest } from "@/lib/datocms";
 import { Card, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
+import {
+  getData,
+  getIdByValue,
+  getTotalCount,
+  queryDictionary,
+  translateToEnglish,
+} from "@/api/api";
+import { urlFor } from "@/lib/sanity";
 
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
@@ -25,17 +33,53 @@ export default function Home() {
 
   const handleSearch = () => {
     setCurrentPage(1);
-    fetchData(true);
+    fetchTotalCount(true);
+    fetchData(true, 0);
   };
 
   useEffect(() => {
-    fetchData();
-  }, [currentPage]);
+    fetchTotalCount();
+    fetchData(false);
+  }, [currentPage, itemsPerPage]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-    fetchData();
-  }, [itemsPerPage]);
+  const fetchTotalCount = async (isFreshSearch = false) => {
+    setLoading(true);
+
+    let cityId = null;
+    let sellOrRentId = null;
+    let typeOfPropertyId = null;
+
+    if (isFreshSearch) {
+      cityId = getIdByValue(queryDictionary, "cities", city);
+      const englishSellOrRent = translateToEnglish(sellOrRent);
+      sellOrRentId = getIdByValue(
+        queryDictionary,
+        "actions",
+        englishSellOrRent
+      );
+      const englishPropertyType = translateToEnglish(propertyType);
+      typeOfPropertyId = getIdByValue(
+        queryDictionary,
+        "propertyTypes",
+        englishPropertyType
+      );
+    }
+
+    try {
+      const totalCount = await getTotalCount(
+        isFreshSearch ? minPrice : undefined,
+        isFreshSearch ? maxPrice : undefined,
+        cityId,
+        sellOrRentId,
+        typeOfPropertyId
+      );
+      setTotalPages(Math.ceil(totalCount / itemsPerPage));
+    } catch (error) {
+      console.error("Error fetching total count:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const [isInitialRender, setIsInitialRender] = useState(true);
 
@@ -49,41 +93,65 @@ export default function Home() {
     }
   }, [currentPage]);
 
-  async function fetchData(isFreshSearch = false) {
+  const fetchData = async (isFreshSearch = false, pageOverride) => {
     setLoading(true);
-    const first = itemsPerPage;
-    const skip = (currentPage - 1) * itemsPerPage;
 
-    const req = {
-      cityName: city || null,
-      sellRent: sellOrRent || null,
-      houseApart: propertyType || null,
-      minPrice,
-      maxPrice,
-      first,
-      skip,
-    };
+    let cityId = null;
+    let sellOrRentId = null;
+    let typeOfPropertyId = null;
+
+    const pageToFetch =
+      pageOverride !== undefined ? pageOverride : currentPage - 1;
+
+    if (isFreshSearch) {
+      cityId = getIdByValue(queryDictionary, "cities", city);
+      const englishSellOrRent = translateToEnglish(sellOrRent);
+      sellOrRentId = getIdByValue(
+        queryDictionary,
+        "actions",
+        englishSellOrRent
+      );
+      const englishPropertyType = translateToEnglish(propertyType);
+      typeOfPropertyId = getIdByValue(
+        queryDictionary,
+        "propertyTypes",
+        englishPropertyType
+      );
+    }
 
     try {
-      const data = await performRequest({ req });
-      if (data.allProperties.length === 0 && !isFreshSearch) {
-        console.log("Empty response, making a repeat request...");
-        // Repeat request logic here
-        const repeatData = await performRequest({ req });
-        setPortfolioPosts(repeatData.allProperties);
-        const totalItems = repeatData._allPropertiesMeta.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-      } else {
-        setPortfolioPosts(data.allProperties);
-        const totalItems = data._allPropertiesMeta.count;
-        setTotalPages(Math.ceil(totalItems / itemsPerPage));
-      }
+      console.log(`перед викликом`, isFreshSearch, minPrice, maxPrice);
+      const data = await getData(
+        pageToFetch,
+        itemsPerPage,
+        isFreshSearch ? minPrice : undefined,
+        isFreshSearch ? maxPrice : undefined,
+        cityId,
+        sellOrRentId,
+        typeOfPropertyId
+      );
+
+      const newData = data.map((item) => {
+        if (item.mainPhoto && item.mainPhoto._type === "image") {
+          item.mainPhoto.url = urlFor(item.mainPhoto).url();
+        }
+        if (item.allPhotos && Array.isArray(item.allPhotos)) {
+          item.allPhotos = item.allPhotos.map((photo) => {
+            if (photo._type === "image") {
+              return { ...photo, url: urlFor(photo).url() };
+            }
+            return photo;
+          });
+        }
+        return item;
+      });
+      setPortfolioPosts(newData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <Layout isStyled={false}>
@@ -116,14 +184,14 @@ export default function Home() {
               .fill()
               .map((_, index) => (
                 <Skeleton
-                  index={index}
+                  key={index}
                   isGrid={isGrid}
                   className="w-80 space-y-5 p-4 my-3"
                   radius="lg"
                 />
               ))
           : portfolioPosts.map((el) => (
-              <PropCard key={el.id} el={el} isGrid={isGrid} isRU={isRu} />
+              <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
             ))}
       </div>
       <div className="max-w-5xl w-full flex md:justify-center my-2 mx-auto">
