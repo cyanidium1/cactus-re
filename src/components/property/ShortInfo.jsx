@@ -1,6 +1,6 @@
 import useStore from "@/zustand/store/useStore";
 
-const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
+const ShortInfo = ({ city, rooms, areaCertificate, area }) => {
   const { translations } = useStore();
 
   if (!city || typeof city !== "string") {

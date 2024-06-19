@@ -30,6 +30,7 @@ function SearchUI({
   const [sliderMaxPrice, setSliderMaxPrice] = useState(250000);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
+  const [value, setValue] = useState([0, 500]);
   const { translations } = useStore();
   const router = useRouter();
 
@@ -95,16 +96,12 @@ function SearchUI({
   };
 
   const handleMinPriceChange = (newMinPrice) => {
-    console.log(newMinPrice);
     setMinPrice((minPrice) => minPrice + newMinPrice);
-    console.log(minPrice);
     updateUrlParams({ minPrice: newMinPrice });
   };
 
-  //console.log(minPrice);
-
   const handleMaxPriceChange = (newMaxPrice) => {
-    setMaxPrice(newMaxPrice);
+    setMaxPrice((newMaxPrice) => maxPrice + newMaxPrice);
     updateUrlParams({ maxPrice: newMaxPrice });
   };
 
@@ -135,6 +132,7 @@ function SearchUI({
       itemsPerPage: 12,
       isGrid: true,
     });
+    onSearch();
   };
 
   return (

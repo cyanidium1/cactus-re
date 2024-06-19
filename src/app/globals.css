@@ -33,8 +33,10 @@ body {
 }
 
 .header header {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .image-container {
@@ -68,16 +70,24 @@ body {
 @media (min-width: 1024px) {
   .image-container {
     max-height: 439px;
+    margin: 0 auto;
   }
-}
 
-@media (min-width: 1280px) {
-  .header header {
-    padding-left: 0;
-    padding-right: 0;
+  @media (min-width: 1280px) {
+    .header header {
+      margin-left: 80px;
+      margin-right: 80px;
+    }
   }
 
   .image-container {
     max-height: 487px;
   }
 }
+
+/* @media (min-width: 1440px) {
+  .header header {
+   
+    margin: 0 auto;
+  }
+} */
