@@ -42,7 +42,7 @@ const ShortInfo = ({ isRu, city, rooms, areaCertificate, area }) => {
       </li>
     );
   });
-  return <ul className="mt-[20px] md:mt-[70px]">{elements}</ul>;
+  return <ul className="mt-[20px]">{elements}</ul>;
 };
 
 export default ShortInfo;
