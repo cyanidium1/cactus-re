@@ -4,7 +4,7 @@ import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
 import Skeleton from "@/components/Skeleton";
 import { performRequest } from "@/lib/datocms";
-import { Card, Pagination } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
 

@@ -36,14 +36,25 @@ function SearchUI({
   useEffect(() => {
     // Загрузка значений фильтров из URL при начальной загрузке
     const { query } = router;
-    if (query.minPrice) setMinPrice(parseInt(query.minPrice, 10));
-    if (query.maxPrice) setMaxPrice(parseInt(query.maxPrice, 10));
+    console.log("Query Parameters:", query);
+    if (query.minPrice) {
+      const parsedMinPrice = parseInt(query.minPrice, 10);
+      console.log("Parsed Min Price:", parsedMinPrice);
+      setMinPrice(parsedMinPrice);
+    }
+    if (query.maxPrice) {
+      const parsedMaxPrice = parseInt(query.maxPrice, 10);
+      console.log("Parsed Max Price:", parsedMaxPrice);
+      setMaxPrice(parsedMaxPrice);
+    }
     if (query.city) setCity(query.city);
     if (query.propertyType) setPropertyType(query.propertyType);
     if (query.sellOrRent) setSellOrRent(query.sellOrRent);
     if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
     if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
   }, [router.query]);
+
+  console.log(router.query);
 
   const updateUrlParams = (params) => {
     router.push(
@@ -84,9 +95,13 @@ function SearchUI({
   };
 
   const handleMinPriceChange = (newMinPrice) => {
-    setMinPrice(newMinPrice);
+    console.log(newMinPrice);
+    setMinPrice((minPrice) => minPrice + newMinPrice);
+    console.log(minPrice);
     updateUrlParams({ minPrice: newMinPrice });
   };
+
+  //console.log(minPrice);
 
   const handleMaxPriceChange = (newMaxPrice) => {
     setMaxPrice(newMaxPrice);
@@ -334,13 +349,13 @@ function SearchUI({
                   key={resetKey}
                   className="dark:text-white"
                   size="lg"
-                  label={isRu ? "Цена:" : "Price:"}
+                  label={translations.Search.price}
                   maxValue={sliderMaxPrice}
                   step={100}
                   defaultValue={[minPrice, maxPrice]}
-                  onChange={(value) => {
-                    handleMinPriceChange(value[0]);
-                    handleMaxPriceChange(value[1]);
+                  onChange={([newMinPrice, newMaxPrice]) => {
+                    handleMaxPriceChange(newMaxPrice);
+                    handleMinPriceChange(newMinPrice);
                   }}
                   formatOptions={{
                     style: "currency",
