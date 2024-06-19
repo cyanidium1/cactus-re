@@ -10,6 +10,9 @@ import { useEffect, useState } from "react";
 import { performRequest } from "@/lib/getPage";
 import useStore from "@/zustand/store/useStore";
 import ShortInfo from "@/components/property/ShortInfo";
+import { getDataById } from "@/api/api";
+import { urlFor } from "@/lib/sanity";
+import Realtor from "@/components/Realtor";
 //import GoogleMapComponent from "@/components/property/GoogleMapComponent";
 
 export default function Page() {
@@ -22,12 +25,27 @@ export default function Page() {
   const { language } = useStore();
   const isRu = language === "ru";
 
-  async function fetchData() {
+  async function getDataBtId() {
     setLoading(true);
-
     try {
-      const data = await performRequest({ id });
-      setPage(data.property);
+      const data = await getDataById(id);
+
+      const newData = data.map((item) => {
+        if (item.mainPhoto && item.mainPhoto._type === "image") {
+          item.mainPhoto.url = urlFor(item.mainPhoto).url();
+        }
+        if (item.allPhotos && Array.isArray(item.allPhotos)) {
+          item.allPhotos = item.allPhotos.map((photo) => {
+            if (photo._type === "image") {
+              return { ...photo, url: urlFor(photo).url() };
+            }
+            return photo;
+          });
+        }
+        return item;
+      });
+
+      setPage(newData[0]);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -37,7 +55,7 @@ export default function Page() {
 
   useEffect(() => {
     if (id) {
-      fetchData();
+      getDataBtId();
     }
   }, [id]);
 
@@ -78,28 +96,33 @@ export default function Page() {
         ) : (
           <div>No images available</div>
         )}
-        <div className="hidden md:flex md:flex-col md:w-1/3 md:h-full md:items-stretch md:my-0 list-none my-4 md:p-6 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
-          <div className="flex flex-col flex-grow h-full">
-            <RoomQualities
-              bath={bathroomNumber}
-              rooms={roomsEnglish}
-              area={area}
-            />
+        <div className="hidden md:block md:w-1/3 md:h-full md:my-0 ">
+          <div className="list-none my-4 md:p-6 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+            <div className="">
+              <RoomQualities
+                bath={bathroomNumber}
+                rooms={roomsEnglish}
+                area={area}
+              />
+            </div>
+            <div className="flex flex-col flex-grow h-full">
+              <ShortInfo
+                isRu={isRu}
+                city={cityname}
+                rooms={roomsEnglish}
+                areaCertificate={areaCertificate}
+                area={area}
+              />
+            </div>
           </div>
-          <div className="flex flex-col flex-grow h-full">
-            <ShortInfo
-              isRu={isRu}
-              city={cityname}
-              rooms={roomsEnglish}
-              areaCertificate={areaCertificate}
-              area={area}
-            />
+          <div className="flex my-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+            <Realtor />
           </div>
         </div>
       </div>
       <div className="md:mt-[10px]">
-        <div className="md:flex justify-between mb-[100px]">
-          <div className="relative lg:w-2/3 md:w-full md:py-4 md:px-0 px-3 lg:pr-[74px]">
+        <div className="md:flex justify-between mb-[100px] gap-2">
+          <div className="relative lg:w-2/3 md:w-full md:py-4 md:px-0 px-3">
             <h4 className=" text-2xl font-medium dark:text-slate-400">
               {isRu ? titleRussian : titleEnglish}
             </h4>
@@ -117,6 +140,7 @@ export default function Page() {
                 area={area}
               />
             </div>
+
             <RoomDescription
               descriptionEn={descriptionEnglish}
               descriptionRu={descriptionRussian}

@@ -4,7 +4,7 @@ import React from "react";
 
 function PropCard({ el, isGrid, isRU }) {
   const {
-    id,
+    _id,
     titleEnglish,
     titleRussian,
     descriptionRussian,
@@ -22,7 +22,7 @@ function PropCard({ el, isGrid, isRU }) {
 
   return (
     <Link
-      href={`/property/${id}`}
+      href={`/property/${_id}`}
       className={`block w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow-lg hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${
         isGrid ? "w-full md:w-[32%] lg:w-80" : "flex"
       }`}
@@ -134,8 +134,8 @@ function PropCard({ el, isGrid, isRU }) {
                 ? descriptionEnglish.slice(0, 287) + "..."
                 : descriptionEnglish
               : descriptionRussian.length > 200
-              ? descriptionRussian.slice(0, 287) + "..."
-              : descriptionRussian}
+                ? descriptionRussian.slice(0, 287) + "..."
+                : descriptionRussian}
           </div>
         )}
       </div>
