@@ -76,6 +76,7 @@ function Search({
     setCity("");
     setPropertyType("");
     setSellOrRent("");
+    //setSliderMinPrice(0);
     setSliderMaxPrice(250000);
     // onSearch();
   };
