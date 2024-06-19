@@ -4,12 +4,12 @@ const RoomPrices = ({ price, sellrent }) => {
   const { translations, language } = useStore();
   const isRu = language === "ru";
   // Проверяем наличие объекта sellrent
-  if (!sellrent || typeof sellrent !== "object") {
+  if (!sellrent || typeof sellrent !== "string") {
     return <div>No sellrent data available</div>;
   }
 
   // Если объект sellrent определен, продолжаем рендеринг
-  const sellOrRent = sellrent.sellOrRent;
+  const sellOrRent = sellrent;
 
   const handleSellRent = () => {
     if (isRu && sellOrRent === "Sell") {
