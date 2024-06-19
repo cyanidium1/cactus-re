@@ -120,6 +120,7 @@ export default function Home() {
     }
 
     try {
+      console.log(`перед викликом`, isFreshSearch, minPrice, maxPrice);
       const data = await getData(
         pageToFetch,
         itemsPerPage,
@@ -151,8 +152,6 @@ export default function Home() {
       setLoading(false);
     }
   };
-
-  console.log(`portfolioPosts`, portfolioPosts);
 
   return (
     <Layout isStyled={false}>

@@ -44,7 +44,6 @@ export default function Page() {
         return item;
       });
 
-      console.log(`data one page`, newData);
       setPage(newData[0]);
     } catch (error) {
       console.error("Error fetching data:", error);

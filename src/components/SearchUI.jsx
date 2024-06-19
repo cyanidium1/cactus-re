@@ -84,6 +84,7 @@ function SearchUI({
   };
 
   const handleMinPriceChange = (newMinPrice) => {
+    console.log(`newMinPrice`, newMinPrice);
     setMinPrice(newMinPrice);
     updateUrlParams({ minPrice: newMinPrice });
   };
