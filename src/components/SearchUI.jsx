@@ -95,14 +95,12 @@ function SearchUI({
     updateUrlParams({ sellOrRent: newSellOrRent });
   };
 
-  const handleMinPriceChange = (newMinPrice) => {
-    setMinPrice((minPrice) => minPrice + newMinPrice);
-    updateUrlParams({ minPrice: newMinPrice });
-  };
+  const handlePriceChange = (newMinPrice, newMaxPrice) => {
+    setMinPrice(newMinPrice);
+    setMaxPrice(newMaxPrice);
 
-  const handleMaxPriceChange = (newMaxPrice) => {
-    setMaxPrice((newMaxPrice) => maxPrice + newMaxPrice);
-    updateUrlParams({ maxPrice: newMaxPrice });
+    const params = { minPrice: newMinPrice, maxPrice: newMaxPrice };
+    updateUrlParams(params);
   };
 
   const handleItemsPerPageChange = (newItemsPerPage) => {
@@ -352,8 +350,7 @@ function SearchUI({
                   step={100}
                   defaultValue={[minPrice, maxPrice]}
                   onChange={([newMinPrice, newMaxPrice]) => {
-                    handleMaxPriceChange(newMaxPrice);
-                    handleMinPriceChange(newMinPrice);
+                    handlePriceChange(newMinPrice, newMaxPrice);
                   }}
                   formatOptions={{
                     style: "currency",
