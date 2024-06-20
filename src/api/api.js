@@ -90,7 +90,7 @@ export const getData = async (
     let conditions = [];
     let params = {};
     console.log(`min price`, minPrice);
-    console.log(`min price`, maxPrice);
+    console.log(`max price`, maxPrice);
 
     if (minPrice) {
       conditions.push("price >= $minPrice");
