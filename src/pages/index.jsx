@@ -187,9 +187,17 @@ export default function Home() {
         setMaxPrice={setMaxPrice}
         city={router.query.city}
         setCity={setCity}
-        propertyType={router.query.propertyType}
+        propertyType={
+          isRu
+            ? router.query.propertyType
+            : translateToEnglish(router.query.propertyType || propertyType)
+        }
         setPropertyType={setPropertyType}
-        sellOrRent={router.query.sellOrRent}
+        sellOrRent={
+          isRu
+            ? router.query.sellOrRent
+            : translateToEnglish(router.query.sellOrRent || sellOrRent)
+        }
         setSellOrRent={setSellOrRent}
         onSearch={handleSearch}
         isRu={isRu}
