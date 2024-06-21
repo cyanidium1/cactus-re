@@ -9,9 +9,10 @@ import { useRouter } from "next/router";
 import useStore from "@/zustand/store/useStore";
 
 function SearchUI({
+  cityList,
   minPrice,
-  setMinPrice,
   maxPrice,
+  setMinPrice,
   setMaxPrice,
   city,
   setCity,
@@ -20,7 +21,6 @@ function SearchUI({
   sellOrRent,
   setSellOrRent,
   onSearch,
-  isGrid,
   setIsGrid,
   itemsPerPage,
   setItemsPerPage,
@@ -31,9 +31,10 @@ function SearchUI({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const [value, setValue] = useState([0, 500]);
-  const { translations } = useStore();
-  const router = useRouter();
 
+  const { translations } = useStore();
+
+  const router = useRouter();
   useEffect(() => {
     // Загрузка значений фильтров из URL при начальной загрузке
     const { query } = router;
@@ -51,11 +52,11 @@ function SearchUI({
     if (query.city) setCity(query.city);
     if (query.propertyType) setPropertyType(query.propertyType);
     if (query.sellOrRent) setSellOrRent(query.sellOrRent);
+
     if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
     if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
+    console.log(router.query);
   }, [router.query]);
-
-  console.log(router.query);
 
   const updateUrlParams = (params) => {
     router.push(
@@ -74,6 +75,7 @@ function SearchUI({
   const handleCityChange = (city) => {
     const newCity = city === "All" || city === "Все" ? "" : city;
     setCity(newCity);
+
     updateUrlParams({ city: newCity });
   };
 
@@ -81,6 +83,7 @@ function SearchUI({
     const newPropertyType =
       propertyType === "All" || propertyType === "Все" ? "" : propertyType;
     setPropertyType(newPropertyType);
+
     updateUrlParams({ propertyType: newPropertyType });
   };
 
@@ -91,8 +94,17 @@ function SearchUI({
     setSliderMaxPrice(
       newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
     );
+    setMinPrice(0);
+    setMaxPrice(
+      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
+    );
     setResetKey(resetKey + 1);
-    updateUrlParams({ sellOrRent: newSellOrRent });
+    updateUrlParams({
+      sellOrRent: newSellOrRent,
+      minPrice: 0,
+      maxPrice:
+        newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000,
+    });
   };
 
   const handlePriceChange = (newMinPrice, newMaxPrice) => {
@@ -132,6 +144,8 @@ function SearchUI({
     });
     onSearch();
   };
+
+  console.log(`router querry max price`, router.query.maxPrice);
 
   return (
     <div className="relative -mt-24 max-w-5xl mx-auto p-2 xl:p-0">
@@ -190,14 +204,8 @@ function SearchUI({
                                   </a>
                                 )}
                               </Menu.Item>
-                              {[
-                                "Tirana",
-                                "Durres",
-                                "Vlore",
-                                "Saranda",
-                                "Shengjin",
-                              ].map((city) => (
-                                <Menu.Item key={city}>
+                              {cityList.map((city) => (
+                                <Menu.Item key={city._id}>
                                   {({ active }) => (
                                     <a
                                       className={`${
@@ -205,9 +213,11 @@ function SearchUI({
                                           ? "bg-gray-100 text-gray-900"
                                           : "text-gray-700"
                                       } block px-4 py-2 text-sm cursor-pointer`}
-                                      onClick={() => handleCityChange(city)}
+                                      onClick={() =>
+                                        handleCityChange(city.name)
+                                      }
                                     >
-                                      {city}
+                                      {city.name}
                                     </a>
                                   )}
                                 </Menu.Item>
@@ -232,7 +242,7 @@ function SearchUI({
                   {({ open }) => (
                     <>
                       <Menu.Button className="group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap font-normal overflow-hidden tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 px-4 min-w-20 h-10 gap-2 rounded-medium w-full [&amp;>svg]:max-w-[theme(spacing.8)] data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none shadow-lg shadow-default/50 bg-default text-default-foreground data-[hover=true]:opacity-hover z-10 aria-expanded:scale-[0.97] aria-expanded:opacity-70 subpixel-antialiased text-lg mt-2">
-                        {sellOrRent || translations.Search.sellOrRent}
+                        {sellOrRent || (isRu ? "Все" : "All")}
                         <IoMdArrowDropdown
                           className="-mr-1 ml-2 h-5 w-5"
                           aria-hidden="true"
@@ -262,9 +272,9 @@ function SearchUI({
                                           ? "bg-gray-100 text-gray-900"
                                           : "text-gray-700"
                                       } block px-4 py-2 text-sm cursor-pointer`}
-                                      onClick={() =>
-                                        handleSellOrRentChange(sellRent)
-                                      }
+                                      onClick={() => {
+                                        handleSellOrRentChange(sellRent);
+                                      }}
                                     >
                                       {sellRent}
                                     </a>

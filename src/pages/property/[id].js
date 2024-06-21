@@ -62,7 +62,7 @@ export default function Page() {
   }, [id]);
 
   useEffect(() => {
-    if (page.id) {
+    if (page._id) {
       console.log(page);
     }
   }, [page]);
@@ -84,12 +84,14 @@ export default function Page() {
     locationGmapsLink,
   } = page;
 
+
+
   return (
     <Layout>
       <div className="md:flex md:justify-between mb-8 md:gap-4 md:items-center md:h-full">
         {allPhotos ? (
           <RoomGallery
-            mainPhoto={mainPhoto}
+            mainPhoto={mainPhoto.url}
             allPhotos={allPhotos}
             titleEn={titleEnglish}
             titleRu={titleRussian}

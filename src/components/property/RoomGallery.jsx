@@ -19,23 +19,35 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
   };
 
   const handleClose = () => setIsLightboxOpen(false);
-  const handleMovePrev = () =>
+  const handleMovePrev = () => {
     setCurrentImageIndex(
       (prev) => (prev - 1 + allPhotos.length) % allPhotos.length
     );
-  const handleMoveNext = () =>
+  };
+  const handleMoveNext = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allPhotos.length);
-
+  };
   const handleLeftClick = () => {
+    setIsTransitioning(true);
     if (startIndex > 0) {
       setStartIndex(startIndex - 1);
     }
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => prev - 1);
+    }, 300);
   };
 
   const handleRightClick = () => {
+    setIsTransitioning(true);
+
     if (startIndex < allPhotos.length - 4) {
       setStartIndex(startIndex + 1);
     }
+    // setCurrentImageIndex((prev) => prev + 1);
+
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => prev + 1);
+    }, 300);
   };
 
   const handleImageChange = (index) => {
@@ -69,9 +81,7 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
             sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 480px"
             style={{
               width: "100%",
-              height: "100%",
               cursor: "pointer",
-              objectFit: "cover",
               objectPosition: "center",
             }}
             onClick={() => handleClick(currentImageIndex)}
@@ -79,7 +89,11 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
           {/* </div> */}
         </div>
         <div className="flex md:flex-col p-[5px] h-full items-center justify-center max-h-[720px]">
-          <button onClick={handleLeftClick} className="p-2">
+          <button
+            disabled={currentImageIndex <= 0 ? true : false}
+            onClick={handleLeftClick}
+            className="p-2"
+          >
             <FaAngleLeft className="w-6 h-6 fill-customGreen md:rotate-90" />
           </button>
           <div className="flex space-x-1 md:space-x-0 md:flex md:flex-col md:mx-0 items-center h-full md:space-y-1 overflow-hidden max-w-[320px] sm:max-w-[480px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] xxl:max-w-[1440px]">
@@ -91,20 +105,27 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
                     ? "border-2 border-customGreen"
                     : "opacity-50 hover:opacity-75"
                 }`}
-                onClick={() => handleImageChange(startIndex + index)}
+                onClick={() => {
+                  console.log(`Міяню фото`);
+                  handleImageChange(startIndex + index);
+                }}
               >
                 <Image
                   src={photo.url}
                   alt={isRu ? titleRu : titleEn}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "fill" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="width-full h-auto"
                 />
               </div>
             ))}
           </div>
-          <button onClick={handleRightClick} className="p-2">
+          <button
+            disabled={currentImageIndex === allPhotos.length - 1 ? true : false}
+            onClick={handleRightClick}
+            className="p-2"
+          >
             <FaAngleRight className="w-6 h-6 fill-customGreen md:rotate-90" />
           </button>
         </div>
