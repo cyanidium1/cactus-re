@@ -1,28 +1,6 @@
 import { client } from "@/lib/sanity";
 
 export const queryDictionary = {
-  cities: [
-    {
-      _id: "2b66a80a-3b85-4dd1-bd37-40fe19c55eaf",
-      name: "Tirana",
-    },
-    {
-      _id: "2c8bfde2-d346-471b-ad68-ef7898b323af",
-      name: "Durres",
-    },
-    {
-      _id: "339120d8-e12f-4bc3-998a-f6f1e60bdc8b",
-      name: "Vlore",
-    },
-    {
-      _id: "374061b6-9425-497c-ad74-e3e209d58f73",
-      name: "Shengjin",
-    },
-    {
-      _id: "df176459-48a9-4579-83fc-b09f13038471",
-      name: "Saranda",
-    },
-  ],
   actions: [
     {
       _id: "e073a3f1-9727-49fd-859e-9de141ca450c",
@@ -54,6 +32,12 @@ export const queryDictionary = {
 };
 
 // Шукає ід за словником
+
+export const getIdBuCity = (array, value) => {
+  const item = array.find((item) => item.name === value);
+  return item ? item._id : null;
+};
+
 export const getIdByValue = (dictionary, category, value) => {
   const item = dictionary[category].find(
     (item) => item.value === value || item.name === value
@@ -89,8 +73,11 @@ export const getData = async (
   try {
     let conditions = [];
     let params = {};
-    console.log(`min price`, minPrice);
-    console.log(`max price`, maxPrice);
+    // console.log(`min price`, minPrice);
+    // console.log(`max price`, maxPrice);
+    // console.log(`city id`, cityId);
+    // console.log(`sellOrRentId`, sellOrRentId);
+    // console.log(`typeOfPropertyId`, typeOfPropertyId);
 
     if (minPrice) {
       conditions.push("price >= $minPrice");
@@ -236,7 +223,7 @@ export const getCities = async () => {
 
 export const getSellOrRent = async () => {
   try {
-    const query = `*[_type == 'sell_or_rent'] {
+    const query = `*[_type == 'sellOrRent'] {
       _id,
       value
     }`;
@@ -250,7 +237,7 @@ export const getSellOrRent = async () => {
 
 export const getTypeOfProperty = async () => {
   try {
-    const query = `*[_type == 'type_of_property'] {
+    const query = `*[_type == 'typeOfProperty'] {
       _id,
       value
     }`;

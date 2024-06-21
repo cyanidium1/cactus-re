@@ -97,7 +97,7 @@ const RoomGallery = ({ allPhotos, titleEn, titleRu }) => {
                   src={photo.url}
                   alt={isRu ? titleRu : titleEn}
                   fill
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "fill" }}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="width-full h-auto"
                 />

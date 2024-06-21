@@ -84,6 +84,9 @@ export default function Page() {
     locationGmapsLink,
   } = page;
 
+  console.log(`mainPhoto`, mainPhoto);
+  console.log(`allPhotos`, allPhotos);
+
   return (
     <Layout>
       <div className="md:flex md:justify-between mb-8 md:gap-4 md:items-center md:h-full">

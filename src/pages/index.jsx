@@ -8,13 +8,16 @@ import { Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";
 import {
+  getCities,
   getData,
+  getIdBuCity,
   getIdByValue,
   getTotalCount,
   queryDictionary,
   translateToEnglish,
 } from "@/api/api";
 import { urlFor } from "@/lib/sanity";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
@@ -28,8 +31,11 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [sellOrRent, setSellOrRent] = useState("");
+  const [cityList, setCityList] = useState([]);
   const { language } = useStore();
   const isRu = language === "ru";
+
+  const router = useRouter();
 
   const handleSearch = () => {
     setCurrentPage(1);
@@ -38,37 +44,43 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const fetchCities = async () => {
+      const cities = await getCities();
+      setCityList(cities);
+    };
+    fetchCities();
+  }, []);
+
+  useEffect(() => {
     fetchTotalCount();
-    fetchData(false);
+    fetchData(true);
   }, [currentPage, itemsPerPage]);
 
   const fetchTotalCount = async (isFreshSearch = false) => {
     setLoading(true);
 
-    let cityId = null;
-    let sellOrRentId = null;
-    let typeOfPropertyId = null;
-
-    if (isFreshSearch) {
-      cityId = getIdByValue(queryDictionary, "cities", city);
-      const englishSellOrRent = translateToEnglish(sellOrRent);
-      sellOrRentId = getIdByValue(
-        queryDictionary,
-        "actions",
-        englishSellOrRent
-      );
-      const englishPropertyType = translateToEnglish(propertyType);
-      typeOfPropertyId = getIdByValue(
-        queryDictionary,
-        "propertyTypes",
-        englishPropertyType
-      );
-    }
+    const cityId = getIdBuCity(cityList, router.query.city || city);
+    const englishSellOrRent = translateToEnglish(
+      router.query.sellOrRent || sellOrRent
+    );
+    const sellOrRentId = getIdByValue(
+      queryDictionary,
+      "actions",
+      englishSellOrRent
+    );
+    const englishPropertyType = translateToEnglish(
+      router.query.propertyType || propertyType
+    );
+    const typeOfPropertyId = getIdByValue(
+      queryDictionary,
+      "propertyTypes",
+      englishPropertyType
+    );
 
     try {
       const totalCount = await getTotalCount(
-        isFreshSearch ? minPrice : undefined,
-        isFreshSearch ? maxPrice : undefined,
+        minPrice,
+        maxPrice,
         cityId,
         sellOrRentId,
         typeOfPropertyId
@@ -96,36 +108,33 @@ export default function Home() {
   const fetchData = async (isFreshSearch = false, pageOverride) => {
     setLoading(true);
 
-    let cityId = null;
-    let sellOrRentId = null;
-    let typeOfPropertyId = null;
+    const cityId = getIdBuCity(cityList, router.query.city || city);
+    const englishSellOrRent = translateToEnglish(
+      router.query.sellOrRent || sellOrRent
+    );
+    const sellOrRentId = getIdByValue(
+      queryDictionary,
+      "actions",
+      englishSellOrRent
+    );
+    const englishPropertyType = translateToEnglish(
+      router.query.propertyType || propertyType
+    );
+    const typeOfPropertyId = getIdByValue(
+      queryDictionary,
+      "propertyTypes",
+      englishPropertyType
+    );
 
     const pageToFetch =
       pageOverride !== undefined ? pageOverride : currentPage - 1;
 
-    if (isFreshSearch) {
-      cityId = getIdByValue(queryDictionary, "cities", city);
-      const englishSellOrRent = translateToEnglish(sellOrRent);
-      sellOrRentId = getIdByValue(
-        queryDictionary,
-        "actions",
-        englishSellOrRent
-      );
-      const englishPropertyType = translateToEnglish(propertyType);
-      typeOfPropertyId = getIdByValue(
-        queryDictionary,
-        "propertyTypes",
-        englishPropertyType
-      );
-    }
-
     try {
-      console.log(`перед викликом`, isFreshSearch, minPrice, maxPrice);
       const data = await getData(
         pageToFetch,
         itemsPerPage,
-        isFreshSearch ? minPrice : undefined,
-        isFreshSearch ? maxPrice : undefined,
+        minPrice,
+        maxPrice,
         cityId,
         sellOrRentId,
         typeOfPropertyId
@@ -145,6 +154,7 @@ export default function Home() {
         }
         return item;
       });
+
       setPortfolioPosts(newData);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -157,6 +167,7 @@ export default function Home() {
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
       <SearchUI
+        cityList={cityList}
         isGrid={isGrid}
         setIsGrid={setIsGrid}
         itemsPerPage={itemsPerPage}
@@ -165,11 +176,11 @@ export default function Home() {
         setMinPrice={setMinPrice}
         maxPrice={maxPrice}
         setMaxPrice={setMaxPrice}
-        city={city}
+        city={router.query.city}
         setCity={setCity}
-        propertyType={propertyType}
+        propertyType={router.query.propertyType}
         setPropertyType={setPropertyType}
-        sellOrRent={sellOrRent}
+        sellOrRent={router.query.sellOrRent}
         setSellOrRent={setSellOrRent}
         onSearch={handleSearch}
         isRu={isRu}

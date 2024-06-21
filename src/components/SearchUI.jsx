@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import useStore from "@/zustand/store/useStore";
 
 function SearchUI({
+  cityList,
   minPrice,
   setMinPrice,
   maxPrice,
@@ -32,8 +33,8 @@ function SearchUI({
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const [value, setValue] = useState([0, 500]);
   const { translations } = useStore();
-  const router = useRouter();
 
+  const router = useRouter();
   useEffect(() => {
     // Загрузка значений фильтров из URL при начальной загрузке
     const { query } = router;
@@ -53,9 +54,8 @@ function SearchUI({
     if (query.sellOrRent) setSellOrRent(query.sellOrRent);
     if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
     if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
+    console.log(router.query);
   }, [router.query]);
-
-  console.log(router.query);
 
   const updateUrlParams = (params) => {
     router.push(
@@ -74,6 +74,7 @@ function SearchUI({
   const handleCityChange = (city) => {
     const newCity = city === "All" || city === "Все" ? "" : city;
     setCity(newCity);
+
     updateUrlParams({ city: newCity });
   };
 
@@ -81,6 +82,7 @@ function SearchUI({
     const newPropertyType =
       propertyType === "All" || propertyType === "Все" ? "" : propertyType;
     setPropertyType(newPropertyType);
+
     updateUrlParams({ propertyType: newPropertyType });
   };
 
@@ -91,8 +93,17 @@ function SearchUI({
     setSliderMaxPrice(
       newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
     );
+    setMinPrice(0);
+    setMaxPrice(
+      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
+    );
     setResetKey(resetKey + 1);
-    updateUrlParams({ sellOrRent: newSellOrRent });
+    updateUrlParams({
+      sellOrRent: newSellOrRent,
+      minPrice: 0,
+      maxPrice:
+        newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000,
+    });
   };
 
   const handlePriceChange = (newMinPrice, newMaxPrice) => {
@@ -190,14 +201,8 @@ function SearchUI({
                                   </a>
                                 )}
                               </Menu.Item>
-                              {[
-                                "Tirana",
-                                "Durres",
-                                "Vlore",
-                                "Saranda",
-                                "Shengjin",
-                              ].map((city) => (
-                                <Menu.Item key={city}>
+                              {cityList.map((city) => (
+                                <Menu.Item key={city._id}>
                                   {({ active }) => (
                                     <a
                                       className={`${
@@ -205,9 +210,11 @@ function SearchUI({
                                           ? "bg-gray-100 text-gray-900"
                                           : "text-gray-700"
                                       } block px-4 py-2 text-sm cursor-pointer`}
-                                      onClick={() => handleCityChange(city)}
+                                      onClick={() =>
+                                        handleCityChange(city.name)
+                                      }
                                     >
-                                      {city}
+                                      {city.name}
                                     </a>
                                   )}
                                 </Menu.Item>
@@ -262,9 +269,9 @@ function SearchUI({
                                           ? "bg-gray-100 text-gray-900"
                                           : "text-gray-700"
                                       } block px-4 py-2 text-sm cursor-pointer`}
-                                      onClick={() =>
-                                        handleSellOrRentChange(sellRent)
-                                      }
+                                      onClick={() => {
+                                        handleSellOrRentChange(sellRent);
+                                      }}
                                     >
                                       {sellRent}
                                     </a>
