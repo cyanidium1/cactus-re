@@ -162,7 +162,7 @@ export default function Home() {
         }
         return item;
       });
-      console.log(`data`, newData);
+      console.log(`data`, data);
 
       setPortfolioPosts(newData);
     } catch (error) {

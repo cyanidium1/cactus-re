@@ -1,8 +1,9 @@
 import { createClient } from "next-sanity";
 import ImageUrlBuilder from "@sanity/image-url";
+const SANITY_PROJECT_ID = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 
 export const client = createClient({
-  projectId: "5c9h015c",
+  projectId: SANITY_PROJECT_ID,
   dataset: "production",
   apiVersion: "2024-01-08",
   useCdn: true,

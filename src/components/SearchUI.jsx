@@ -11,8 +11,8 @@ import useStore from "@/zustand/store/useStore";
 function SearchUI({
   cityList,
   minPrice,
-  setMinPrice,
   maxPrice,
+  setMinPrice,
   setMaxPrice,
   city,
   setCity,
@@ -21,7 +21,6 @@ function SearchUI({
   sellOrRent,
   setSellOrRent,
   onSearch,
-  isGrid,
   setIsGrid,
   itemsPerPage,
   setItemsPerPage,
@@ -32,6 +31,7 @@ function SearchUI({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const [value, setValue] = useState([0, 500]);
+
   const { translations } = useStore();
 
   const router = useRouter();
