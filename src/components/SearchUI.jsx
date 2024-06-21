@@ -52,6 +52,7 @@ function SearchUI({
     if (query.city) setCity(query.city);
     if (query.propertyType) setPropertyType(query.propertyType);
     if (query.sellOrRent) setSellOrRent(query.sellOrRent);
+
     if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
     if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
     console.log(router.query);
@@ -143,6 +144,8 @@ function SearchUI({
     });
     onSearch();
   };
+
+  console.log(`router querry max price`, router.query.maxPrice);
 
   return (
     <div className="relative -mt-24 max-w-5xl mx-auto p-2 xl:p-0">

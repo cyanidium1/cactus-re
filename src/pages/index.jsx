@@ -54,9 +54,17 @@ export default function Home() {
   useEffect(() => {
     fetchTotalCount();
     fetchData(true);
-  }, [currentPage, itemsPerPage]);
+  }, [
+    currentPage,
+    itemsPerPage,
+    // city,
+    // propertyType,
+    // sellOrRent,
+    // minPrice,
+    // maxPrice,
+  ]);
 
-  const fetchTotalCount = async (isFreshSearch = false) => {
+  const fetchTotalCount = async () => {
     setLoading(true);
 
     const cityId = getIdBuCity(cityList, router.query.city || city);
@@ -154,6 +162,7 @@ export default function Home() {
         }
         return item;
       });
+      console.log(`data`, newData);
 
       setPortfolioPosts(newData);
     } catch (error) {
@@ -187,7 +196,7 @@ export default function Home() {
       />
       <div
         className={`w-full md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "block md:flex md:flex-wrap md:justify-between mx-auto" : ""
+          isGrid ? "block md:flex md:flex-wrap md:gap-4 mx-auto" : ""
         }`}
       >
         {loading
