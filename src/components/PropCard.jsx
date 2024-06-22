@@ -29,7 +29,7 @@ function PropCard({ el, isGrid, isRU }) {
     >
       <div className="relative">
         <Image
-          className={` ${isGrid ? "h-56  w-full" : "h-full"}`}
+          className={` ${isGrid ? "h-56  w-full" : "h-full"} object-contain`}
           src={mainPhoto.url}
           width={350}
           height={230}

@@ -12,14 +12,15 @@ const Footer = ({ isRu }) => {
           <div className="md:mb-[30px]">
             <Logo />
             <p className="mt-6 text-slate-400 marker:lg:w-[290px] xl:w-[350px]">
-              A great platform to buy, sell and rent your properties without any
-              agent or commissions.
+              {isRu
+                ? "Идеальная платформа для покупки, продажи и аренды недвижимости без агентов и дополнительных комиссий."
+                : "A great platform to buy, sell and rent your properties without anyagent or commissions."}
             </p>
           </div>
-          <div className="md:flex md:justify-between lg:w-full">
-            <FooterCompanyList />
-            <FooterUseFullLinks />
-            <FooterContactDetails />
+          <div className="md:flex md:justify-between lg:w-full ">
+            <FooterCompanyList isRu={isRu} />
+            <FooterUseFullLinks isRu={isRu} />
+            <FooterContactDetails isRu={isRu} />
           </div>
         </div>
         <FooterDown />

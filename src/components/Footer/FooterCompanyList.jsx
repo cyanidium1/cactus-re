@@ -1,11 +1,13 @@
-const FooterCompanyList = () => {
+const FooterCompanyList = ({ isRu }) => {
   return (
     <div className="mt-[30px] md:mt-0">
-      <h5 className="tracking-[1px]  text-slate-400 font-semibold">Company</h5>
+      <h5 className="tracking-[1px]  text-slate-400 font-semibold">
+        {isRu ? "Компания" : "Company"}
+      </h5>
       <ul className="list-none footer-list mt-6">
         <li>
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
             href=""
           >
             <svg
@@ -21,12 +23,12 @@ const FooterCompanyList = () => {
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
-            About us
+            {isRu ? "О нас" : "About us"}
           </a>
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400  hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
             href=""
           >
             <svg
@@ -42,12 +44,12 @@ const FooterCompanyList = () => {
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
-            Services
+            {isRu ? "Услуги" : "Services"}
           </a>
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400 hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
             href=""
           >
             <svg
@@ -63,12 +65,12 @@ const FooterCompanyList = () => {
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
-            Pricing
+            {isRu ? "Цены" : "Pricing"}
           </a>
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400  hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
             href=""
           >
             <svg
@@ -84,12 +86,12 @@ const FooterCompanyList = () => {
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
-            Blog
+            {isRu ? "Блог" : "Blog"}
           </a>
         </li>
         <li className="mt-[10px]">
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out flex items-center"
+            className="text-slate-400  hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
             href=""
           >
             <svg
@@ -105,7 +107,7 @@ const FooterCompanyList = () => {
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
-            Login
+            {isRu ? "Вход" : "Login"}
           </a>
         </li>
       </ul>

@@ -202,8 +202,8 @@ export default function Home() {
         isRu={isRu}
       />
       <div
-        className={`w-full md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "block md:flex md:flex-wrap md:gap-4 mx-auto" : ""
+        className={`w-full  md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
+          isGrid ? "block md:flex md:flex-wrap md:gap-4   mx-auto" : ""
         }`}
       >
         {loading

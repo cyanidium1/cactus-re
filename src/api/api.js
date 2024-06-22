@@ -3,29 +3,29 @@ import { client } from "@/lib/sanity";
 export const queryDictionary = {
   actions: [
     {
-      _id: "e073a3f1-9727-49fd-859e-9de141ca450c",
+      _id: "975f82ac-174e-424f-a851-e4731b8d4445",
       value: "Rent",
     },
     {
-      _id: "450b0d10-9053-4790-b2c1-86abbd1b68cf",
+      _id: "512da1d1-3583-4ea1-be8d-df56eab66842",
       value: "Sell",
     },
   ],
   propertyTypes: [
     {
-      _id: "54ca66c9-df6d-4c2d-976c-b1f045d91553",
+      _id: "84915def-d67c-403c-8f5a-0bf9fa2fd164",
       value: "Land",
     },
     {
-      _id: "e8d50d0b-7fa7-466b-aa53-0ef4ab301d67",
+      _id: "30e9bb97-2ad3-4b90-adfd-4aeeba1b273e",
       value: "House",
     },
     {
-      _id: "df478a35-d3c9-41d7-a2c9-5e3193b6a059",
+      _id: "c801fb11-a65c-4bbf-ae42-274fedf46cb6",
       value: "Apartment",
     },
     {
-      _id: "9125996f-2170-4435-8db9-2b26e76041a8",
+      _id: "87c9c1c8-1261-440f-a121-f0047d7c92ef",
       value: "Villa",
     },
   ],
