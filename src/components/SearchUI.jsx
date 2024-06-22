@@ -31,32 +31,51 @@ function SearchUI({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const [value, setValue] = useState([0, 500]);
-
+  const [sliderValue, setSliderValue] = useState([0, 250000]);
   const { translations } = useStore();
 
   const router = useRouter();
   useEffect(() => {
+    if (!router.isReady) return;
     // Загрузка значений фильтров из URL при начальной загрузке
     const { query } = router;
-    console.log("Query Parameters:", query);
-    if (query.minPrice) {
-      const parsedMinPrice = parseInt(query.minPrice, 10);
-      console.log("Parsed Min Price:", parsedMinPrice);
-      setMinPrice(parsedMinPrice);
-    }
-    if (query.maxPrice) {
-      const parsedMaxPrice = parseInt(query.maxPrice, 10);
-      console.log("Parsed Max Price:", parsedMaxPrice);
-      setMaxPrice(parsedMaxPrice);
-    }
-    if (query.city) setCity(query.city);
-    if (query.propertyType) setPropertyType(query.propertyType);
-    if (query.sellOrRent) setSellOrRent(query.sellOrRent);
+    if (query.sellOrRent && router.isReady) {
+      const sellOrRentValue = query.sellOrRent;
+      setSellOrRent(sellOrRentValue);
+      const maxPriceValue =
+        sellOrRentValue === "Rent" || sellOrRentValue === "Аренда"
+          ? 2000
+          : 250000;
+      setSliderMaxPrice(maxPriceValue);
+      setMaxPrice(maxPriceValue);
 
-    if (query.itemsPerPage) setItemsPerPage(parseInt(query.itemsPerPage, 10));
+      const minPriceValue = query.minPrice ? parseInt(query.minPrice, 10) : 0;
+      const maxPriceQuery = query.maxPrice
+        ? parseInt(query.maxPrice, 10)
+        : maxPriceValue;
+
+      setMinPrice(minPriceValue);
+      setMaxPrice(maxPriceQuery);
+      setSliderValue([minPriceValue, maxPriceQuery]);
+    } else {
+      const minPriceValue = query.minPrice ? parseInt(query.minPrice, 10) : 0;
+      const maxPriceQuery = query.maxPrice
+        ? parseInt(query.maxPrice, 10)
+        : 250000;
+
+      setMinPrice(minPriceValue);
+      setMaxPrice(maxPriceQuery);
+      setSliderValue([minPriceValue, maxPriceQuery]);
+    }
+
+    if (query.city && router.isReady) setCity(query.city);
+    if (query.propertyType && router.isReady)
+      setPropertyType(query.propertyType);
+
+    if (query.itemsPerPage && router.isReady)
+      setItemsPerPage(parseInt(query.itemsPerPage, 10));
     if (query.isGrid !== undefined) setIsGrid(query.isGrid === "true");
-    console.log(router.query);
-  }, [router.query]);
+  }, [router.query, router.isReady]);
 
   const updateUrlParams = (params) => {
     router.push(
@@ -110,6 +129,7 @@ function SearchUI({
   const handlePriceChange = (newMinPrice, newMaxPrice) => {
     setMinPrice(newMinPrice);
     setMaxPrice(newMaxPrice);
+    setSliderValue([newMinPrice, newMaxPrice]);
 
     const params = { minPrice: newMinPrice, maxPrice: newMaxPrice };
     updateUrlParams(params);
@@ -144,8 +164,6 @@ function SearchUI({
     });
     onSearch();
   };
-
-  console.log(`router querry max price`, router.query.maxPrice);
 
   return (
     <div className="relative -mt-24 max-w-5xl mx-auto p-2 xl:p-0">
@@ -359,8 +377,10 @@ function SearchUI({
                   maxValue={sliderMaxPrice}
                   step={100}
                   defaultValue={[minPrice, maxPrice]}
-                  onChange={([newMinPrice, newMaxPrice]) => {
-                    handlePriceChange(newMinPrice, newMaxPrice);
+                  value={sliderValue}
+                  onChange={(value) => {
+                    console.log(`sliderValue`, sliderValue);
+                    handlePriceChange(value[0], value[1]);
                   }}
                   formatOptions={{
                     style: "currency",
