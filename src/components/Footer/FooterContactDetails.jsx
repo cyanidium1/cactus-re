@@ -1,8 +1,8 @@
-const FooterContactDetails = () => {
+const FooterContactDetails = ({ isRu }) => {
   return (
     <div className="mt-[30px] md:mt-0">
       <h5 className="tracking-[1px] text-slate-400 font-semibold">
-        Contact details
+        {isRu ? "Контактная информация" : "Contact details"}
       </h5>
       <div className="flex mt-6">
         <svg
@@ -22,14 +22,18 @@ const FooterContactDetails = () => {
         </svg>
         <div className="">
           <h6 className="text-slate-400 mb-2">
-            Bulevardi Dyrrah, Durrës, Албания
+            {isRu
+              ? "Bulevardi Dyrrah, Durrës, Албания"
+              : "Bulevardi Dyrrah, Durrës, Albania"}
           </h6>
           <a
             datatype="iframe"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-customGreen hover:text-green-700 duration-500 ease-in-out lightbox"
-            href=""
+            href="https://www.google.com/maps/place/Bulevardi+Dyrrah,+Durr%C3%ABs,+%D0%90%D0%BB%D0%B1%D0%B0%D0%BD%D1%96%D1%8F/@41.316211,19.4459081,17z/data=!3m1!4b1!4m6!3m5!1s0x134fda47e70b8333:0x933b0843a3e40d80!8m2!3d41.316211!4d19.448483!16s%2Fg%2F1tkjnnt5?entry=ttu"
           >
-            View on Google map
+            {isRu ? "Просмотреть на Google картах" : "View on Google map"}
           </a>
         </div>
       </div>

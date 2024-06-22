@@ -32,6 +32,7 @@ export default function Home() {
   const [propertyType, setPropertyType] = useState("");
   const [sellOrRent, setSellOrRent] = useState("");
   const [cityList, setCityList] = useState([]);
+  const [citiesLoaded, setCitiesLoaded] = useState(false);
   const { language } = useStore();
   const isRu = language === "ru";
 
@@ -47,27 +48,20 @@ export default function Home() {
     const fetchCities = async () => {
       const cities = await getCities();
       setCityList(cities);
+      setCitiesLoaded(true);
     };
     fetchCities();
   }, []);
 
   useEffect(() => {
+    if (!citiesLoaded || !router.isReady) return;
     fetchTotalCount();
-    fetchData(true);
-  }, [
-    currentPage,
-    itemsPerPage,
-    // city,
-    // propertyType,
-    // sellOrRent,
-    // minPrice,
-    // maxPrice,
-  ]);
+  }, [currentPage, itemsPerPage, citiesLoaded, router.isReady]);
 
   const fetchTotalCount = async () => {
     setLoading(true);
 
-    const cityId = getIdBuCity(cityList, router.query.city || city);
+    const cityId = getIdBuCity(cityList, router.query.city);
     const englishSellOrRent = translateToEnglish(
       router.query.sellOrRent || sellOrRent
     );
@@ -113,10 +107,16 @@ export default function Home() {
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    if (!citiesLoaded || !router.isReady) return;
+    fetchData(true);
+  }, [citiesLoaded, router.isReady]);
+
   const fetchData = async (isFreshSearch = false, pageOverride) => {
     setLoading(true);
+    if (!router.isReady || !citiesLoaded) return;
 
-    const cityId = getIdBuCity(cityList, router.query.city || city);
+    const cityId = getIdBuCity(cityList, router.query.city);
     const englishSellOrRent = translateToEnglish(
       router.query.sellOrRent || sellOrRent
     );
@@ -162,7 +162,6 @@ export default function Home() {
         }
         return item;
       });
-      console.log(`data`, data);
 
       setPortfolioPosts(newData);
     } catch (error) {
@@ -203,8 +202,8 @@ export default function Home() {
         isRu={isRu}
       />
       <div
-        className={`w-full md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "block md:flex md:flex-wrap md:gap-4 mx-auto" : ""
+        className={`w-full  md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
+          isGrid ? "block md:flex md:flex-wrap md:gap-4   mx-auto" : ""
         }`}
       >
         {loading
