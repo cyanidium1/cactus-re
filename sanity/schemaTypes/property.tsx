@@ -9,15 +9,15 @@ export default {
       type: 'string',
     },
     {
+      name: 'titleRussian',
+      title: 'Title Russian',
+      type: 'string',
+    },
+    {
       name: 'cityName',
       title: 'City Name',
       type: 'reference',
       to: [{type: 'city'}],
-    },
-    {
-      name: 'titleRussian',
-      title: 'Title Russian',
-      type: 'string',
     },
     {
       name: 'typeOfProperty',
@@ -102,13 +102,18 @@ export default {
       title: 'Bathroom number',
       type: 'string',
     },
+    {
+      name: 'favorite',
+      title: 'Favorite',
+      type: 'boolean',
+      description: 'Избраное?',
+    },
   ],
   preview: {
     select: {
       title: 'titleEnglish',
       subtitle: 'descriptionEnglish',
-      media: 'mainPhoto'
+      media: 'mainPhoto',
     },
   },
 }
-

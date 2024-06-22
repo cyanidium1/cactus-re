@@ -20,7 +20,7 @@ export default function Header() {
     <Navbar height={"70px"} isBordered className=" header">
       <Socials className="!hidden lg:!flex" />
 
-      <NavbarBrand className="md:mr-40">
+      <NavbarBrand className="md:mr-40 ">
         <Link href="/">
           <Logo />
         </Link>

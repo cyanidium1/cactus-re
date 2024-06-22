@@ -26,7 +26,7 @@ export default function Layout({ children, isStyled = true }) {
       </Head>
       {/* <Loader /> */}
       <Header isRu={isRu} />
-      <main className={isStyled ? "max-w-[1120px] mx-auto p-2" : ""}>
+      <main className={isStyled ? "max-w-[1024px] mx-auto p-2" : ""}>
         {children}
       </main>
       <ButtonUp />
