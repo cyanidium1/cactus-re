@@ -11,7 +11,7 @@ const PropertyCardInfoTablet = ({
 }) => {
   return (
     <div className="hidden md:block md:w-1/3 md:h-full md:my-0 ">
-      <div className="list-none my-4 md:p-6 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+      <div className="list-none  my-4 md:p-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700 ">
         <div>
           <RoomQualities
             bath={bathroomNumber}
@@ -28,7 +28,7 @@ const PropertyCardInfoTablet = ({
           />
         </div>
       </div>
-      <div className="flex my-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
+      <div className="flex justify-center items-center my-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
         <Realtor />
       </div>
     </div>

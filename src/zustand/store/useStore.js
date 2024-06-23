@@ -11,6 +11,7 @@ const useStore = create((set) => ({
   language: "ru",
   properties: [],
   translations: translations["ru"],
+  isSidebarOpen: false,
 
   setLanguage: (lang) => set({ language: lang }),
 
@@ -36,6 +37,10 @@ const useStore = create((set) => ({
       console.error("Error fetching properties:", error);
     }
   },
+  toggleSidebar: (isOpen) =>
+    set((state) => ({
+      isSidebarOpen: isOpen,
+    })),
 }));
 
 export default useStore;
