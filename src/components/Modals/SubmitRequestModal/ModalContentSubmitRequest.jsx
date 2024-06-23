@@ -7,6 +7,7 @@ import ChooseOption from "./ChooseOption";
 import "react-toastify/dist/ReactToastify.css";
 
 import useStore from "@/zustand/store/useStore";
+import { sendMessage } from "@/utils/sendMsg";
 
 const validateEmail = (email) => {
   const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
@@ -105,21 +106,19 @@ const ModalContentSubmitRequest = ({ onClose, context }) => {
     } else if (context === "objectPage") {
       formData = {
         ...formData,
-        pageURL: `Клиент интересуется объектом ${window.location.href}`,
+        pageURL: `${window.location.href}`,
       };
     }
+
+    const formattedMessage = `${formData.name ? formData.name : 'Имя не указано'} заинтересован в ${formData?.selectedOption ? formData.selectedOption : ''} ${formData?.pageURL ? formData.pageURL : ''}. Телефон: ${formData.phone}${formData.email ? ', email: ' + formData.email : ''}${formData.message ? ', сообщение: ' + formData.message : ''}`;
 
     console.log("Sending data:", formData);
 
     try {
-      // Uncomment and replace with your actual API call
-      // const response = await axios.post("http://localhost:3001/send-message", formData);
-      // console.log(response.data);
+      sendMessage(formattedMessage);
 
-      // Simulating a successful API response
-      setTimeout(() => {
-        onSubmitSuccess();
-      }, 1000);
+      onSubmitSuccess();
+
     } catch (error) {
       console.error("Error sending message:", error);
       onSubmitFailure();
