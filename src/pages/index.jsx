@@ -222,7 +222,8 @@ export default function Home() {
               <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
             ))}
       </div>
-      <div className="max-w-5xl w-full flex md:justify-center my-2 mx-auto">
+
+      <div className="justify-center max-w-5xl w-full flex md:justify-center my-2 mx-auto">
         <Pagination
           loop
           showControls
