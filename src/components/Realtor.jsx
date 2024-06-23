@@ -7,7 +7,7 @@ function Realtor(props) {
 
   const isRu = language === "ru";
   return (
-    <div className="flex">
+    <div className="flex md:flex-col justify-center items-center">
       <Image
         className="rounded-tl-md rounded-bl-md"
         src="/images/realtor.webp" // Убедитесь, что имя файла и расширение правильные

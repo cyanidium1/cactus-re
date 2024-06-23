@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import useStore from "@/zustand/store/useStore";
 
 const ButtonUp = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const { isSidebarOpen } = useStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,14 +23,15 @@ const ButtonUp = () => {
     });
   };
 
-  // const windowWidth = window.innerWidth;
-  // console.log(windowWidth);
-
   return (
     isVisible && (
       <a
         id="back-to-top"
-        className="fixed text-lg rounded-full z-20 bottom-5 left-1/2 transform -translate-x-1/2 size-10 hover:scale-110 transition-all duration-300 cursor-pointer text-center bg-customGreen text-white justify-center items-center flex"
+        className={
+          isSidebarOpen
+            ? "hidden"
+            : `fixed text-lg rounded-full z-20 bottom-5 left-1/2 transform -translate-x-1/2 size-10 hover:scale-110 transition-all duration-300 cursor-pointer text-center bg-customGreen text-white justify-center items-center flex`
+        }
         onClick={handleClick}
         style={{ bottom: "2rem" }} // Add bottom spacing to avoid overlap with modals
       >

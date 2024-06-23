@@ -174,6 +174,7 @@ export default function Home() {
   return (
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
+
       <SearchUI
         cityList={cityList}
         isGrid={isGrid}
@@ -203,7 +204,7 @@ export default function Home() {
       />
       <div
         className={`w-full  md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "block md:flex md:flex-wrap md:gap-4   mx-auto" : ""
+          isGrid ? "block md:flex md:flex-wrap md:gap-4  mx-auto" : ""
         }`}
       >
         {loading

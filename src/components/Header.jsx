@@ -11,10 +11,14 @@ import MenuButton from "./MenuButton.jsx";
 import BurgerMenu from "./BurgerMenu.jsx";
 import Socials from "./Socials.jsx";
 import { ThemeSwitcher } from "./ThemeSwitcher.jsx";
-
+import useStore from "@/zustand/store/useStore";
 export default function Header() {
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-  const onBurgerMenuClose = () => setIsBurgerOpen(false);
+  const toggleSidebar = useStore((state) => state.toggleSidebar);
+  const onBurgerMenuClose = () => {
+    toggleSidebar(false);
+    setIsBurgerOpen(false);
+  };
 
   return (
     <Navbar height={"70px"} isBordered className=" header">
@@ -26,7 +30,12 @@ export default function Header() {
         </Link>
       </NavbarBrand>
 
-      <MenuButton onClick={() => setIsBurgerOpen(true)} />
+      <MenuButton
+        onClick={() => {
+          toggleSidebar(true);
+          setIsBurgerOpen(true);
+        }}
+      />
 
       <BurgerMenu isBurgerOpen={isBurgerOpen} onClose={onBurgerMenuClose} />
     </Navbar>
