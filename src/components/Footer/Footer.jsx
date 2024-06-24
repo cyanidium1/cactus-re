@@ -7,7 +7,7 @@ import FooterUseFullLinks from "./FooterUsefullLinks";
 const Footer = ({ isRu }) => {
   return (
     <footer className=" dark:bg-black bg-slate-100 mx-auto w-full ">
-      <div className="mx-auto max-w-[1024px] px-3 ">
+      <div className="mx-auto max-w-[1024px] px-2 ">
         <div className=" py-16 lg:flex lg:justify-between lg:gap-[30px] xl:gap-[50px]">
           <div className="md:mb-[30px]">
             <Logo />
@@ -17,9 +17,9 @@ const Footer = ({ isRu }) => {
                 : "A great platform to buy, sell and rent your properties without anyagent or commissions."}
             </p>
           </div>
-          <div className="md:flex md:justify-between lg:w-full gap-4">
+          <div className="md:flex md:justify-between ">
             {/* <FooterCompanyList isRu={isRu} /> */}
-            <FooterUseFullLinks isRu={isRu} />
+            {/* <FooterUseFullLinks isRu={isRu} /> */}
             <FooterContactDetails isRu={isRu} />
           </div>
         </div>

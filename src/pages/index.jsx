@@ -171,6 +171,53 @@ export default function Home() {
     }
   };
 
+  const fetchAllData = async (isFreshSearch = false, pageOverride) => {
+    setLoading(true);
+    if (!router.isReady || !citiesLoaded) return;
+
+    const cityId = null;
+
+    const sellOrRentId = null;
+
+    const typeOfPropertyId = null;
+
+    const pageToFetch =
+      pageOverride !== undefined ? pageOverride : currentPage - 1;
+
+    try {
+      const data = await getData(
+        pageToFetch,
+        itemsPerPage,
+        minPrice,
+        maxPrice,
+        cityId,
+        sellOrRentId,
+        typeOfPropertyId
+      );
+
+      const newData = data.map((item) => {
+        if (item.mainPhoto && item.mainPhoto._type === "image") {
+          item.mainPhoto.url = urlFor(item.mainPhoto).url();
+        }
+        if (item.allPhotos && Array.isArray(item.allPhotos)) {
+          item.allPhotos = item.allPhotos.map((photo) => {
+            if (photo._type === "image") {
+              return { ...photo, url: urlFor(photo).url() };
+            }
+            return photo;
+          });
+        }
+        return item;
+      });
+
+      setPortfolioPosts(newData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
@@ -186,6 +233,7 @@ export default function Home() {
         maxPrice={maxPrice}
         setMaxPrice={setMaxPrice}
         city={router.query.city}
+        fetchAllData={fetchAllData}
         setCity={setCity}
         propertyType={
           isRu
@@ -203,23 +251,24 @@ export default function Home() {
         isRu={isRu}
       />
       <div
-        className={`w-full  md:max-w-5xl  mx-auto mt-6 p-2 xl:p-0 ${isGrid ? "block sm:flex sm:flex-wrap justify-between" : ""
-          }`}
+        className={`w-full  md:max-w-5xl  mx-auto mt-6 p-2 xl:p-0 ${
+          isGrid ? "block sm:flex sm:flex-wrap justify-between" : ""
+        }`}
       >
         {loading
           ? Array(12)
-            .fill()
-            .map((_, index) => (
-              <Skeleton
-                key={index}
-                isGrid={isGrid}
-                className="w-80 space-y-5 p-4 my-3"
-                radius="lg"
-              />
-            ))
+              .fill()
+              .map((_, index) => (
+                <Skeleton
+                  key={index}
+                  isGrid={isGrid}
+                  className="w-80 space-y-5 p-4 my-3"
+                  radius="lg"
+                />
+              ))
           : portfolioPosts.map((el) => (
-            <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
-          ))}
+              <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
+            ))}
       </div>
 
       <div className="justify-center max-w-5xl w-full flex md:justify-center my-2 mx-auto">

@@ -70,6 +70,15 @@ export const getData = async (
   sellOrRentId,
   typeOfPropertyId
 ) => {
+  console.log(`currentPage`, currentPage);
+
+  console.log(`itemsPerPage`, itemsPerPage);
+  console.log(`minPrice`, minPrice);
+  console.log(`maxPrice`, maxPrice);
+  console.log(`cityId`, cityId);
+  console.log(`sellOrRentId`, sellOrRentId);
+  console.log(`typeOfPropertyId`, typeOfPropertyId);
+
   try {
     let conditions = [];
     let params = {};
