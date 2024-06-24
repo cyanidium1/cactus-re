@@ -25,6 +25,7 @@ function SearchUI({
   itemsPerPage,
   setItemsPerPage,
   isRu,
+  fetchAllData,
 }) {
   const [resetKey, setResetKey] = useState(0);
   const [sliderMaxPrice, setSliderMaxPrice] = useState(250000);
@@ -162,7 +163,7 @@ function SearchUI({
       itemsPerPage: 12,
       isGrid: true,
     });
-    onSearch();
+    fetchAllData();
   };
 
   return (

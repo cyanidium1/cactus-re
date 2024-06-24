@@ -114,7 +114,7 @@ export default function Page() {
       </div>
       <div className="md:mt-[10px]">
         <div className="md:flex justify-between mb-[100px] gap-2">
-          <div className="relative lg:w-2/3 md:w-full md:py-4 md:px-0 px-3">
+          <div className="relative lg:w-2/3 md:w-full md:py-4 md:px-0 ">
             <h4 className=" text-2xl font-medium dark:text-slate-400">
               {isRu ? titleRussian : titleEnglish}
             </h4>

@@ -12,7 +12,10 @@ const PropertyCardInfoTablet = ({
   return (
     <div className="hidden md:block md:w-1/3 md:h-full md:my-0 ">
       <div className="list-none overflow-hidden my-4 md:p-4 rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700 relative">
-        <img src="/images/cactusSvg.svg" className="absolute -right-36 -bottom-14 opacity-25 " />
+        <img
+          src="/images/cactusSvg.svg"
+          className="absolute -right-36 -bottom-14 opacity-25 "
+        />
         <div>
           <RoomQualities
             bath={bathroomNumber}
