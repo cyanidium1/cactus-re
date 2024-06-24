@@ -55,7 +55,7 @@ const FooterContactDetails = ({ isRu }) => {
         </svg>
         <div className="">
           <a
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out"
+            className="text-slate-400 hover:text-green-400 duration-500 ease-in-out"
             href="mailto:cactusbusines@gmail.com"
           >
             cactusbusines@gmail.com
@@ -80,7 +80,7 @@ const FooterContactDetails = ({ isRu }) => {
         <div className="">
           <a
             href="tel:+355685577016"
-            className="text-slate-400 hover:text-slate-400 duration-500 ease-in-out"
+            className="text-slate-400 hover:text-green-400 duration-500 ease-in-out"
           >
             +355 685 577 016
           </a>

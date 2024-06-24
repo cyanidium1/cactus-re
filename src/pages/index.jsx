@@ -203,24 +203,23 @@ export default function Home() {
         isRu={isRu}
       />
       <div
-        className={`w-full  md:max-w-5xl  mx-auto mt-4 p-2 xl:p-0 ${
-          isGrid ? "block md:flex md:flex-wrap md:gap-4  mx-auto" : ""
-        }`}
+        className={`w-full  md:max-w-5xl  mx-auto mt-6 p-2 xl:p-0 ${isGrid ? "block sm:flex sm:flex-wrap justify-between" : ""
+          }`}
       >
         {loading
           ? Array(12)
-              .fill()
-              .map((_, index) => (
-                <Skeleton
-                  key={index}
-                  isGrid={isGrid}
-                  className="w-80 space-y-5 p-4 my-3"
-                  radius="lg"
-                />
-              ))
+            .fill()
+            .map((_, index) => (
+              <Skeleton
+                key={index}
+                isGrid={isGrid}
+                className="w-80 space-y-5 p-4 my-3"
+                radius="lg"
+              />
+            ))
           : portfolioPosts.map((el) => (
-              <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
-            ))}
+            <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
+          ))}
       </div>
 
       <div className="justify-center max-w-5xl w-full flex md:justify-center my-2 mx-auto">

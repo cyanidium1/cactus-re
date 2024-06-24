@@ -9,7 +9,7 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
   const { language, translations } = useStore();
   const isRu = language;
   return (
-    <Transition.Root show={isBurgerOpen} as={Fragment}>
+    <Transition.Root show={isBurgerOpen} as={Fragment} >
       <Dialog as="div" className="relative z-40 " onClose={onClose}>
         <Transition.Child
           as={Fragment}
@@ -65,7 +65,7 @@ function BurgerMenu({ isBurgerOpen, onClose }) {
           </div>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition.Root >
   );
 }
 

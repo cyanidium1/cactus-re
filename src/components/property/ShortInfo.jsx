@@ -18,11 +18,11 @@ const ShortInfo = ({ city, rooms, areaCertificate, area }) => {
     },
     {
       title: translations.PropertyPage.areaSertified,
-      value: areaCertificate,
+      value: areaCertificate + ' м²',
     },
     {
       title: translations.PropertyPage.areaAct,
-      value: area,
+      value: area + ' м²',
     },
   ];
 
@@ -32,7 +32,7 @@ const ShortInfo = ({ city, rooms, areaCertificate, area }) => {
         key={idx}
         className="flex justify-between items-center md:mb-[5px] xl:mb-[15px]"
       >
-        <span className="text-xl md:text-lg font-medium xl:text-2xl text-black dark:text-slate-400">
+        <span className="text-xl text-black dark:text-slate-400">
           {title}
         </span>
         <span className="text-xl md:text-lg font-medium xl:text-2xl dark:text-slate-400">

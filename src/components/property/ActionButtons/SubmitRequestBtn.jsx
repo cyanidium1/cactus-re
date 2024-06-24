@@ -14,7 +14,7 @@ const SubmitRequestButton = () => {
   return (
     <div className="p-1 flex-1">
       <Button
-        className="bg-customGreen hover:bg-green-700 text-white rounded-md w-full"
+        className="bg-customGreen hover:bg-green-700 text-white rounded-md w-full text-lg"
         onPress={onOpen}
       >
         {translations.PropertyPage.btnSubmitReq}

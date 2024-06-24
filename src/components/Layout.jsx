@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import Head from "next/head";
 import ButtonUp from "./ButtonUp";
 import useStore from "@/zustand/store/useStore";
+import './loader.css'
 
 export const metadata = {};
 
@@ -26,6 +27,7 @@ export default function Layout({ children, isStyled = true }) {
       </Head>
       {/* <Loader /> */}
       <Header isRu={isRu} />
+      <Loader />
       <main className={isStyled ? "max-w-[1024px] mx-auto p-2" : ""}>
         {children}
       </main>

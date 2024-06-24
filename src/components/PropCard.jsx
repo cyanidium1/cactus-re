@@ -23,11 +23,10 @@ function PropCard({ el, isGrid, isRU }) {
   return (
     <Link
       href={`/property/${_id}`}
-      className={`block w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow-lg hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${
-        isGrid ? "w-full md:w-[32%] lg:w-80" : "flex"
-      }`}
+      className={`block w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow-lg hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${isGrid ? "w-full sm:w-[48%] md:w-[32%] lg:w-80" : "flex"
+        }`}
     >
-      <div className="relative">
+      <div className="relative ">
         <Image
           className={` ${isGrid ? "h-56  w-full" : "h-full"} object-cover`}
           src={mainPhoto.url}
@@ -44,7 +43,8 @@ function PropCard({ el, isGrid, isRU }) {
           </a>
         </div>
       </div>
-      <div className={` ${isGrid ? "" : "flex w-2/3"}`}>
+      <div
+        className={` ${isGrid ? "" : "flex w-2/3"}`}>
         <div className={` ${isGrid ? "p-6 " : "p-6 sm:w-1/2"}`}>
           <div className={` ${isGrid ? "pb-6" : "sm:pb-6"}`}>
             <p className="text-lg md:text-base lg:text-lg h-14 hover:text-green-600 font-medium ease-in-out duration-500">
@@ -105,11 +105,10 @@ function PropCard({ el, isGrid, isRU }) {
             </li>
           </ul>
           <ul
-            className={` ${
-              isGrid
-                ? "pt-6 flex justify-between items-center list-none"
-                : "sm:pt-6 flex justify-between items-center list-none"
-            }`}
+            className={` ${isGrid
+              ? "pt-6 flex justify-between items-center list-none"
+              : "sm:pt-6 flex justify-between items-center list-none"
+              }`}
           >
             <li>
               <span className="text-slate-400">{isRU ? "Цена" : "Price"}</span>

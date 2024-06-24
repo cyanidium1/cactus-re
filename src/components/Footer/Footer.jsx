@@ -18,7 +18,7 @@ const Footer = ({ isRu }) => {
             </p>
           </div>
           <div className="md:flex md:justify-between lg:w-full gap-4">
-            <FooterCompanyList isRu={isRu} />
+            {/* <FooterCompanyList isRu={isRu} /> */}
             <FooterUseFullLinks isRu={isRu} />
             <FooterContactDetails isRu={isRu} />
           </div>

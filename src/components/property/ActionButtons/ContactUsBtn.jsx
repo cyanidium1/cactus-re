@@ -12,7 +12,7 @@ const ContactUsBtn = () => {
   return (
     <div className="p-1 flex-1">
       <Button
-        className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white w-full rounded-md href=${}"
+        className="bg-transparent hover:bg-customGreen border border-customGreen text-customGreen hover:text-white w-full rounded-md href=${} text-lg"
         onPress={onOpen}
       >
         <svg
