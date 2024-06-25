@@ -84,8 +84,10 @@ export default function Page() {
     locationGmapsLink,
   } = page;
 
+  const projectTitle = isRu ? titleRussian : titleEnglish;
+
   return (
-    <Layout>
+    <Layout title={projectTitle}>
       <div className="md:flex md:justify-between mb-8 md:gap-4 md:items-center md:h-full">
         {allPhotos ? (
           <RoomGallery
