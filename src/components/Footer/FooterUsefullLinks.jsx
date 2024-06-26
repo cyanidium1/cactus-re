@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const FooterUseFullLinks = ({ isRu }) => {
   return (
     <div className="mt-[30px] md:mt-0">
@@ -27,9 +29,9 @@ const FooterUseFullLinks = ({ isRu }) => {
           </a>
         </li>
         <li className="mt-[10px]">
-          <a
+          <Link
             className="text-slate-400  hover:text-green-700 duration-500 ease-in-out lightbox flex items-center"
-            href=""
+            href="/privacy"
           >
             <svg
               stroke="currentColor"
@@ -45,7 +47,7 @@ const FooterUseFullLinks = ({ isRu }) => {
               <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"></path>
             </svg>
             {isRu ? "Политика конфиденциальности" : "Privacy policy"}
-          </a>
+          </Link>
         </li>
         <li className="mt-[10px]">
           <a
