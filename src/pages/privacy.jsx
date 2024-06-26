@@ -5,7 +5,6 @@ export default function Privacy() {
   const { translations } = useStore();
 
   const title = translations.Privacy.title.split(" ");
-  console.log(`title`, title);
   return (
     <Layout>
       <div className=" mx-auto ">
