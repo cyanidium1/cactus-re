@@ -180,6 +180,8 @@ export default function Home() {
     const sellOrRentId = null;
 
     const typeOfPropertyId = null;
+    let minPrice = 0;
+    let maxPrice = 250000;
 
     const pageToFetch =
       pageOverride !== undefined ? pageOverride : currentPage - 1;

@@ -19,7 +19,7 @@ const Footer = ({ isRu }) => {
           </div>
           <div className="md:flex md:justify-between ">
             {/* <FooterCompanyList isRu={isRu} /> */}
-            {/* <FooterUseFullLinks isRu={isRu} /> */}
+            <FooterUseFullLinks isRu={isRu} />
             <FooterContactDetails isRu={isRu} />
           </div>
         </div>
