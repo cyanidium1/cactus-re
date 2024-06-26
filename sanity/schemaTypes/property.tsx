@@ -1,3 +1,4 @@
+
 export default {
   name: 'property',
   title: 'Property',
@@ -91,6 +92,9 @@ export default {
       title: 'All Photos',
       type: 'array',
       of: [{type: 'image'}],
+      options: {
+        layout: 'grid',
+      },
     },
     {
       name: 'youtubeLink',
