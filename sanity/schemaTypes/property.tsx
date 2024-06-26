@@ -1,4 +1,3 @@
-
 export default {
   name: 'property',
   title: 'Property',
@@ -92,7 +91,9 @@ export default {
       title: 'All Photos',
       type: 'array',
       of: [{type: 'image'}],
+
       options: {
+        multiple: true,
         layout: 'grid',
       },
     },
