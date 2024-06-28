@@ -17,7 +17,7 @@ const Footer = ({ isRu }) => {
                 : "A great platform to buy, sell and rent your properties without anyagent or commissions."}
             </p>
           </div>
-          <div className="md:flex md:justify-between ">
+          <div className="md:flex md:justify-between gap-1 ">
             {/* <FooterCompanyList isRu={isRu} /> */}
             <FooterUseFullLinks isRu={isRu} />
             <FooterContactDetails isRu={isRu} />

@@ -1,6 +1,16 @@
-export default {
+import {defineType, defineField} from 'sanity'
+
+const typeOfProperty = defineType({
   name: 'typeOfProperty',
   title: 'Type Of Property',
   type: 'document',
-  fields: [{name: 'value', title: 'Type Of Property Name', type: 'string'}],
-}
+  fields: [
+    defineField({
+      name: 'value',
+      title: 'Type Of Property Name',
+      type: 'string',
+    }),
+  ],
+})
+
+export default typeOfProperty

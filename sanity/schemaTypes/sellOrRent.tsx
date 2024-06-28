@@ -1,6 +1,16 @@
-export default {
+import {defineType, defineField} from 'sanity'
+
+const sellOrRent = defineType({
   name: 'sellOrRent',
   title: 'Sell Or Rent',
   type: 'document',
-  fields: [{name: 'value', title: 'Sell Or Rent', type: 'string'}],
-}
+  fields: [
+    defineField({
+      name: 'value',
+      title: 'Sell Or Rent',
+      type: 'string',
+    }),
+  ],
+})
+
+export default sellOrRent
