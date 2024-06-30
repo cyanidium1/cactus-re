@@ -15,7 +15,7 @@ function Navigation() {
       <li>
         <Link
           className="w-full text-customGreen text-lg font-normal hover:text-green-400 duration-300 transition-all"
-          href="https://cactus-realestate.ru/#preimushchestva"
+          href="/"
           size="lg"
         >
           {translations.BurgerMenu.catalogue}
