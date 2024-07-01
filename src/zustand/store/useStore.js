@@ -21,6 +21,7 @@ const useStore = create((set) => ({
 
   toggleLanguage: () =>
     set((state) => {
+      console.log(state.language);
       const newLanguage = state.language === "en" ? "ru" : "en";
       return {
         language: newLanguage,
