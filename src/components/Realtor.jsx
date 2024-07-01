@@ -17,7 +17,7 @@ function Realtor() {
       />
       <div className="p-2">
         <p className="text-sm text-black dark:text-slate-400">
-          Занимается объектом:
+          {isRu ? "Занимается объектом:" : "Engaged in the object:"}
         </p>
         <p className="text-xl font-medium text-black dark:text-slate-100">
           {isRu ? "Ковалевский Александр" : "Kovalevskiy Alexandr"}
