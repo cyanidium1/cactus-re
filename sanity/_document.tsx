@@ -22,6 +22,10 @@ const globalStyles = `
       overflow-y: visible !important;
 
   }
+      .eVOzYq {
+      overflow-y: visible !important;
+
+  }
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
