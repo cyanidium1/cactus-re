@@ -6,6 +6,7 @@ import {urlFor} from '../utils/imageBuilder'
 
 export function MultipleImageInput(props: ArrayOfObjectsInputProps) {
   const {value, onChange} = props
+  console.log(`value`, value)
 
   const handleDeleteImage = useCallback(
     (indexToRemove: number) => {
