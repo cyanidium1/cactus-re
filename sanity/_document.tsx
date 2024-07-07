@@ -17,7 +17,7 @@ const globalStyles = `
 	bacground-color: #db7093;
   }
   div .sc-kpDprT  {
-    overflow-y: visible !important;
+    overflow-y: hidden !important;
   }
 
   body {
