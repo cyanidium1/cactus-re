@@ -6,11 +6,7 @@ import ButtonUp from "./ButtonUp";
 import useStore from "@/zustand/store/useStore";
 import "./loader.css";
 
-export const metadata = { title: "Новий заголовок" };
-
-
 export default function Layout({ children, isStyled = true, title }) {
-  console.log(`title`, title);
   const { language } = useStore();
   const isRu = language === "ru";
   return (
