@@ -16,10 +16,12 @@ const globalStyles = `
     height: 100%;
 	bacground-color: #db7093;
   }
-  div .sc-kpDprT  {
-    overflow-y: hidden !important;
-  }
 
+
+  div .eVOzYq {
+      overflow-y: visible !important;
+
+  }
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
