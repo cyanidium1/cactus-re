@@ -1,6 +1,5 @@
 import {defineType, defineField} from 'sanity'
 import {MultipleImageInput} from '../components/MultipleImageInput'
-
 const property = defineType({
   name: 'property',
   title: 'Property',
@@ -116,11 +115,20 @@ const property = defineType({
       description: 'Избраное?',
     }),
   ],
+
   preview: {
     select: {
       title: 'titleEnglish',
       subtitle: 'descriptionEnglish',
       media: 'mainPhoto',
+    },
+    prepare(selection) {
+      const {title, subtitle, media} = selection
+      return {
+        title,
+        subtitle,
+        media,
+      }
     },
   },
 })
