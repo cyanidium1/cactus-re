@@ -1,5 +1,7 @@
 // import './loader.css'
 
+import Logo from "./Logo";
+
 const Loader = () => {
   return (
     <div className="backdropL bg-white dark:bg-black relative">
@@ -9,9 +11,7 @@ const Loader = () => {
       />
       <div className="loader relative">
         <div className="loader-text absolute left-[50%] -translate-x-[50%] top-[50%] -translate-y-[50%] ">
-          <p className="text-3xl sm:text-6xl text-nowrap">
-            CACTUS | Real Estate
-          </p>
+          <Logo />
           {/* Loader v.0.1.3 by cyanidium */}
         </div>
       </div>

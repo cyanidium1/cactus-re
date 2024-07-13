@@ -27,7 +27,7 @@ const RoomPrices = ({ price, sellrent }) => {
       </h5>
       <div className="flex justify-between items-center mt-4">
         <span className="text-xl md:text-lg lg:text-xl font-medium text-black  dark:text-slate-400 ">
-          $ {price}
+          € {price}
         </span>
         <span className="bg-green-600/10 text-customGreen text-sm px-3 py-2 rounded   dark:text-slate-400">
           {handleSellRent()}

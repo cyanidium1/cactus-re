@@ -3,7 +3,6 @@ const Logo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
-    width="200px"
     height="37.5px"
     className="fill-customGreen dark:fill-white "
     viewBox="0 0 16000 3000"

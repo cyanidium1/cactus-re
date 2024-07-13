@@ -31,7 +31,7 @@ const FooterContactDetails = ({ isRu }) => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-customGreen hover:text-green-700 duration-500 ease-in-out lightbox"
-            href="https://www.google.com/maps/place/Bulevardi+Dyrrah,+Durr%C3%ABs,+%D0%90%D0%BB%D0%B1%D0%B0%D0%BD%D1%96%D1%8F/@41.316211,19.4459081,17z/data=!3m1!4b1!4m6!3m5!1s0x134fda47e70b8333:0x933b0843a3e40d80!8m2!3d41.316211!4d19.448483!16s%2Fg%2F1tkjnnt5?entry=ttu"
+            href="https://maps.app.goo.gl/iYGd6jb6wCFys97LA"
           >
             {isRu ? "Просмотреть на Google картах" : "View on Google map"}
           </a>

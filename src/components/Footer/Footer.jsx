@@ -13,8 +13,8 @@ const Footer = ({ isRu }) => {
             <Logo />
             <p className="mt-6 text-slate-400 marker:lg:w-[290px] xl:w-[350px]">
               {isRu
-                ? "Идеальная платформа для покупки, продажи и аренды недвижимости без агентов и дополнительных комиссий."
-                : "A great platform to buy, sell and rent your properties without anyagent or commissions."}
+                ? "КЛЮЧИ ОТ КВАРТИРЫ ВАШЕЙ МЕЧТЫ"
+                : "KEYS TO YOUR DREAM APARTMENT"}
             </p>
           </div>
           <div className="md:flex md:justify-between gap-1 ">
