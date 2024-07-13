@@ -26,6 +26,7 @@ function SearchUI({
   setItemsPerPage,
   isRu,
   fetchAllData,
+  setCurrentPage,
 }) {
   const [resetKey, setResetKey] = useState(0);
   const [sliderMaxPrice, setSliderMaxPrice] = useState(250000);
@@ -490,7 +491,10 @@ function SearchUI({
                                   ? "w-full bg-gray-100 text-gray-900"
                                   : "w-full text-gray-700"
                               } block px-4 py-2 text-sm cursor-pointer`}
-                              onClick={() => setItemsPerPage(24)}
+                              onClick={() => {
+                                setCurrentPage(1);
+                                setItemsPerPage(24);
+                              }}
                             >
                               24
                             </button>

@@ -58,6 +58,21 @@ export default function Home() {
     fetchTotalCount();
   }, [currentPage, itemsPerPage, citiesLoaded, router.isReady]);
 
+  useEffect(() => {
+    if (isInitialRender) {
+      setIsInitialRender(false);
+    } else {
+      setTimeout(() => {
+        window.scrollTo({ top: 260, behavior: "smooth" });
+      }, 200);
+    }
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (!citiesLoaded || !router.isReady) return;
+    fetchData(true);
+  }, [citiesLoaded, router.isReady, itemsPerPage, currentPage]);
+
   const fetchTotalCount = async () => {
     setLoading(true);
 
@@ -96,21 +111,6 @@ export default function Home() {
   };
 
   const [isInitialRender, setIsInitialRender] = useState(true);
-
-  useEffect(() => {
-    if (isInitialRender) {
-      setIsInitialRender(false);
-    } else {
-      setTimeout(() => {
-        window.scrollTo({ top: 260, behavior: "smooth" });
-      }, 200);
-    }
-  }, [currentPage]);
-
-  useEffect(() => {
-    if (!citiesLoaded || !router.isReady) return;
-    fetchData(true);
-  }, [citiesLoaded, router.isReady]);
 
   const fetchData = async (isFreshSearch = false, pageOverride) => {
     setLoading(true);
@@ -237,6 +237,7 @@ export default function Home() {
         city={router.query.city}
         fetchAllData={fetchAllData}
         setCity={setCity}
+        setCurrentPage={setCurrentPage}
         propertyType={
           isRu
             ? router.query.propertyType
