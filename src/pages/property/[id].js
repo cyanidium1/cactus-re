@@ -128,7 +128,7 @@ export default function Page() {
             />
             {/* <GoogleMapComponent locationGmapsLink={locationGmapsLink} /> */}
           </div>
-          <div className="lg:w-1/3 md:w-1/2 md:py-4 px-3 md:px-0 mt-8 md:mt-0">
+          <div className="lg:w-1/3 md:w-1/2 md:py-4 md:px-0 mt-8 md:mt-0">
             <div className="sticky top-20">
               <div className="rounded-md bg-slate-50 dark:bg-slate-800 shadow dark:shadow-gray-700">
                 <RoomPrices price={price} sellrent={sellOrRent} isRu={isRu} />

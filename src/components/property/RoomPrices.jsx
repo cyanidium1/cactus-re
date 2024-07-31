@@ -29,7 +29,7 @@ const RoomPrices = ({ price, sellrent }) => {
         <span className="text-xl md:text-lg lg:text-xl font-medium text-black  dark:text-slate-400 ">
           € {price}
         </span>
-        <span className="bg-green-600/10 text-customGreen text-sm px-3 py-2 rounded   dark:text-slate-400">
+        <span className="bg-green-600/10 text-customGreen text-sm px-5 py-2 rounded   dark:text-slate-400">
           {handleSellRent()}
         </span>
       </div>

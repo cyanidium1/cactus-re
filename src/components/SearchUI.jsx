@@ -417,14 +417,14 @@ function SearchUI({
         </form>
         <div className="mt-6 space-y-6 md:space-y-0 md:flex items-center">
           <Button
-            className="bg-green-500 w-full lg:w-[24.5%] md:text-base text-lg mr-2"
+            className="bg-customGreen w-full lg:w-[24.5%] md:text-base text-lg mr-2"
             variant="shadow"
             onPress={onSearch}
           >
             {isRu ? "Подобрать" : "Search"}
           </Button>
           <Button
-            className="border-green-500 w-full lg:w-[24.5%] md:text-base text-lg mr-2"
+            className="border-cusbg-customGreen w-full lg:w-[24.5%] md:text-base text-lg mr-2"
             variant="bordered"
             onPress={handleResetFilters}
           >
