@@ -8,7 +8,7 @@ export default function Privacy() {
   return (
     <Layout>
       <div className=" mx-auto ">
-        <h2 className="dark:text-white text-3xl font-medium py-4  md:text-4xl ">
+        <h2 className="dark:text-white text-black text-3xl font-medium py-4  md:text-4xl ">
           {title[0]} <span className="text-green-700">{title[1]}</span>
         </h2>
         {translations.Privacy.content.map((item, index) => {
