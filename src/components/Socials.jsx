@@ -24,7 +24,7 @@ function Socials({ className }) {
     },
     {
       ariaLabel: 'Telegram',
-      linkTo: 'https://cactus-realestate.ru/cactus_realestate',
+      linkTo: 'https://t.me/CACTUS_Real_Estate',
       icon: (
         <Telegram className="hover:scale-125 focus:scale-125 transition cursor-pointer" />
       ),
@@ -32,7 +32,7 @@ function Socials({ className }) {
     },
     {
       ariaLabel: 'Номер телефона',
-      linkTo: 'tel:+355695589030',
+      linkTo: 'tel:+355685577016',
       icon: (
         <Phone className="hover:scale-125 focus:scale-125 transition cursor-pointer" />
       ),
