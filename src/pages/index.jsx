@@ -19,6 +19,9 @@ import {
 import { urlFor } from "@/lib/sanity";
 import { useRouter } from "next/router";
 
+import { motion } from 'framer-motion';
+
+
 export default function Home() {
   const [portfolioPosts, setPortfolioPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -220,6 +223,14 @@ export default function Home() {
     }
   };
 
+  // animations
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+  
+
   return (
     <Layout isStyled={false}>
       <TopImage isRu={isRu} />
@@ -259,19 +270,28 @@ export default function Home() {
         }`}
       >
         {loading
-          ? Array(12)
-              .fill()
-              .map((_, index) => (
-                <Skeleton
-                  key={index}
-                  isGrid={isGrid}
-                  className="w-80 space-y-5 p-4 my-3"
-                  radius="lg"
-                />
-              ))
-          : portfolioPosts.map((el) => (
-              <PropCard key={el._id} el={el} isGrid={isGrid} isRU={isRu} />
-            ))}
+        ? Array(12)
+            .fill()
+            .map((_, index) => (
+              <Skeleton
+                key={index}
+                isGrid={isGrid}
+                className="w-80 space-y-5 p-4 my-3"
+                radius="lg"
+              />
+            ))
+        : portfolioPosts.map((el, idx) => (
+            <motion.div
+              key={el._id}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={itemVariants}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            >
+              <PropCard el={el} isGrid={isGrid} isRU={isRu} />
+            </motion.div>
+          ))}
       </div>
 
       <div className="justify-center max-w-5xl w-full flex md:justify-center my-2 mx-auto">
