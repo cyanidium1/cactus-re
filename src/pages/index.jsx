@@ -3,7 +3,6 @@ import PropCard from "@/components/PropCard";
 import SearchUI from "@/components/SearchUI";
 import TopImage from "@/components/TopImage";
 import Skeleton from "@/components/Skeleton";
-import { performRequest } from "@/lib/datocms";
 import { Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import useStore from "@/zustand/store/useStore";

@@ -424,7 +424,7 @@ function SearchUI({
             {isRu ? "Подобрать" : "Search"}
           </Button>
           <Button
-            className="border-cusbg-customGreen w-full lg:w-[24.5%] md:text-base text-lg mr-2"
+            className="border-customGreen w-full lg:w-[24.5%] md:text-base text-lg mr-2"
             variant="bordered"
             onPress={handleResetFilters}
           >
