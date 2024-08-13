@@ -130,7 +130,7 @@ function PropCard({ el, isGrid, isRU }) {
           </ul>
         </div>
         {!isGrid && (
-          <div className="w-1/2 py-6 pr-6 hidden sm:block">
+          <div className="text-black dark:text-white w-1/2 py-6 pr-6 hidden sm:block">
             {isRU
               ? descriptionRussian.length > 200
                 ? descriptionRussian.slice(0, 287) + "..."
