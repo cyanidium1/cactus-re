@@ -2,10 +2,28 @@ import { getData } from "@/api/api";
 import { urlFor } from "@/lib/sanity";
 import { create } from "xmlbuilder2";
 
+// Функция для обработки количества комнат
+const parseRooms = (rooms) => {
+  if (!rooms) return "1"; // Значение по умолчанию
+
+  const firstChar = rooms.trim().charAt(0).toLowerCase();
+
+  if (firstChar === "s") {
+    return "1"; // Студия
+  }
+
+  if (!isNaN(firstChar) && firstChar >= 1 && firstChar <= 5) {
+    return firstChar; // Количество комнат от 1 до 5
+  }
+
+  return "1"; // Значение по умолчанию, если ничего не подошло
+};
+
 export default async function handler(req, res) {
   const data = await getData(0, 10000, null, null, null, null, null);
-
   const convertToXML = (data) => {
+    console.log(data);
+
     const root = create({ version: "1.0" }).ele("objects");
 
     root.ele("version").txt("2.0");
@@ -13,105 +31,72 @@ export default async function handler(req, res) {
     data.forEach((item) => {
       const object = root.ele("object");
 
+      // Захардкоженная информация о пользователе
+      const sellerInfo = object.ele("seller_info");
+      const userName = sellerInfo.ele("user_name");
+      userName.ele("en").txt("Alexandr");
+      userName.ele("ru").txt("Александр");
+
+      const userSurname = sellerInfo.ele("user_surname");
+      userSurname.ele("en").txt("Kovalevskiy");
+      userSurname.ele("ru").txt("Ковалевский");
+
+      sellerInfo.ele("user_avatar_url").txt("");
+      sellerInfo.ele("user_email").txt("cactusbusines@gmail.com"); // Захардкоженный email
+      sellerInfo.ele("user_phone").txt("+355 68 557-70-16"); // Захардкоженный телефон
+
+      // Обязательные поля
+      object.ele("external_id").txt(item._id || "");
+      object.ele("complex_external_id").txt(item._id || "");
+
+      // deal_type
+      if (item.sellOrRent === "Sell" || item.sellOrRent === "Rent") {
+        const dealType = item.sellOrRent === "Sell" ? "sale" : "long-rent";
+        object.ele("deal_type").txt(dealType);
+      } else {
+        object.ele("deal_type").txt("sale"); // Значение по умолчанию
+      }
+
+      object.ele("type").txt("10");
+      object.ele("country_code").txt(item.countryCode || "AL"); // Значение по умолчанию
+
+      if (item.latitude && item.longitude) {
+        object.ele("lat").txt(item.latitude);
+        object.ele("lng").txt(item.longitude);
+      } else {
+        object.ele("address").txt(item.cityName || "Unknown address"); // Адрес, если нет координат
+      }
       object
-        .ele("seller_info")
-        .ele("user_name")
-        .ele("en")
-        .txt("Alexandr")
-        .up()
-        .ele("ru")
-        .txt("Александр")
-        .up()
-        .ele("de")
-        .txt("...")
-        .up()
-        .ele("es")
-        .txt("...")
-        .up()
-        .ele("pl")
-        .txt("...")
-        .up()
-        .ele("user_surname")
-        .ele("en")
-        .txt("Kovalevskiy")
-        .up()
-        .ele("ru")
-        .txt("Ковалевский")
-        .up()
-        .ele("de")
-        .txt("...")
-        .up()
-        .ele("es")
-        .txt("...")
-        .up()
-        .ele("pl")
-        .txt("...")
-        .up()
-        .ele("user_avatar_url")
-        .txt("")
-        .up()
-        .ele("user_email")
-        .txt("cactusbusines@gmail.com")
-        .up()
-        .ele("user_phone")
-        .txt("+355 68 557-70-16");
+        .ele("external_url")
+        .txt(`https://www.cactus-realestate.com/en/property/${item._id}`);
 
-      object.ele("external_id").txt("");
-      object.ele("complex_external_id").txt("");
-      object.ele("deal_type").txt(item.sellOrRent);
-      object.ele("type").txt("");
-      object.ele("country_code").txt("");
-      object.ele("lat").txt("");
-      object.ele("lng").txt("");
-      object.ele("address").txt(item.cityName);
-      object.ele("external_url").txt("");
       object.ele("currency").txt("EUR");
-      object.ele("price").txt(item.price);
-      object.ele("floor_num").txt("14");
-      object.ele("floors_cnt").txt("14");
-      object.ele("building_year").txt("2024");
-      object.ele("rooms").txt(item.roomsEnglish);
-      object.ele("bedrooms").txt("");
-      object.ele("bathrooms").txt(item.bathroomNumber);
-      object.ele("wc").txt("1");
-      object.ele("area").txt(item.areaActual);
-      object.ele("area_living").txt("");
-      object.ele("area_ground").txt("");
-      object.ele("area_kitchen").txt("");
+      object.ele("price").txt(item.price || "0");
 
+      // Обработка количества комнат
+      const roomsCount = parseRooms(item.rooms);
+      object.ele("rooms").txt(roomsCount);
+
+      object.ele("bathrooms").txt(item.bathroomNumber || "1");
+      object.ele("area").txt(item.areaActual || "0");
+
+      // Фотографии
       const photos = object.ele("photos");
       if (item.allPhotos && Array.isArray(item.allPhotos)) {
         item.allPhotos.forEach((photo) => {
-          console.log(`photo`, photo);
           photos.ele("url").txt(urlFor(photo).url());
         });
       }
-      photos.ele("url").txt("...");
 
-      object.ele("video").txt("");
-      object.ele("virtual_tour").txt("");
+      object.ele("video").txt(item.videoUrl || "");
+      object.ele("virtual_tour").txt(item.virtualTourUrl || "");
 
-      const tags = object.ele("tags");
-      tags.ele("tag").txt("");
-      tags.ele("tag").txt("");
-      tags.ele("tag").txt("");
-
-      const rentTags = object.ele("tags");
-      const food = rentTags.ele("food");
-      food.ele("tag").txt("");
-      food.ele("tag").txt("");
-
-      const indoors = rentTags.ele("indoors");
-      indoors.ele("tag").txt("");
-      indoors.ele("tag").txt("");
-
-      const outdoors = rentTags.ele("outdoors");
-      outdoors.ele("tag").txt("");
-      outdoors.ele("tag").txt("");
-
+      // Описание
       const description = object.ele("description");
-      description.ele("en").txt(item.descriptionEnglish);
-      description.ele("ru").txt(item.descriptionRussian);
+      description
+        .ele("en")
+        .txt(item.descriptionEnglish || "No description available");
+      description.ele("ru").txt(item.descriptionRussian || "Нет описания");
       description.ele("de").txt("");
       description.ele("es").txt("");
       description.ele("pl").txt("");

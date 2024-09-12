@@ -24,7 +24,7 @@ function PropCard({ el, isGrid, isRU }) {
     <Link
       href={`/property/${_id}`}
       className={`block w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow-lg hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${
-        isGrid ? "w-full sm:w-[48%] md:w-[32%] lg:w-80" : "flex"
+        isGrid ? "w-full sm:w-80 " : "flex"
       }`}
     >
       <div className="relative ">
@@ -109,7 +109,7 @@ function PropCard({ el, isGrid, isRU }) {
           <ul
             className={` ${
               isGrid
-                ? "pt-6 flex justify-between items-center list-none"
+                ? "pt-6 flex w-full justify-between items-start list-none"
                 : "sm:pt-6 flex justify-between items-center list-none"
             }`}
           >
@@ -119,7 +119,7 @@ function PropCard({ el, isGrid, isRU }) {
                 € {Number(price).toLocaleString("en-US").replace(/,/g, ",")}
               </p>
             </li>
-            <li>
+            <li className="min-h-20 max-w-36">
               <span className="text-slate-400">
                 {isRU ? "Состояние" : "Condition"}
               </span>
