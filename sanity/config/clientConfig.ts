@@ -6,7 +6,7 @@ const client = createClient({
   dataset: 'production',
   apiVersion: '2024-06-28',
   token:
-    'skPtCgyWKXLTy2UC4nkJwY68qKzC2n2BE7kUbTwnlYv9MGeIKjw2OKEIgk4JwM4OOmkE7QHxK5uYPF8nbYTONg8yt8hQIYh1mA9mw2imWJv7CZwiNdxxlNqmoLOawp8bhhXYCNTAtn5grLXhil7ismk2jE7kem2N1BfaRW5R921mGibn6Vbl',
+    'skyiiFfw6tAQVJxYQGZU9irtTa5IkppFlKXfkCmANKjRYXh2xSkxYw7E4KebKL3qmONxQC5sJcaibijI1Px0RTtqoNsLQAGvmi4jtuUYizrU5VZI6KesUwrS6jTx4VzZL2IFM7yykiaaU3fjwdTLFu6jVNVvZxvLN22OPNbQ0UfetXnjzMTJ',
   useCdn: true,
 })
 
