@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    unoptimized: false,
     domains: ["www.datocms-assets.com", "cdn.sanity.io"],
   },
   i18n: {
