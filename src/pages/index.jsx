@@ -28,7 +28,7 @@ export default function Home() {
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [isGrid, setIsGrid] = useState(true);
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(250000);
+  const [maxPrice, setMaxPrice] = useState(1500000);
   const [city, setCity] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [sellOrRent, setSellOrRent] = useState("");
@@ -182,7 +182,7 @@ export default function Home() {
 
     const typeOfPropertyId = null;
     let minPrice = 0;
-    let maxPrice = 250000;
+    let maxPrice = 1500000;
 
     const pageToFetch =
       pageOverride !== undefined ? pageOverride : currentPage - 1;

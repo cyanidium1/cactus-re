@@ -29,11 +29,11 @@ function SearchUI({
   setCurrentPage,
 }) {
   const [resetKey, setResetKey] = useState(0);
-  const [sliderMaxPrice, setSliderMaxPrice] = useState(250000);
+  const [sliderMaxPrice, setSliderMaxPrice] = useState(1500000);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isBackdropBlur, setIsBackdropBlur] = useState(false);
   const [value, setValue] = useState([0, 500]);
-  const [sliderValue, setSliderValue] = useState([0, 250000]);
+  const [sliderValue, setSliderValue] = useState([0, 1500000]);
   const { translations } = useStore();
 
   const router = useRouter();
@@ -47,7 +47,7 @@ function SearchUI({
       const maxPriceValue =
         sellOrRentValue === "Rent" || sellOrRentValue === "Аренда"
           ? 2000
-          : 250000;
+          : 1500000;
       setSliderMaxPrice(maxPriceValue);
       setMaxPrice(maxPriceValue);
 
@@ -63,7 +63,7 @@ function SearchUI({
       const minPriceValue = query.minPrice ? parseInt(query.minPrice, 10) : 0;
       const maxPriceQuery = query.maxPrice
         ? parseInt(query.maxPrice, 10)
-        : 250000;
+        : 1500000;
 
       setMinPrice(minPriceValue);
       setMaxPrice(maxPriceQuery);
@@ -113,18 +113,18 @@ function SearchUI({
       sellOrRent === "All" || sellOrRent === "Все" ? "" : sellOrRent;
     setSellOrRent(newSellOrRent);
     setSliderMaxPrice(
-      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
+      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 1500000
     );
     setMinPrice(0);
     setMaxPrice(
-      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000
+      newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 1500000
     );
     setResetKey(resetKey + 1);
     updateUrlParams({
       sellOrRent: newSellOrRent,
       minPrice: 0,
       maxPrice:
-        newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 250000,
+        newSellOrRent === "Rent" || newSellOrRent === "Аренда" ? 2000 : 1500000,
     });
   };
 
@@ -150,14 +150,14 @@ function SearchUI({
   const handleResetFilters = () => {
     setResetKey(resetKey + 1);
     setMinPrice(0);
-    setMaxPrice(250000);
+    setMaxPrice(1500000);
     setCity("");
     setPropertyType("");
     setSellOrRent("");
-    setSliderMaxPrice(250000);
+    setSliderMaxPrice(1500000);
     updateUrlParams({
       minPrice: 0,
-      maxPrice: 250000,
+      maxPrice: 1500000,
       city: "",
       propertyType: "",
       sellOrRent: "",

@@ -34,7 +34,7 @@ function Search({
   isRU,
 }) {
   const [resetKey, setResetKey] = useState(0);
-  const [sliderMaxPrice, setSliderMaxPrice] = useState(250000);
+  const [sliderMaxPrice, setSliderMaxPrice] = useState(1500000);
 
   const handleCityChange = (keys) => {
     const selectedCity = Array.from(keys).join(", ");
@@ -64,7 +64,7 @@ function Search({
       setSliderMaxPrice(2000);
       setResetKey(resetKey + 1);
     } else {
-      setSliderMaxPrice(250000);
+      setSliderMaxPrice(1500000);
       setResetKey(resetKey + 1);
     }
   };
@@ -72,12 +72,12 @@ function Search({
   const handleResetFilters = () => {
     setResetKey(resetKey + 1);
     setMinPrice(0);
-    setMaxPrice(250000);
+    setMaxPrice(1500000);
     setCity("");
     setPropertyType("");
     setSellOrRent("");
     //setSliderMinPrice(0);
-    setSliderMaxPrice(250000);
+    setSliderMaxPrice(1500000);
     // onSearch();
   };
 
