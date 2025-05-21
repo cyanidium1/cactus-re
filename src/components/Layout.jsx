@@ -5,10 +5,14 @@ import Head from "next/head";
 import ButtonUp from "./ButtonUp";
 import useStore from "@/zustand/store/useStore";
 import "./loader.css";
+import { useRouter } from "next/router";
 
 export default function Layout({ children, isStyled = true, title }) {
   const { language } = useStore();
+  const router = useRouter();
   const isRu = language === "ru";
+  const isHomePage = router.pathname === "/";
+
   return (
     <div>
       <Head>
@@ -26,7 +30,7 @@ export default function Layout({ children, isStyled = true, title }) {
       </Head>
       {/* <Loader /> */}
       <Header isRu={isRu} />
-      <Loader />
+      {isHomePage && <Loader />}
       <main className={isStyled ? "max-w-[1024px] mx-auto p-2" : ""}>
         {children}
       </main>
