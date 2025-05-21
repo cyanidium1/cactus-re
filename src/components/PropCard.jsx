@@ -23,6 +23,8 @@ function PropCard({ el, isGrid, isRU }) {
   return (
     <Link
       href={`/property/${_id}`}
+      target="_blank"
+      rel="noopener noreferrer"
       className={`block w-full dark:text-white mb-4 lg:mb-8 group rounded-xl bg-white dark:bg-slate-900 shadow-lg hover:shadow-xl dark:hover:shadow-xl dark:shadow-green-700 dark:hover:shadow-green-700 overflow-hidden ease-in-out duration-500 ${
         isGrid ? "w-full sm:w-80 " : "flex"
       }`}
