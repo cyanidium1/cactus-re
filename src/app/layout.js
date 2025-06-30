@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 export const metadata = {
   title: {
     en: "Real Estate",
@@ -27,7 +29,18 @@ export default function RootLayout({ children, params }) {
         <link rel="alternate" hrefLang="en" href="/en" />
         <link rel="alternate" hrefLang="ru" href="/ru" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* <Script src="https://www.googletagmanager.com/gtag/js?id=G-0P0PSTJXSX" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0P0PSTJXSX');
+        `}
+        </Script> */}
+      </body>
     </html>
   );
 }
